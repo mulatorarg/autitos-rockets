@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvh0fwg53wpus"]
+
+[ext_resource type="Script" uid="uid://cma37fpblrefh" path="res://car.gd" id="1_0cfhi"]
+[ext_resource type="PackedScene" uid="uid://b7to78d8cuybh" path="res://assets/modelos/suv.glb" id="2_wv6cm"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dtpcx"]
+bounce = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ywja5"]
+radius = 1.0
+
+[node name="Car" type="RigidBody3D"]
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_dtpcx")
+gravity_scale = 3.0
+angular_damp = 10.0
+script = ExtResource("1_0cfhi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ywja5")
+metadata/_edit_lock_ = true
+
+[node name="CarMesh" parent="." instance=ExtResource("2_wv6cm")]
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="RayCast3D" type="RayCast3D" parent="CarMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.5, 2.08165e-12)
