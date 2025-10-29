@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://c8ra7opilsnx2"]
+[gd_scene load_steps=13 format=4 uid="uid://d23r25xyn0k7g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ws2eg"]
 resource_name = "plastic"
@@ -285,7 +285,7 @@ metadata/extras = {
 "targetNames": []
 }
 
-[node name="suv" type="Node3D"]
+[node name="Autito" type="Node3D"]
 
 [node name="suv2" type="Node3D" parent="."]
 
