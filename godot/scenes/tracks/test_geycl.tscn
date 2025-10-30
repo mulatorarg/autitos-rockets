@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3dbc6no2fkxn"]
+
+[ext_resource type="Script" uid="uid://cvuwsasmbq25i" path="res://scripts/camera/node_follow_camera.gd" id="1_6dmjg"]
+[ext_resource type="PackedScene" uid="uid://cvh0fwg53wpus" path="res://scenes/car/car.tscn" id="2_riiv7"]
+[ext_resource type="PackedScene" uid="uid://ceuh2psveiove" path="res://assets/models/houses/house_2/geycl_chaco/geycl_chaco.glb" id="3_mr2ht"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_74a4f"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_pcewp"]
+sky_material = SubResource("ProceduralSkyMaterial_74a4f")
+
+[sub_resource type="Environment" id="Environment_pk4ow"]
+background_mode = 2
+sky = SubResource("Sky_pcewp")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="TestCasa" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pk4ow")
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 6)
+script = ExtResource("1_6dmjg")
+offset = Vector3(2.08165e-12, 3, 4)
+target = NodePath("../Car/CarModel")
+
+[node name="Car" parent="." instance=ExtResource("2_riiv7")]
+mass = 1.5
+
+[node name="geycl_chaco" parent="." instance=ExtResource("3_mr2ht")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5546362, -0.21360946, -4.5979657)
+
+[editable path="Car"]
