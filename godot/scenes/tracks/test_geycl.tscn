@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cvuwsasmbq25i" path="res://scripts/camera/node_follow_camera.gd" id="1_6dmjg"]
 [ext_resource type="PackedScene" uid="uid://cvh0fwg53wpus" path="res://scenes/car/car.tscn" id="2_riiv7"]
-[ext_resource type="PackedScene" uid="uid://ceuh2psveiove" path="res://assets/models/houses/house_2/geycl_chaco/geycl_chaco.glb" id="3_mr2ht"]
+[ext_resource type="PackedScene" uid="uid://ceuh2psveiove" path="res://assets/models/houses/house_2/geycl_chaco.glb" id="3_mr2ht"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_74a4f"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -36,6 +36,6 @@ target = NodePath("../Car/CarModel")
 mass = 1.5
 
 [node name="geycl_chaco" parent="." instance=ExtResource("3_mr2ht")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5546362, -0.21360946, -4.5979657)
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -5, -0.2, 3)
 
 [editable path="Car"]

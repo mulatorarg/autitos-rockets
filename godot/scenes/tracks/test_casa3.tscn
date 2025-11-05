@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://csy0j1oh6coef"]
+
+[ext_resource type="Texture2D" uid="uid://cgp83mg08qobe" path="res://assets/skies/citrus_orchard_road_puresky_2k.hdr" id="1_mplsl"]
+[ext_resource type="Script" uid="uid://cvuwsasmbq25i" path="res://scripts/camera/node_follow_camera.gd" id="1_vd86y"]
+[ext_resource type="PackedScene" uid="uid://cvh0fwg53wpus" path="res://scenes/car/car.tscn" id="2_mplsl"]
+[ext_resource type="PackedScene" uid="uid://dobppta0nlfem" path="res://assets/models/houses/house_3/house03.glb" id="3_103dw"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_103dw"]
+panorama = ExtResource("1_mplsl")
+energy_multiplier = 0.1
+
+[sub_resource type="Sky" id="Sky_pcewp"]
+sky_material = SubResource("PanoramaSkyMaterial_103dw")
+
+[sub_resource type="Environment" id="Environment_pk4ow"]
+background_mode = 2
+sky = SubResource("Sky_pcewp")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="TestCasa3" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+sky_mode = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pk4ow")
+
+[node name="PlayerCamera" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 6)
+script = ExtResource("1_vd86y")
+offset = Vector3(2.08165e-12, 3, 4)
+target = NodePath("../Car/CarModel")
+
+[node name="Car" parent="." instance=ExtResource("2_mplsl")]
+mass = 1.5
+
+[node name="house03" parent="." instance=ExtResource("3_103dw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -200, -92, -120)
+
+[editable path="Car"]

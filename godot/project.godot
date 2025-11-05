@@ -12,12 +12,16 @@ config_version=5
 
 config/name="Autitos Rockets"
 config/description="Una mezcla de Micro Machines, Mario Karts y GTA, ponele."
-run/main_scene="uid://d3dbc6no2fkxn"
+run/main_scene="uid://csy0j1oh6coef"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
+window/size/viewport_width=1366
+window/size/viewport_height=768
+window/size/mode=2
+window/stretch/mode="canvas_items"
 window/dpi/allow_hidpi=false
 
 [input]
