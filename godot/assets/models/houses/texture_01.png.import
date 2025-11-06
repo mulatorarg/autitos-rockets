@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fs5ixnscgj3m"
-path.s3tc="res://.godot/imported/auto_metalico_texture_diffuse.png-465cc8a85f4156f12d28e0f2b3533e4e.s3tc.ctex"
+uid="uid://0wof2ikeolop"
+path.s3tc="res://.godot/imported/texture_01.png-cf07bd5850832220def27352f5e84378.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "323def4a895bdb5d8d03fdedc4ed870f"
-}
 
 [deps]
 
-source_file="res://assets/tests/auto_metalico/auto_metalico_texture_diffuse.png"
-dest_files=["res://.godot/imported/auto_metalico_texture_diffuse.png-465cc8a85f4156f12d28e0f2b3533e4e.s3tc.ctex"]
+source_file="res://assets/models/houses/texture_01.png"
+dest_files=["res://.godot/imported/texture_01.png-cf07bd5850832220def27352f5e84378.s3tc.ctex"]
 
 [params]
 

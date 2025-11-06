@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cymkkdkhgl0pt"]
-
-[ext_resource type="PackedScene" uid="uid://d6vbeifmb46m" path="res://assets/tests/auto_metalico/auto_metalico.glb" id="1_2v7rm"]
-
-[node name="auto_metalico" instance=ExtResource("1_2v7rm")]
