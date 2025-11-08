@@ -14,13 +14,39 @@ Adaptación de varios juegos de carreras arcade, desarrollado en Godot Engine 4.
 
 **Estética:** Low poly épico.
 
+## 📖 Documentación
+
+- **[QUICK_START.md](QUICK_START.md)** - Guía rápida para empezar a usar el sistema
+- **[RACING_SYSTEM.md](RACING_SYSTEM.md)** - Documentación técnica completa del sistema de carreras
+
+## 🎮 Estado Actual del Proyecto
+
+### Sistema de Carreras Implementado ✅
+
+El proyecto ahora cuenta con un sistema completo de carreras arcade que incluye:
+
+- **Clase Car Base**: Sistema modular con clases PlayerCar y AICar
+- **IA de Enemigos**: Navigation3D con seguimiento de checkpoints y evasión de obstáculos
+- **Sistema de Checkpoints**: Detección secuencial de paso por checkpoints
+- **Gestión de Carreras**: Singletons (GameManager, RaceManager) para control de estados
+- **HUD Completo**: Velocidad, posición, vueltas, tiempo y pantalla de resultados
+- **Pista de Ejemplo**: Track funcional con Navigation3D y múltiples enemigos IA
+
+### Controles
+
+- **WASD / Flechas**: Conducir
+- **Space**: Frenar
+- **R**: Reiniciar carrera
+
 ### 1. Concepto
 
-En redacción.
+Juego de carreras arcade en 3D donde el jugador compite contra oponentes controlados por IA en circuitos con checkpoints y obstáculos. El objetivo es completar un número determinado de vueltas en el menor tiempo posible y lograr el primer puesto.
 
 ### 2. Referencias principales
 
-En redacción.
+- Micro Machines (estilo arcade)
+- Mario Kart (jugabilidad arcade divertida)
+- GTA (mundo abierto y variedad)
 
 ### 3. Meta de desarrollo
 
@@ -28,3 +54,11 @@ En redacción.
 * **Plataforma objetivo:** PC (Windows/Linux), MAC y dispositivos móviles Android e iOS.
 * **Estilo visual:** 3D, arte en **low poly** con animaciones simples.
 * **Sesiones;** Cortas y progresivas por niveles.
+
+### 4. Características Técnicas
+
+* **Física arcade** con RigidBody3D
+* **Sistema de navegación** con NavigationAgent3D para IA
+* **Gestión de estados** mediante Autoloads
+* **UI responsive** con información en tiempo real
+* **Sistema modular** fácil de extender

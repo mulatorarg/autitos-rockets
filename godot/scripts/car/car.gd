@@ -1,9 +1,12 @@
 class_name Car
 extends RigidBody3D
 
+## Clase base para todos los autos (jugador y enemigos)
+
 ## Potencia del motor, que tan rapido va el auto
 @export var _acceleration: float = 55.0
-## Que tanto gira horizontalmente, en grados
+## Que tanto gira horizontalmente, en grados (usado por clases hijas)
+@warning_ignore("unused_private_class_variable")
 @export var _steering: float = 20.0
 ## Que tan rapido gira el auto
 @export var _turn_speed: float = 4.0
@@ -21,6 +24,8 @@ var _speed_input: float = 0
 var _turn_input: float = 0
 var _sphere_offset := Vector3.DOWN
 var _is_braking := false
+## Si el auto está en reversa (usado por clases hijas para invertir controles)
+@warning_ignore("unused_private_class_variable")
 var _is_reversing := false
 
 
@@ -56,39 +61,21 @@ func _move_car() -> void:
 	apply_central_force(final_movement_force)
 
 func _read_input() -> void:
+	"""Lee el input y actualiza _speed_input, _turn_input, _is_braking. 
+	   Los hijos deben implementar esto."""
 	_read_movement_input()
 	_read_steer_input()
 
+## Método virtual: Implementar en clases hijas para definir el input de movimiento
 func _read_movement_input() -> void:
-	var accel: bool = Input.is_action_pressed("accelerate")
-	var reverse: bool = Input.is_action_pressed("reverse")
-	_is_braking = Input.is_action_pressed("brake")
-	
-	if accel:
-		_speed_input = 1.0
-		_is_reversing = false
-	elif reverse:
-		_speed_input = -1.0
-		_is_reversing = true
-	else:
-		_speed_input = 0.0
+	pass
 
+## Método virtual: Implementar en clases hijas para definir el input de dirección
 func _read_steer_input() -> void:
-	var steer_dir: float = Input.get_axis("steer_right", "steer_left") * deg_to_rad(_steering)
-	
-	if _is_reversing:
-		steer_dir = -steer_dir
-	
-	_turn_input = steer_dir
+	pass
 
 func _rotate_model() -> void:
 	_car_model.rotate_front_wheels(_turn_input)
 	
 	if linear_velocity.length() > _turn_stop_limit:
 		_car_model.rotate_model(_turn_input, _turn_speed, linear_velocity.length(), _ground_ray_cast.get_collision_normal())
-
-
-
-
-
-#
