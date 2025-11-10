@@ -1,6 +1,5 @@
 class_name AICar
 extends Car
-
 ## Auto controlado por IA usando Navigation3D y siguiendo checkpoints
 
 @export var ai_reaction_time: float = 0.1  ## Tiempo de reacción de la IA (más bajo = más rápido)
@@ -17,8 +16,8 @@ var desired_turn: float = 0.0
 var reaction_timer: float = 0.0
 
 
+#Registrar este auto como enemigo en el RaceManager
 func _ready() -> void:
-	# Registrar este auto como enemigo en el RaceManager
 	RaceManager.register_car(self, false)
 	
 	# Configurar NavigationAgent3D
@@ -49,8 +48,8 @@ func _process(delta: float) -> void:
 		_update_ai_input()
 
 
+## Actualiza el objetivo de navegación al siguiente checkpoint
 func _update_target_checkpoint() -> void:
-	"""Actualiza el objetivo de navegación al siguiente checkpoint"""
 	var checkpoint_index = RaceManager.get_car_checkpoint(self)
 	
 	if RaceManager.checkpoints.size() == 0:
@@ -62,11 +61,11 @@ func _update_target_checkpoint() -> void:
 		var target_checkpoint = RaceManager.checkpoints[target_checkpoint_index]
 		current_target_position = target_checkpoint.global_position
 		navigation_agent.target_position = current_target_position
-		print("%s: Objetivo checkpoint %d en posición %v" % [name, target_checkpoint_index, current_target_position])
+		# print("%s: Objetivo checkpoint %d en posición %v" % [name, target_checkpoint_index, current_target_position])
 
 
+## Actualiza el input de la IA basado en la navegación
 func _update_ai_input() -> void:
-	"""Actualiza el input de la IA basado en la navegación"""
 	if GameManager.current_state != GameManager.GameState.RACING:
 		desired_speed = 0.0
 		desired_turn = 0.0
@@ -104,8 +103,8 @@ func _update_ai_input() -> void:
 		desired_turn = 0.0
 
 
+## Detecta obstáculos cercanos y ajusta el giro para evitarlos
 func _apply_obstacle_avoidance() -> void:
-	"""Detecta obstáculos cercanos y ajusta el giro para evitarlos"""
 	var space_state = get_world_3d().direct_space_state
 	var forward = -global_transform.basis.z
 	

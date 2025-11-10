@@ -18,7 +18,7 @@ func _ready() -> void:
 	
 	# Cambiar color del debug mesh según el índice
 	if show_debug and debug_mesh.material_override:
-		var color = Color.from_hsv(checkpoint_index / 10.0, 0.8, 1.0, 0.3)
+		var color = Color.from_hsv(checkpoint_index / 10.0, 0.8, 1.0, 0.6)
 		debug_mesh.material_override.albedo_color = color
 	
 	print("Checkpoint %d inicializado en posición %v" % [checkpoint_index, global_position])

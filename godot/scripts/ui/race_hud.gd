@@ -63,14 +63,14 @@ func _start_countdown() -> void:
 	countdown_label.show()
 	countdown_label.modulate = Color.WHITE
 	
-	# Cuenta regresiva: 3, 2, 1, GO!
+	# Cuenta regresiva: 3, 2, 1, VAMOOOS!
 	countdown_label.text = "3"
 	await get_tree().create_timer(1.0).timeout
 	countdown_label.text = "2"
 	await get_tree().create_timer(1.0).timeout
 	countdown_label.text = "1"
 	await get_tree().create_timer(1.0).timeout
-	countdown_label.text = "GO!"
+	countdown_label.text = "VAMOOOS!"
 	countdown_label.modulate = Color.GREEN
 	
 	GameManager.begin_racing()
@@ -106,6 +106,8 @@ func _show_finish_screen(final_time: float) -> void:
 			message = "¡Segundo Lugar!"
 		3:
 			message = "¡Tercer Lugar!"
+		4:
+			message = "Cuarto Lugar!"
 		_:
 			message = "¡Carrera Completada!"
 	

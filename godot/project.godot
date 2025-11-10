@@ -25,7 +25,6 @@ RaceManager="*res://scripts/autoload/race_manager.gd"
 
 window/size/viewport_width=1366
 window/size/viewport_height=768
-window/size/mode=2
 window/stretch/mode="canvas_items"
 window/dpi/allow_hidpi=false
 

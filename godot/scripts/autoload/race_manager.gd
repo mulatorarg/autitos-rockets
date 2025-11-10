@@ -22,9 +22,8 @@ var race_positions: Array = []  # Array de {car: Car, position: int, laps: int, 
 func _ready() -> void:
 	GameManager.state_changed.connect(_on_game_state_changed)
 
-
+## Llamado por cada nivel para configurar la carrera
 func setup_race(laps: int, checkpoint_nodes: Array[Node3D]) -> void:
-	"""Llamado por cada nivel para configurar la carrera"""
 	total_laps = laps
 	checkpoints = checkpoint_nodes
 	car_data.clear()
@@ -33,8 +32,8 @@ func setup_race(laps: int, checkpoint_nodes: Array[Node3D]) -> void:
 	print("Race setup: %d laps, %d checkpoints" % [total_laps, checkpoints.size()])
 
 
+## Registra un auto en la carrera
 func register_car(car: Car, is_player: bool = false) -> void:
-	"""Registra un auto en la carrera"""
 	car_data[car] = {
 		"laps": 0,
 		"current_checkpoint": 0,
@@ -50,8 +49,8 @@ func register_car(car: Car, is_player: bool = false) -> void:
 	print("Car registered: ", car.name, " (Player: ", is_player, ")")
 
 
+## Llamado cuando un auto pasa por un checkpoint
 func on_checkpoint_passed(car: Car, checkpoint_index: int) -> void:
-	"""Llamado cuando un auto pasa por un checkpoint"""
 	if car not in car_data:
 		print("Warning: Auto %s no registrado pasó por checkpoint %d" % [car.name, checkpoint_index])
 		return
@@ -103,16 +102,16 @@ func get_car_checkpoint(car: Car) -> int:
 	return 0
 
 
+## Obtiene la posición actual del auto en la carrera (1 = primero)
 func get_car_position(car: Car) -> int:
-	"""Obtiene la posición actual del auto en la carrera (1 = primero)"""
 	for i in range(race_positions.size()):
 		if race_positions[i].car == car:
 			return i + 1
 	return race_positions.size() + 1
 
 
+## Obtiene el tiempo transcurrido desde el inicio de la carrera
 func get_race_time() -> float:
-	"""Obtiene el tiempo transcurrido desde el inicio de la carrera"""
 	if race_start_time == 0.0:
 		return 0.0
 	return Time.get_ticks_msec() / 1000.0 - race_start_time
@@ -123,8 +122,8 @@ func _on_game_state_changed(new_state: GameManager.GameState) -> void:
 		race_start_time = Time.get_ticks_msec() / 1000.0
 
 
+## Actualiza las posiciones de todos los autos
 func _update_positions() -> void:
-	"""Actualiza las posiciones de todos los autos"""
 	race_positions.clear()
 	
 	for car in car_data.keys():
@@ -160,7 +159,7 @@ func _update_positions() -> void:
 
 
 func get_player_stats() -> Dictionary:
-	"""Obtiene estadísticas del jugador"""
+## Obtiene estadísticas del jugador
 	if player_car == null or player_car not in car_data:
 		return {
 			"laps": 0,
@@ -175,7 +174,7 @@ func get_player_stats() -> Dictionary:
 		"laps": car_data[player_car].laps,
 		"checkpoint": car_data[player_car].current_checkpoint,
 		"position": get_car_position(player_car),
-		"speed": player_car.linear_velocity.length() if player_car is RigidBody3D else 0.0,
+		"speed": player_car.get_speed() if player_car.has_method("get_speed") else 0.0,
 		"finished": car_data[player_car].finished,
 		"time": get_race_time()
 	}
