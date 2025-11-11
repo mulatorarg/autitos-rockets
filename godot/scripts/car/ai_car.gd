@@ -76,26 +76,29 @@ func _update_ai_input() -> void:
 	if not navigation_agent.is_navigation_finished():
 		var next_path_position: Vector3 = navigation_agent.get_next_path_position()
 		var direction_to_target: Vector3 = (next_path_position - global_position).normalized()
-		
-		# Calcular ángulo hacia el objetivo
-		var forward = -global_transform.basis.z
-		var angle_to_target = forward.signed_angle_to(direction_to_target, Vector3.UP)
-		
-		# Determinar giro deseado
-		desired_turn = clamp(angle_to_target / deg_to_rad(_steering), -1.0, 1.0)
-		
-		# Determinar velocidad deseada basada en el ángulo
-		var angle_severity = abs(angle_to_target)
-		if angle_severity > deg_to_rad(45):
-			# Curva cerrada: reducir velocidad
-			desired_speed = ai_target_speed * 0.4
-		elif angle_severity > deg_to_rad(25):
-			# Curva moderada
-			desired_speed = ai_target_speed * 0.7
-		else:
-			# Recta: velocidad máxima
+
+		# Usar el forward del modelo (no el rigidbody) para evitar desincronización
+		var forward: Vector3 = get_forward()
+		var angle_to_target: float = forward.signed_angle_to(direction_to_target, Vector3.UP)
+
+		# Determinar giro deseado (normalizado) y limitar micro oscilaciones
+		var normalized_turn: float = angle_to_target / deg_to_rad(_steering)
+		# Evitar jitter en ángulos muy pequeños
+		if abs(normalized_turn) < 0.02:
+			normalized_turn = 0.0
+		desired_turn = clamp(normalized_turn, -1.0, 1.0)
+
+		# Determinar velocidad basada en severidad de la curva
+		var angle_severity: float = abs(angle_to_target)
+		if angle_severity > deg_to_rad(50): # curva muy cerrada
+			desired_speed = ai_target_speed * 0.35
+		elif angle_severity > deg_to_rad(30): # curva cerrada
+			desired_speed = ai_target_speed * 0.55
+		elif angle_severity > deg_to_rad(18): # curva media
+			desired_speed = ai_target_speed * 0.75
+		else: # recta o curva suave
 			desired_speed = ai_target_speed
-		
+
 		# Evasión de obstáculos adicional
 		_apply_obstacle_avoidance()
 	else:
