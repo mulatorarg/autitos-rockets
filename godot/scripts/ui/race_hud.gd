@@ -1,5 +1,5 @@
 extends CanvasLayer
-
+class_name RaceHUD
 ## HUD para mostrar información de la carrera
 
 @onready var speed_label: Label = $MarginContainer/VBoxContainer/SpeedLabel

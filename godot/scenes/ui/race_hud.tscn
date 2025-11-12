@@ -187,9 +187,9 @@ stretch = true
 
 [node name="MinimapViewport" type="SubViewport" parent="MinimapCamPanel/SubViewportContainer"]
 handle_input_locally = false
-msaa_2d = 0
 msaa_3d = 2
 gui_disable_input = true
+size = Vector2i(220, 220)
 render_target_update_mode = 4
 script = ExtResource("3_minimap_cam")
 

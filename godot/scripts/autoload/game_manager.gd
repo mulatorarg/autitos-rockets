@@ -21,7 +21,7 @@ func change_state(new_state: GameState) -> void:
 	
 	current_state = new_state
 	state_changed.emit(new_state)
-	print("Game state changed to: ", GameState.keys()[new_state])
+	print("Game State cambió a: ", GameState.keys()[new_state])
 
 
 func start_race() -> void:

@@ -25,7 +25,7 @@ func _ready() -> void:
 	navigation_agent.target_desired_distance = 2.0
 	navigation_agent.max_speed = 50.0
 	navigation_agent.avoidance_enabled = true
-	navigation_agent.debug_enabled = true  # Activar debug para ver el path
+	navigation_agent.debug_enabled = true
 	
 	# Esperar a que el NavigationServer esté listo
 	call_deferred("_setup_navigation")

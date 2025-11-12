@@ -37,7 +37,7 @@ func setup_race(laps: int, checkpoint_nodes: Array[Node3D]) -> void:
 		car_data[car].total_checkpoints = 0
 		car_data[car].finished = false
 		car_data[car].finish_time = 0.0
-	print("Race setup: %d laps, %d checkpoints" % [total_laps, checkpoints.size()])
+	print("Datos Carrera: %d vueltas, %d checkpoints" % [total_laps, checkpoints.size()])
 
 
 ## Registra un auto en la carrera
@@ -58,7 +58,7 @@ func register_car(car: Car, is_player: bool = false) -> void:
 	if not car.tree_exited.is_connected(_on_car_tree_exited):
 		car.tree_exited.connect(_on_car_tree_exited.bind(car))
 	
-	print("Car registered: ", car.name, " (Player: ", is_player, ")")
+	print("Auto Registrado: ", car.name, " (Player: ", is_player, ")")
 
 
 ## Llamado cuando un auto pasa por un checkpoint
@@ -90,14 +90,14 @@ func on_checkpoint_passed(car: Car, checkpoint_index: int) -> void:
 		data.current_checkpoint = 0
 		data.laps += 1
 		lap_completed.emit(car, data.laps)
-		print("%s completed lap %d" % [car.name, data.laps])
+		print("%s completó la vuelta %d" % [car.name, data.laps])
 		
 		# Verificar si terminó la carrera
 		if data.laps >= total_laps and not data.finished:
 			data.finished = true
 			data.finish_time = Time.get_ticks_msec() / 1000.0 - race_start_time
 			race_completed.emit(car, data.finish_time)
-			print("%s finished the race! Time: %.2fs" % [car.name, data.finish_time])
+			print("%s terminó la carrera! Tiempo: %.2fs" % [car.name, data.finish_time])
 			
 			# Si el jugador terminó, cambiar estado del juego
 			if data.is_player:

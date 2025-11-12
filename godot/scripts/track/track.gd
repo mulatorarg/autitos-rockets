@@ -1,6 +1,5 @@
 class_name Track
 extends Node3D
-
 ## Escena base para pistas de carreras
 
 @export var total_laps: int = 3  ## Número de vueltas de la carrera
@@ -18,8 +17,8 @@ func _ready() -> void:
 		GameManager.start_race()
 
 
+## Recolecta todos los checkpoints hijos y los ordena
 func _setup_checkpoints() -> void:
-	"""Recolecta todos los checkpoints hijos y los ordena"""
 	if checkpoints_node == null:
 		checkpoints_node = get_node_or_null("Checkpoints")
 	
@@ -38,8 +37,8 @@ func _setup_checkpoints() -> void:
 	print("Track configurado con %d checkpoints" % checkpoints.size())
 
 
+## Configura el RaceManager con los datos de esta pista
 func _setup_race() -> void:
-	"""Configura el RaceManager con los datos de esta pista"""
 	RaceManager.setup_race(total_laps, checkpoints)
 
 

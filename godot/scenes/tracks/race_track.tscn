@@ -138,6 +138,21 @@ checkpoint_index = 5
 
 [node name="ObstaclesDinamic" type="Node3D" parent="."]
 
+[node name="RollingObstacle" parent="ObstaclesDinamic" instance=ExtResource("9_3mpdv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.72512, -0.4999962, 41.60402)
+
+[node name="RollingObstacle2" parent="ObstaclesDinamic" instance=ExtResource("9_3mpdv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.322273, -0.5, 40.70549)
+
+[node name="RollingObstacle3" parent="ObstaclesDinamic" instance=ExtResource("9_3mpdv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61172867, -0.5001221, -36.818012)
+
+[node name="RollingObstacle4" parent="ObstaclesDinamic" instance=ExtResource("9_3mpdv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.527004, -0.5001221, -1.3066875)
+
+[node name="RollingObstacle5" parent="ObstaclesDinamic" instance=ExtResource("9_3mpdv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.185963, -0.5001221, -39.127697)
+
 [node name="Cars" type="Node3D" parent="."]
 
 [node name="PlayerCar" parent="Cars" instance=ExtResource("4_playercar")]
@@ -169,18 +184,3 @@ offset = Vector3(0, 3, 6)
 target = NodePath("../Cars/PlayerCar/CarModel")
 
 [node name="RaceHUD" parent="." instance=ExtResource("7_hud")]
-
-[node name="RollingObstacle" parent="." instance=ExtResource("9_3mpdv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.72512, -0.4999962, 41.60402)
-
-[node name="RollingObstacle2" parent="." instance=ExtResource("9_3mpdv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.322273, -0.5, 40.70549)
-
-[node name="RollingObstacle3" parent="." instance=ExtResource("9_3mpdv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61172867, -0.5001221, -36.818012)
-
-[node name="RollingObstacle4" parent="." instance=ExtResource("9_3mpdv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.527004, -0.5001221, -1.3066875)
-
-[node name="RollingObstacle5" parent="." instance=ExtResource("9_3mpdv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.185963, -0.5001221, -39.127697)

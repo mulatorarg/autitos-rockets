@@ -10,7 +10,7 @@ var show_debug: bool = true
 func _ready() -> void:
 	# Crear label de debug
 	debug_label.position = Vector2(10, 100)
-	debug_label.add_theme_font_size_override("font_size", 14)
+	debug_label.add_theme_font_size_override("font_size", 12)
 	debug_label.add_theme_color_override("font_color", Color.YELLOW)
 	debug_label.add_theme_color_override("font_shadow_color", Color.BLACK)
 	debug_label.add_theme_constant_override("shadow_offset_x", 1)
