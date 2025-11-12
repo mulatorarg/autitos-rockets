@@ -26,6 +26,9 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	"""Detecta cuando un auto pasa por el checkpoint"""
+	# Ignorar eventos cuando la carrera no está en cuenta regresiva o en curso
+	if GameManager.current_state != GameManager.GameState.COUNTDOWN and GameManager.current_state != GameManager.GameState.RACING:
+		return
 	print("Checkpoint %d: Detectó body %s (es Car: %s)" % [checkpoint_index, body.name, body is Car])
 	if body is Car:
 		RaceManager.on_checkpoint_passed(body, checkpoint_index)

@@ -49,5 +49,10 @@ func finish_race() -> void:
 
 
 func restart_race() -> void:
-	get_tree().reload_current_scene()
-	change_state(GameState.COUNTDOWN)
+	# Solo recargamos la escena. El Track en _ready llamará a start_race()
+	# para iniciar la cuenta regresiva cuando todo esté listo.
+	var tree := get_tree()
+	if tree:
+		tree.reload_current_scene()
+	else:
+		push_warning("SceneTree no disponible al intentar reiniciar la carrera")

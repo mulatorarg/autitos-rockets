@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dyv6qnrj8n1h3"]
 
-[ext_resource type="Script" path="res://scripts/car/player_car.gd" id="1_playercar" uid="uid://dpghym3o1uqck"]
+[ext_resource type="Script" uid="uid://dpghym3o1uqck" path="res://scripts/car/player_car.gd" id="1_playercar"]
 [ext_resource type="PackedScene" uid="uid://b7to78d8cuybh" path="res://assets/models/cars/low_poly_suv/suv.glb" id="2_model"]
 [ext_resource type="Script" uid="uid://7yi5x8hgc16c" path="res://scripts/car/model/suv_car_model.gd" id="3_carmodel"]
 
@@ -26,4 +26,3 @@ script = ExtResource("3_carmodel")
 
 [node name="GroundRayCast" type="RayCast3D" parent="CarModel"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32392287, 0)
-target_position = Vector3(0, -2, 0)

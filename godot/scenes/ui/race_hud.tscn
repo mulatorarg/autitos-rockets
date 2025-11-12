@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cq4xwf2ry6uy5"]
+[gd_scene load_steps=5 format=3 uid="uid://cq4xwf2ry6uy5"]
 
-[ext_resource type="Script" path="res://scripts/ui/race_hud.gd" id="1_racehud" uid="uid://c2wxm8qafkv5t"]
+[ext_resource type="Script" uid="uid://c2wxm8qafkv5t" path="res://scripts/ui/race_hud.gd" id="1_racehud"]
+[ext_resource type="Script" uid="uid://bi4vw77plqxyl" path="res://scripts/ui/minimap.gd" id="2_minimap"]
+[ext_resource type="Script" uid="uid://dg8286tmkdsp6" path="res://scripts/ui/minimap_topview.gd" id="3_minimap_cam"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 bg_color = Color(0, 0, 0, 0.7)
@@ -136,3 +138,60 @@ theme_override_font_sizes/font_size = 20
 text = "Presiona R para reiniciar"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MinimapPanel" type="Panel" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -240.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Minimap" type="Control" parent="MinimapPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_minimap")
+
+[node name="MinimapCamPanel" type="Panel" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -480.0
+offset_right = -20.0
+offset_bottom = -260.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MinimapCamPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="MinimapViewport" type="SubViewport" parent="MinimapCamPanel/SubViewportContainer"]
+handle_input_locally = false
+msaa_2d = 0
+msaa_3d = 2
+gui_disable_input = true
+render_target_update_mode = 4
+script = ExtResource("3_minimap_cam")
+
+[node name="MinimapCamera" type="Camera3D" parent="MinimapCamPanel/SubViewportContainer/MinimapViewport"]
+current = true

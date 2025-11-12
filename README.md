@@ -62,3 +62,15 @@ Juego de carreras arcade en 3D donde el jugador compite contra oponentes control
 * **Gestión de estados** mediante Autoloads
 * **UI responsive** con información en tiempo real
 * **Sistema modular** fácil de extender
+
+
+### 5. Herramientas y Fuentes de Ideas
+
+* Para el manejo el auto en formato arcade, nos basamos de:
+https://kidscancode.org/godot_recipes/4.x/3d/3d_sphere_car/index.html
+
+* Para modelar las casas, utilizamos SweetHome3D, fantástico software open source:
+https://www.sweethome3d.com/
+
+* Utilizamos assets del genial Kenney:
+https://www.kenney.nl/assets/toy-car-kit

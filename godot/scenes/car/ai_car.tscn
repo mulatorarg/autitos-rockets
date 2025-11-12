@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cjx5kk0m6qhva"]
 
-[ext_resource type="Script" path="res://scripts/car/ai_car.gd" id="1_aicar" uid="uid://cu4nuf6whs6rk"]
+[ext_resource type="Script" uid="uid://cu4nuf6whs6rk" path="res://scripts/car/ai_car.gd" id="1_aicar"]
 [ext_resource type="PackedScene" uid="uid://b7to78d8cuybh" path="res://assets/models/cars/low_poly_suv/suv.glb" id="2_model"]
 [ext_resource type="Script" uid="uid://7yi5x8hgc16c" path="res://scripts/car/model/suv_car_model.gd" id="3_carmodel"]
 
@@ -25,13 +25,7 @@ shape = SubResource("SphereShape3D_ywja5")
 script = ExtResource("3_carmodel")
 
 [node name="GroundRayCast" type="RayCast3D" parent="CarModel"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32392287, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 target_position = Vector3(0, -2, 0)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_desired_distance = 1.0
-target_desired_distance = 2.0
-path_max_distance = 5.0
-avoidance_enabled = true
-radius = 1.5
-max_speed = 20.0

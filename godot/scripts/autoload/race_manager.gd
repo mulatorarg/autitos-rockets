@@ -26,9 +26,17 @@ func _ready() -> void:
 func setup_race(laps: int, checkpoint_nodes: Array[Node3D]) -> void:
 	total_laps = laps
 	checkpoints = checkpoint_nodes
-	car_data.clear()
 	race_positions.clear()
 	race_start_time = 0.0
+	# Reiniciar estado de autos ya registrados sin perder el registro
+	# Importante: los hijos (autos) hacen register_car en _ready antes que este _ready de Track,
+	# por lo que limpiar car_data aquí borra esos registros y provoca warnings.
+	for car in car_data.keys():
+		car_data[car].laps = 0
+		car_data[car].current_checkpoint = 0
+		car_data[car].total_checkpoints = 0
+		car_data[car].finished = false
+		car_data[car].finish_time = 0.0
 	print("Race setup: %d laps, %d checkpoints" % [total_laps, checkpoints.size()])
 
 
@@ -46,14 +54,22 @@ func register_car(car: Car, is_player: bool = false) -> void:
 	if is_player:
 		player_car = car
 	
+	# Eliminar referencia cuando el auto salga del árbol (e.g., al recargar escena)
+	if not car.tree_exited.is_connected(_on_car_tree_exited):
+		car.tree_exited.connect(_on_car_tree_exited.bind(car))
+	
 	print("Car registered: ", car.name, " (Player: ", is_player, ")")
 
 
 ## Llamado cuando un auto pasa por un checkpoint
 func on_checkpoint_passed(car: Car, checkpoint_index: int) -> void:
-	if car not in car_data:
-		print("Warning: Auto %s no registrado pasó por checkpoint %d" % [car.name, checkpoint_index])
+	if not is_instance_valid(car):
 		return
+	if car not in car_data:
+		# Auto no registrado (posible orden de inicialización). Registrar de forma segura.
+		var is_player := car is PlayerCar
+		print("Info: Auto %s no registrado detectado en checkpoint %d. Registrando (Player: %s)." % [car.name, checkpoint_index, str(is_player)])
+		register_car(car, is_player)
 	
 	var data = car_data[car]
 	
@@ -126,13 +142,17 @@ func _on_game_state_changed(new_state: GameManager.GameState) -> void:
 func _update_positions() -> void:
 	race_positions.clear()
 	
+	var to_remove: Array = []
 	for car in car_data.keys():
+		if not is_instance_valid(car):
+			to_remove.append(car)
+			continue
 		var data = car_data[car]
 		var progress = data.laps + (data.current_checkpoint / float(checkpoints.size()))
 		
 		# Calcular distancia al siguiente checkpoint para desempate
 		var distance_to_next = 0.0
-		if checkpoints.size() > 0 and car is Node3D:
+		if checkpoints.size() > 0:
 			var next_checkpoint_idx = data.current_checkpoint % checkpoints.size()
 			if next_checkpoint_idx < checkpoints.size():
 				distance_to_next = car.global_position.distance_to(checkpoints[next_checkpoint_idx].global_position)
@@ -146,6 +166,10 @@ func _update_positions() -> void:
 			"finished": data.finished
 		})
 	
+	# Limpiar autos inválidos (de escenas anteriores)
+	for c in to_remove:
+		car_data.erase(c)
+	
 	# Ordenar por: terminados primero, luego por progreso (vueltas + checkpoints), luego por distancia al siguiente checkpoint
 	race_positions.sort_custom(func(a, b):
 		if a.finished != b.finished:
@@ -156,6 +180,14 @@ func _update_positions() -> void:
 	)
 	
 	positions_updated.emit(race_positions)
+
+
+# Manejar remoción de autos del árbol para mantener el diccionario limpio
+func _on_car_tree_exited(car: Car) -> void:
+	if car in car_data:
+		car_data.erase(car)
+	if player_car == car:
+		player_car = null
 
 
 func get_player_stats() -> Dictionary:

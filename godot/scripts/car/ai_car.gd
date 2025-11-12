@@ -2,9 +2,9 @@ class_name AICar
 extends Car
 ## Auto controlado por IA usando Navigation3D y siguiendo checkpoints
 
-@export var ai_reaction_time: float = 0.1  ## Tiempo de reacción de la IA (más bajo = más rápido)
-@export var ai_steering_smoothness: float = 3.0  ## Suavidad en el giro (más alto = más suave)
-@export var ai_target_speed: float = 0.9  ## Velocidad objetivo (0.0 a 1.0)
+@export var ai_reaction_time: float = 0.01  ## Tiempo de reacción de la IA (más bajo = más rápido)
+@export var ai_steering_smoothness: float = 8.0  ## Suavidad en el giro (más alto = más rápido hacia el objetivo)
+@export var ai_target_speed: float = 1.0  ## Velocidad objetivo (0.0 a 1.0)
 @export var ai_brake_distance: float = 8.0  ## Distancia para empezar a frenar en curvas
 @export var ai_obstacle_avoidance_strength: float = 2.0  ## Fuerza de evasión de obstáculos
 
@@ -23,7 +23,7 @@ func _ready() -> void:
 	# Configurar NavigationAgent3D
 	navigation_agent.path_desired_distance = 1.0
 	navigation_agent.target_desired_distance = 2.0
-	navigation_agent.max_speed = 20.0
+	navigation_agent.max_speed = 50.0
 	navigation_agent.avoidance_enabled = true
 	navigation_agent.debug_enabled = true  # Activar debug para ver el path
 	
@@ -90,12 +90,12 @@ func _update_ai_input() -> void:
 
 		# Determinar velocidad basada en severidad de la curva
 		var angle_severity: float = abs(angle_to_target)
-		if angle_severity > deg_to_rad(50): # curva muy cerrada
-			desired_speed = ai_target_speed * 0.35
-		elif angle_severity > deg_to_rad(30): # curva cerrada
-			desired_speed = ai_target_speed * 0.55
-		elif angle_severity > deg_to_rad(18): # curva media
-			desired_speed = ai_target_speed * 0.75
+		if angle_severity > deg_to_rad(60): # curva muy cerrada
+			desired_speed = ai_target_speed * 0.6
+		elif angle_severity > deg_to_rad(40): # curva cerrada
+			desired_speed = ai_target_speed * 0.8
+		elif angle_severity > deg_to_rad(20): # curva media
+			desired_speed = ai_target_speed * 0.95
 		else: # recta o curva suave
 			desired_speed = ai_target_speed
 
@@ -112,7 +112,7 @@ func _apply_obstacle_avoidance() -> void:
 	var forward = -global_transform.basis.z
 	
 	# Raycast hacia adelante para detectar obstáculos
-	var ray_distance = 5.0
+	var ray_distance = 4.0
 	var ray_start = global_position + Vector3.UP * 0.5
 	var ray_end = ray_start + forward * ray_distance
 	
@@ -136,16 +136,16 @@ func _apply_obstacle_avoidance() -> void:
 			# Obstáculo a la izquierda, girar a la derecha
 			desired_turn += ai_obstacle_avoidance_strength * 0.5
 		
-		# Reducir velocidad
-		desired_speed *= 0.6
+	# Reducir velocidad (menos agresivo)
+	desired_speed *= 0.85
 
 
 func _read_movement_input() -> void:
 	# Suavizar el cambio de velocidad
 	_speed_input = lerp(_speed_input, desired_speed, ai_steering_smoothness * get_process_delta_time())
 	
-	# La IA no frena manualmente, solo reduce velocidad
-	_is_braking = desired_speed < 0.3
+	# La IA no frena manualmente salvo velocidades muy bajas
+	_is_braking = desired_speed < 0.1
 	_is_reversing = false
 
 

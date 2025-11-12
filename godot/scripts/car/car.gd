@@ -28,11 +28,14 @@ var _is_braking := false
 @warning_ignore("unused_private_class_variable")
 var _is_reversing := false
 
+## Nombre visible del vehículo en UI/Minimapa. Si queda vacío, se usa el nombre del nodo.
+@export var display_name: String = ""
+
 
 func _process(_delta):
 	if not _is_grounded():
 		return
-	
+    
 	_read_input()
 	_rotate_model()
 
@@ -93,3 +96,9 @@ func get_speed() -> float:
 ## Utilizado para cálculos de IA, ángulos y raycasts hacia adelante.
 func get_forward() -> Vector3:
 	return (-_car_model.global_transform.basis.z).normalized()
+
+## Nombre público del auto para mostrar en UI
+func get_display_name() -> String:
+	if display_name.length() > 0:
+		return display_name
+	return name
