@@ -2,10 +2,7 @@
 class_name CarModel
 extends Node3D
 
-@export var _body_tilt: float = 35.0
-
 var _front_wheels: Array[Node3D]
-var _body_model: Node3D
 
 # Etiqueta 3D del nombre sobre el modelo
 @export var show_name_label_3d: bool = true
@@ -20,14 +17,9 @@ var _owner_car: Car
 
 
 @abstract
-func _get_body_model() -> Node3D
-
-@abstract
 func _get_front_wheels() -> Array[Node3D]
 
 func _ready():
-	top_level = true
-	_body_model = _get_body_model()
 	_front_wheels = _get_front_wheels()
 	_owner_car = (get_parent() as Car) if (get_parent() is Car) else null
 	if show_name_label_3d:
