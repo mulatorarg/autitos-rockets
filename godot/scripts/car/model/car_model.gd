@@ -15,7 +15,6 @@ var _front_wheels: Array[Node3D]
 var _name_label: Label3D
 var _owner_car: Car
 
-
 @abstract
 func _get_front_wheels() -> Array[Node3D]
 
@@ -42,7 +41,7 @@ func _process(_delta: float) -> void:
 			# Si la propiedad billboard existe y está activa, no hace falta
 			var is_billboard := false
 			for p in _name_label.get_property_list():
-				if p.name == "billboard":
+				if p["name"] == "billboard":
 					is_billboard = true
 					break
 			if not is_billboard:
@@ -52,46 +51,26 @@ func rotate_front_wheels(angle: float) -> void:
 	for wheel: Node3D in _front_wheels:
 		wheel.rotation.y = angle
 
-func rotate_model(angle: float, rotation_speed: float, linear_velocity_magnitude: float, collision_normal: Vector3) -> void:
-	var delta: float = get_physics_process_delta_time()
-	
-	_rotate_body(delta, angle, rotation_speed)
-	_tilt_body(delta, angle, linear_velocity_magnitude)
-	_align_with_slopes(delta, collision_normal)
-
-func _rotate_body(delta: float, angle: float, rotation_speed: float) -> void:
-	var new_basis: Basis = global_transform.basis.rotated(global_transform.basis.y, angle)
-	global_transform.basis = global_transform.basis.slerp(new_basis, rotation_speed * delta)
-	global_transform = global_transform.orthonormalized()
-
-func _tilt_body(delta: float, angle: float, linear_velocity_magnitude: float) -> void:
-	var t: float = -angle * linear_velocity_magnitude / _body_tilt
-	_body_model.rotation.z = lerp(_body_model.rotation.z, t, 5.0 * delta)
-
-func _align_with_slopes(delta: float, collision_normal: Vector3) -> void:
-	var xform: Transform3D = _get_y_alignment(global_transform, collision_normal)
-	global_transform = global_transform.interpolate_with(xform, 10.0 * delta)
-
-func _get_y_alignment(xform: Transform3D, new_y: Vector3) -> Transform3D:
-	xform.basis.y = new_y
-	xform.basis.x = -xform.basis.z.cross(new_y)
-	return xform.orthonormalized()
+## CarPivot se encarga de orientar/tiltear el modelo; no duplicar aquí.
 
 func _create_name_label() -> void:
 	if _name_label != null and is_instance_valid(_name_label):
 		return
+
 	_name_label = Label3D.new()
 	add_child(_name_label)
 	_name_label.name = "NameLabel3D"
 	_name_label.position = name_label_offset
 	_name_label.modulate = name_label_color
 	_name_label.fixed_size = name_label_fixed_size
+
 	if name_label_font != null:
 		_name_label.font = name_label_font
 	_name_label.font_size = name_label_font_size
 	_name_label.no_depth_test = true
 	_name_label.outline_size = 2
 	_name_label.outline_modulate = Color(0, 0, 0, 0.8)
+
 	# Texto inicial
 	if _owner_car != null and is_instance_valid(_owner_car):
 		var initial_text: String
@@ -103,7 +82,7 @@ func _create_name_label() -> void:
 	# Intentar activar billboard si la propiedad existe
 	var has_billboard := false
 	for p in _name_label.get_property_list():
-		if p.name == "billboard":
+		if p["name"] == "billboard":
 			has_billboard = true
 			break
 	if has_billboard:

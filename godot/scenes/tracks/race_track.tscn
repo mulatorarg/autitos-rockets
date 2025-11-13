@@ -163,24 +163,37 @@ display_name = "Jugador"
 [node name="AICar1" parent="Cars" instance=ExtResource("5_aicar")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -12)
 mass = 1.5
+ai_reaction_time = 0.01
+ai_steering_smoothness = 8.0
+ai_target_speed = 1.0
+ai_brake_distance = 8.0
+ai_obstacle_avoidance_strength = 2.0
 display_name = "Fangio"
 
 [node name="AICar2" parent="Cars" instance=ExtResource("5_aicar")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -8)
 mass = 1.5
+ai_reaction_time = 0.01
+ai_steering_smoothness = 8.0
 ai_target_speed = 0.85
+ai_brake_distance = 8.0
+ai_obstacle_avoidance_strength = 2.0
 display_name = "Reuteman"
 
 [node name="AICar3" parent="Cars" instance=ExtResource("5_aicar")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -8)
 mass = 1.5
+ai_reaction_time = 0.01
+ai_steering_smoothness = 8.0
 ai_target_speed = 0.8
+ai_brake_distance = 8.0
+ai_obstacle_avoidance_strength = 2.0
 display_name = "Colapinto"
 
 [node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -2, 5, -19)
 script = ExtResource("3_camera")
 offset = Vector3(0, 3, 6)
-target = NodePath("../Cars/PlayerCar/CarModel")
+target = NodePath("../Cars/PlayerCar/Pivot/CarModel")
 
 [node name="RaceHUD" parent="." instance=ExtResource("7_hud")]

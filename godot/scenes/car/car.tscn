@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://cvh0fwg53wpus"]
+[gd_scene load_steps=13 format=3 uid="uid://cvh0fwg53wpus"]
 
 [ext_resource type="Script" uid="uid://cma37fpblrefh" path="res://scripts/car/car.gd" id="1_0cfhi"]
 [ext_resource type="Script" uid="uid://bdm5yd4eenetj" path="res://scripts/car/car_pivot.gd" id="2_tcn38"]
 [ext_resource type="PackedScene" uid="uid://b7to78d8cuybh" path="res://assets/models/cars/low_poly_suv/suv.glb" id="2_wv6cm"]
-[ext_resource type="Script" uid="uid://7yi5x8hgc16c" path="res://scripts/car/model/suv_car_model.gd" id="3_rytg7"]
 [ext_resource type="Script" uid="uid://6ko3lts04jmy" path="res://scripts/power_up/power_up_manager.gd" id="4_x7uf8"]
 [ext_resource type="Script" uid="uid://b8d4qty2jnvhx" path="res://scripts/impact/impact_receiver.gd" id="6_b3ski"]
 [ext_resource type="Script" uid="uid://dxqcp3644huod" path="res://scripts/power_up/spawners/missile_spawner.gd" id="6_u0012"]
@@ -31,6 +30,7 @@ angular_damp = 10.0
 script = ExtResource("1_0cfhi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("SphereShape3D_ywja5")
 
 [node name="Pivot" type="Node3D" parent="."]
@@ -39,7 +39,6 @@ script = ExtResource("2_tcn38")
 
 [node name="CarModel" parent="Pivot" instance=ExtResource("2_wv6cm")]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
-script = ExtResource("3_rytg7")
 
 [node name="GroundRayCast" type="RayCast3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32392287, 0)

@@ -4,7 +4,7 @@ extends Node3D
 ## Efecto visual al doblar. Con valores mas chicos el auto se tiltea mas
 @export_range(5, 50, 1) var _body_tilt: float = 30.0
 
-@onready var _car_model: CarModel = $CarModel
+@onready var _car_model: CarModel = $CarModel as CarModel
 
 
 func _ready() -> void:
@@ -14,7 +14,8 @@ func get_forward() -> Vector3:
 	return -global_transform.basis.z.normalized()
 
 func rotate_front_wheels(angle: float) -> void:
-	_car_model.rotate_front_wheels(angle)
+	if _car_model != null:
+		_car_model.rotate_front_wheels(angle)
 
 func rotate_car(angle: float, rotation_speed: float, linear_velocity_magnitude: float, collision_normal: Vector3) -> void:
 	var delta: float = get_physics_process_delta_time()

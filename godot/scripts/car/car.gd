@@ -6,10 +6,10 @@ extends RigidBody3D
 ## Potencia del motor, que tan rapido va el auto
 @export var _acceleration: float = 55.0
 ## Que tanto gira horizontalmente, en grados (usado por clases hijas)
-@warning_ignore("unused_private_class_variable")
 ## Tope de velocidad lineal
 @export var _max_speed: float = 20.0
 ## Que tanto gira horizontalmente, en grados
+@warning_ignore("unused_private_class_variable")
 @export var _steering: float = 20.0
 ## Que tan rapido gira el auto
 @export var _turn_speed: float = 4.0
@@ -43,7 +43,7 @@ func _ready() -> void:
 func _process(_delta):
 	if not _is_grounded():
 		return
-    
+	
 	_read_input()
 	_rotate_car()
 
@@ -62,7 +62,7 @@ func _move_car() -> void:
 	if not _is_grounded():
 		return
 
-	var final_movement_force: Vector3 = -_car_model.global_transform.basis.z * _acceleration * _speed_input
+	var final_movement_force: Vector3 = get_forward() * _acceleration * _speed_input
 
 	if _is_braking:
 		final_movement_force *= _engine_power_during_brake
@@ -106,11 +106,6 @@ func _rotate_car() -> void:
 ## Se expone para HUD/Debug y cálculos de posiciones.
 func get_speed() -> float:
 	return linear_velocity.length()
-
-## Vector forward del auto consistente con el modelo visual.
-## Utilizado para cálculos de IA, ángulos y raycasts hacia adelante.
-func get_forward() -> Vector3:
-	return (-_car_model.global_transform.basis.z).normalized()
 
 ## Nombre público del auto para mostrar en UI
 func get_display_name() -> String:

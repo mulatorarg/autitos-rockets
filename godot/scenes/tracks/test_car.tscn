@@ -62,7 +62,7 @@ shape = SubResource("BoxShape3D_cvbi4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 6)
 script = ExtResource("2_uibxk")
 offset = Vector3(2.08165e-12, 3, 4)
-target = NodePath("../Car/CarModel")
+target = NodePath("../Car/Pivot/CarModel")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.969923, -0.243412, 0, 0.243412, 0.969923, 13, 0, 0)
