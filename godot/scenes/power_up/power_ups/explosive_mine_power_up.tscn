@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://djitbauvee1dj"]
+
+[ext_resource type="Script" uid="uid://dtdppxlfinaa0" path="res://scripts/power_up/power_ups/explosive_mine_power_up.gd" id="1_346fx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y848o"]
+
+[node name="ExplosiveMinePowerUp" type="Area3D"]
+collision_layer = 0
+collision_mask = 512
+script = ExtResource("1_346fx")
+_explosion_impulse = 35.0
+
+[node name="Mesh" type="CSGSphere3D" parent="."]
+
+[node name="TriggerCollisionShape" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_y848o")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

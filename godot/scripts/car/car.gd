@@ -3,6 +3,8 @@ extends RigidBody3D
 
 ## Potencia del motor, que tan rapido va el auto
 @export var _acceleration: float = 55.0
+## Tope de velocidad lineal
+@export var _max_speed: float = 20.0
 ## Que tanto gira horizontalmente, en grados
 @export var _steering: float = 20.0
 ## Que tan rapido gira el auto
@@ -14,25 +16,30 @@ extends RigidBody3D
 ## Reduccion de la potencia del motor cuando se esta frenando
 @export_range(0.1, 0.9, 0.01) var _engine_power_during_brake: float = 0.5
 
-@onready var _car_model: CarModel = $CarModel
-@onready var _ground_ray_cast: RayCast3D = $CarModel/GroundRayCast
+@onready var _pivot: CarPivot = $Pivot
+@onready var _ground_ray_cast: RayCast3D = $Pivot/GroundRayCast
+@onready var _impact_receiver: ImpactReceiver = $Pivot/ImpactReceiver
 
 var _speed_input: float = 0
 var _turn_input: float = 0
 var _sphere_offset := Vector3.DOWN
 var _is_braking := false
 var _is_reversing := false
+var _is_slipping := false
 
+
+func _ready() -> void:
+	_impact_receiver.impacted.connect(_apply_knockback)
 
 func _process(_delta):
 	if not _is_grounded():
 		return
 	
 	_read_input()
-	_rotate_model()
+	_rotate_car()
 
 func _physics_process(_delta):
-	_car_model.position = position + _sphere_offset
+	_pivot.position = position + _sphere_offset
 	_move_car()
 
 func _is_grounded() -> bool:
@@ -42,7 +49,7 @@ func _move_car() -> void:
 	if not _is_grounded():
 		return
 	
-	var final_movement_force: Vector3 = -_car_model.global_transform.basis.z * _acceleration * _speed_input
+	var final_movement_force: Vector3 = get_forward() * _acceleration * _speed_input
 	
 	if _is_braking:
 		final_movement_force *= _engine_power_during_brake
@@ -55,21 +62,26 @@ func _move_car() -> void:
 	
 	apply_central_force(final_movement_force)
 
+func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
+	_limit_max_speed(state)
+
+func _limit_max_speed(state: PhysicsDirectBodyState3D) -> void:
+	if state.linear_velocity.length() > _max_speed:
+		state.linear_velocity = state.linear_velocity.normalized() * _max_speed
+
 func _read_input() -> void:
 	_read_movement_input()
 	_read_steer_input()
 
 func _read_movement_input() -> void:
-	var accel: bool = Input.is_action_pressed("accelerate")
-	var reverse: bool = Input.is_action_pressed("reverse")
+	var is_accelerating: bool = Input.is_action_pressed("accelerate")
+	_is_reversing = Input.is_action_pressed("reverse")
 	_is_braking = Input.is_action_pressed("brake")
 	
-	if accel:
+	if is_accelerating:
 		_speed_input = 1.0
-		_is_reversing = false
-	elif reverse:
+	elif _is_reversing:
 		_speed_input = -1.0
-		_is_reversing = true
 	else:
 		_speed_input = 0.0
 
@@ -81,14 +93,32 @@ func _read_steer_input() -> void:
 	
 	_turn_input = steer_dir
 
-func _rotate_model() -> void:
-	_car_model.rotate_front_wheels(_turn_input)
+func _rotate_car() -> void:
+	_pivot.rotate_front_wheels(_turn_input)
 	
 	if linear_velocity.length() > _turn_stop_limit:
-		_car_model.rotate_model(_turn_input, _turn_speed, linear_velocity.length(), _ground_ray_cast.get_collision_normal())
+		_pivot.rotate_car(_turn_input, _turn_speed, linear_velocity.length(), _ground_ray_cast.get_collision_normal())
 
+func _apply_knockback(_source: Node3D, force: Vector3) -> void:
+	apply_impulse(force)
 
+func apply_slip(duration: float, friction_multiplier: float) -> void:
+	if _is_slipping:
+		return
+	
+	_is_slipping = true
+	var previous_friction = physics_material_override.friction
+	physics_material_override.friction *= friction_multiplier
+	
+	await get_tree().create_timer(duration).timeout
+	physics_material_override.friction = previous_friction
+	_is_slipping = false
 
+func get_forward() -> Vector3:
+	return _pivot.get_forward()
+
+func get_pivot_transform() -> Transform3D:
+	return _pivot.global_transform
 
 
 #

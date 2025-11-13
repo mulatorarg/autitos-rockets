@@ -1,0 +1,96 @@
+[gd_scene load_steps=10 format=3 uid="uid://c8f3dxs40e5bv"]
+
+[ext_resource type="Script" uid="uid://cvuwsasmbq25i" path="res://scripts/camera/node_follow_camera.gd" id="2_xb1he"]
+[ext_resource type="PackedScene" uid="uid://b2yuhgimwceb5" path="res://scenes/power_up/pickeable_power_up.tscn" id="3_q24t1"]
+[ext_resource type="Script" uid="uid://b8d4qty2jnvhx" path="res://scripts/impact/impact_receiver.gd" id="4_g8b4m"]
+[ext_resource type="PackedScene" uid="uid://cvh0fwg53wpus" path="res://scenes/car/car.tscn" id="4_snwd1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_74a4f"]
+sky_top_color = Color(0.070959486, 0.09441162, 0.12564912, 1)
+sky_horizon_color = Color(0.8608224, 0.5613841, 0.5641763, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_pcewp"]
+sky_material = SubResource("ProceduralSkyMaterial_74a4f")
+
+[sub_resource type="Environment" id="Environment_pk4ow"]
+background_mode = 2
+sky = SubResource("Sky_pcewp")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a2hql"]
+albedo_color = Color(0.31548083, 0.00043067397, 0.9038373, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q24t1"]
+size = Vector3(7.0352173, 1, 3.5663452)
+
+[node name="TestScene" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pk4ow")
+
+[node name="PlayerCamera" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 6)
+script = ExtResource("2_xb1he")
+offset = Vector3(2.08165e-12, 3, 4)
+target = NodePath("../Car/Pivot")
+
+[node name="Car" parent="." instance=ExtResource("4_snwd1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.607774)
+mass = 1.5
+
+[node name="Car2" parent="." instance=ExtResource("4_snwd1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.581835, 0, -7.817298)
+mass = 1.5
+
+[node name="TrackContainer" type="CSGCombiner3D" parent="."]
+use_collision = true
+collision_layer = 2147483648
+collision_mask = 0
+
+[node name="Ground" type="CSGBox3D" parent="TrackContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.48804, 0)
+use_collision = true
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_a2hql")
+
+[node name="Ramp" type="CSGBox3D" parent="TrackContainer"]
+transform = Transform3D(1, 0, 0, 0, 0.97700465, -0.21321796, 0, 0.21321796, 0.97700465, 9.694884, -4.4915395, 0)
+use_collision = true
+size = Vector3(10, 1, 10)
+
+[node name="Ramp2" type="CSGBox3D" parent="TrackContainer"]
+transform = Transform3D(1, 0, 0, 0, 0.89323014, -0.44959962, 0, 0.44959962, 0.89323014, 22.109539, -4.4915395, 0)
+use_collision = true
+size = Vector3(10, 1, 10)
+
+[node name="Ramp3" type="CSGBox3D" parent="TrackContainer"]
+transform = Transform3D(1, 0, 0, 0, 0.73884356, -0.6738769, 0, 0.6738769, 0.73884356, 36.338226, -4.4915395, 0)
+use_collision = true
+size = Vector3(10, 1, 10)
+
+[node name="MissileTargeteableWall" type="CSGBox3D" parent="TrackContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9584513, -3.1520424, -17.147255)
+size = Vector3(6.8728027, 3.4921875, 1)
+
+[node name="TargetHitArea" type="Area3D" parent="TrackContainer/MissileTargeteableWall"]
+collision_layer = 512
+collision_mask = 0
+script = ExtResource("4_g8b4m")
+
+[node name="TargetHitCollisionShape" type="CollisionShape3D" parent="TrackContainer/MissileTargeteableWall/TargetHitArea"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.01260376, -0.052825928, 0)
+shape = SubResource("BoxShape3D_q24t1")
+
+[node name="ActivePowerUpsContainer" type="Node3D" parent="." groups=["ActivePowerUpsContainer"]]
+
+[node name="PickeablePowerUp" parent="." instance=ExtResource("3_q24t1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.4878483, 0)
+
+[editable path="Car"]
+[editable path="Car2"]
