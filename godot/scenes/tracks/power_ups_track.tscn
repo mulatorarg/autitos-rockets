@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://c8f3dxs40e5bv"]
 
+[ext_resource type="PackedScene" uid="uid://dyv6qnrj8n1h3" path="res://scenes/car/player_car.tscn" id="2_g8b4m"]
 [ext_resource type="Script" uid="uid://cvuwsasmbq25i" path="res://scripts/camera/node_follow_camera.gd" id="2_xb1he"]
 [ext_resource type="PackedScene" uid="uid://b2yuhgimwceb5" path="res://scenes/power_up/pickeable_power_up.tscn" id="3_q24t1"]
 [ext_resource type="Script" uid="uid://b8d4qty2jnvhx" path="res://scripts/impact/impact_receiver.gd" id="4_g8b4m"]
-[ext_resource type="PackedScene" uid="uid://cvh0fwg53wpus" path="res://scenes/car/car.tscn" id="4_snwd1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_74a4f"]
 sky_top_color = Color(0.070959486, 0.09441162, 0.12564912, 1)
@@ -38,15 +38,11 @@ environment = SubResource("Environment_pk4ow")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 6)
 script = ExtResource("2_xb1he")
 offset = Vector3(2.08165e-12, 3, 4)
-target = NodePath("../Car/Pivot")
+target = NodePath("../PlayerCar/Pivot/CarModel")
 
-[node name="Car" parent="." instance=ExtResource("4_snwd1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.607774)
-mass = 1.5
-
-[node name="Car2" parent="." instance=ExtResource("4_snwd1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.581835, 0, -7.817298)
-mass = 1.5
+[node name="PlayerCar" parent="." instance=ExtResource("2_g8b4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.988041, 4)
+_override_block = true
 
 [node name="TrackContainer" type="CSGCombiner3D" parent="."]
 use_collision = true
@@ -92,5 +88,4 @@ shape = SubResource("BoxShape3D_q24t1")
 [node name="PickeablePowerUp" parent="." instance=ExtResource("3_q24t1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.4878483, 0)
 
-[editable path="Car"]
-[editable path="Car2"]
+[editable path="PlayerCar"]

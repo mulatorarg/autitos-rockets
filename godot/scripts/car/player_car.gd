@@ -11,15 +11,13 @@ func _ready() -> void:
 
 func _read_movement_input() -> void:
 	var accel: bool = Input.is_action_pressed("accelerate")
-	var reverse: bool = Input.is_action_pressed("reverse")
+	_is_reversing = Input.is_action_pressed("reverse")
 	_is_braking = Input.is_action_pressed("brake")
 	
 	if accel:
 		_speed_input = 1.0
-		_is_reversing = false
-	elif reverse:
+	elif _is_reversing:
 		_speed_input = -1.0
-		_is_reversing = true
 	else:
 		_speed_input = 0.0
 

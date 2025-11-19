@@ -3,6 +3,9 @@ extends RigidBody3D
 
 ## Clase base para todos los autos (jugador y enemigos)
 
+## Para testeo fuera de Racing Track, borrar despues
+@export var _override_block: bool
+
 ## Potencia del motor, que tan rapido va el auto
 @export var _acceleration: float = 55.0
 ## Que tanto gira horizontalmente, en grados (usado por clases hijas)
@@ -56,7 +59,7 @@ func _is_grounded() -> bool:
 
 func _move_car() -> void:
 	# Bloquear movimiento cuando no se está corriendo (COUNTDOWN/PAUSED/FINISHED)
-	if GameManager.current_state != GameManager.GameState.RACING:
+	if GameManager.current_state != GameManager.GameState.RACING && !_override_block:
 		return
 
 	if not _is_grounded():
@@ -75,8 +78,6 @@ func _move_car() -> void:
 
 	apply_central_force(final_movement_force)
 
-## Lee el input y actualiza _speed_input, _turn_input, _is_braking. 
-## Los hijos deben implementar esto.
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	_limit_max_speed(state)
 
@@ -84,6 +85,8 @@ func _limit_max_speed(state: PhysicsDirectBodyState3D) -> void:
 	if state.linear_velocity.length() > _max_speed:
 		state.linear_velocity = state.linear_velocity.normalized() * _max_speed
 
+## Lee el input y actualiza _speed_input, _turn_input, _is_braking. 
+## Los hijos deben implementar esto.
 func _read_input() -> void:
 	_read_movement_input()
 	_read_steer_input()
@@ -112,6 +115,7 @@ func get_display_name() -> String:
 	if display_name.length() > 0:
 		return display_name
 	return name
+
 func _apply_knockback(_source: Node3D, force: Vector3) -> void:
 	apply_impulse(force)
 
