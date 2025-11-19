@@ -12,6 +12,8 @@ enum PowerUpType { MISSILE, EXPLOSIVE_MINE, OIL_PUDDLE }
 
 func _ready() -> void:
 	_active_power_ups_container = get_tree().get_first_node_in_group("ActivePowerUpsContainer")
+	if _active_power_ups_container == null:
+		push_warning("Tiene que existir un Node3D con el grupo 'ActivePowerUpsContainer' para almacenar instancias de powerups en runtime")
 	
 	for spawner: PowerUpSpawner in _spawners_container.get_children():
 		_spawners[spawner.get_type()] = spawner

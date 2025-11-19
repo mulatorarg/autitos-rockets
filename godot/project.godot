@@ -75,8 +75,6 @@ activate_power_up={
 
 3d_physics/layer_9="pickeable_power_up"
 3d_physics/layer_10="impact_receiver"
-3d_physics/layer_11="car"
-3d_physics/layer_32="terrain"
 
 [physics]
 
