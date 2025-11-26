@@ -175,13 +175,13 @@ display_name = "Fangio"
 [node name="AICar2" parent="Cars" instance=ExtResource("5_aicar")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -8)
 mass = 1.5
-ai_target_speed = 0.85
+ai_target_speed = 1.05
 display_name = "Reuteman"
 
 [node name="AICar3" parent="Cars" instance=ExtResource("5_aicar")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -8)
 mass = 1.5
-ai_target_speed = 0.8
+ai_target_speed = 0.95
 display_name = "Colapinto"
 
 [node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("target")]

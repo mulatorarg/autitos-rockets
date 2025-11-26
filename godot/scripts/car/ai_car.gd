@@ -4,7 +4,8 @@ extends Car
 
 @export var ai_reaction_time: float = 0.01  ## Tiempo de reacción de la IA (más bajo = más rápido)
 @export var ai_steering_smoothness: float = 8.0  ## Suavidad en el giro (más alto = más rápido hacia el objetivo)
-@export var ai_target_speed: float = 1.0  ## Velocidad objetivo (0.0 a 1.0)
+@export_range(0.5, 1.5, 0.01) var ai_target_speed: float = 1.1  ## Velocidad objetivo normalizada
+@export_range(0.5, 1.0, 0.01) var ai_corner_speed_floor: float = 0.8  ## Porcentaje mínimo de velocidad en curvas
 @export var ai_brake_distance: float = 8.0  ## Distancia para empezar a frenar en curvas
 @export var ai_obstacle_avoidance_strength: float = 2.0  ## Fuerza de evasión de obstáculos
 
@@ -94,13 +95,15 @@ func _update_ai_input() -> void:
 		# Determinar velocidad basada en severidad de la curva
 		var angle_severity: float = abs(angle_to_target)
 		if angle_severity > deg_to_rad(60): # curva muy cerrada
-			desired_speed = ai_target_speed * 0.6
-		elif angle_severity > deg_to_rad(40): # curva cerrada
 			desired_speed = ai_target_speed * 0.8
+		elif angle_severity > deg_to_rad(40): # curva cerrada
+			desired_speed = ai_target_speed * 0.92
 		elif angle_severity > deg_to_rad(20): # curva media
-			desired_speed = ai_target_speed * 0.95
+			desired_speed = ai_target_speed * 0.98
 		else: # recta o curva suave
 			desired_speed = ai_target_speed
+
+		desired_speed = max(desired_speed, ai_target_speed * ai_corner_speed_floor)
 
 		# Evasión de obstáculos adicional
 		_apply_obstacle_avoidance()
@@ -140,7 +143,7 @@ func _apply_obstacle_avoidance() -> void:
 			desired_turn += ai_obstacle_avoidance_strength * 0.5
 		
 	# Reducir velocidad (menos agresivo)
-	desired_speed *= 0.85
+	desired_speed *= 0.92
 
 
 func _read_movement_input() -> void:
