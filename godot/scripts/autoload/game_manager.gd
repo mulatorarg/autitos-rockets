@@ -48,6 +48,8 @@ func finish_race() -> void:
 
 
 func restart_race() -> void:
+	RaceManager.reset_state()
+
 	var tree := get_tree()
 	if tree:
 		tree.reload_current_scene()

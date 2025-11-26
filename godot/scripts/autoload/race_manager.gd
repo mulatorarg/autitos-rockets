@@ -22,6 +22,15 @@ var race_positions: Array = []  # Array de {car: Car, position: int, laps: int, 
 func _ready() -> void:
 	GameManager.state_changed.connect(_on_game_state_changed)
 
+
+## Limpia el estado interno para reiniciar la carrera desde cero
+func reset_state() -> void:
+	checkpoints.clear()
+	race_positions.clear()
+	car_data.clear()
+	race_start_time = 0.0
+	player_car = null
+
 ## Llamado por cada nivel para configurar la carrera
 func setup_race(laps: int, checkpoint_nodes: Array[Node3D]) -> void:
 	total_laps = laps

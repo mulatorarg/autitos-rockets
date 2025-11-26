@@ -170,18 +170,21 @@ display_name = "Jugador"
 [node name="AICar1" parent="Cars" instance=ExtResource("5_aicar")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -12)
 mass = 1.5
+ai_corner_speed_floor = 0.8
 display_name = "Fangio"
 
 [node name="AICar2" parent="Cars" instance=ExtResource("5_aicar")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -8)
 mass = 1.5
 ai_target_speed = 1.05
+ai_corner_speed_floor = 0.8
 display_name = "Reuteman"
 
 [node name="AICar3" parent="Cars" instance=ExtResource("5_aicar")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -8)
 mass = 1.5
 ai_target_speed = 0.95
+ai_corner_speed_floor = 0.8
 display_name = "Colapinto"
 
 [node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
@@ -210,20 +213,55 @@ shape = SubResource("BoxShape3D_ehm1h")
 
 [node name="Pickeables" type="Node3D" parent="."]
 
-[node name="PickeablePowerUp" parent="Pickeables" instance=ExtResource("11_ehm1h")]
+[node name="Spawner1" type="Node3D" parent="Pickeables"]
+
+[node name="PickeablePowerUp1" parent="Pickeables/Spawner1" instance=ExtResource("11_ehm1h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6218395, -30.15513)
 power_up_type = 1
 
-[node name="PickeablePowerUp2" parent="Pickeables" instance=ExtResource("11_ehm1h")]
+[node name="PickeablePowerUp2" parent="Pickeables/Spawner1" instance=ExtResource("11_ehm1h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9767866, -0.6218395, -30.15513)
 power_up_type = 2
 
-[node name="PickeablePowerUp5" parent="Pickeables" instance=ExtResource("11_ehm1h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9767866, -0.6218395, -33.675617)
-
-[node name="PickeablePowerUp3" parent="Pickeables" instance=ExtResource("11_ehm1h")]
+[node name="PickeablePowerUp3" parent="Pickeables/Spawner1" instance=ExtResource("11_ehm1h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3068342, -0.6218395, -30.15513)
 power_up_type = 2
 
-[node name="PickeablePowerUp4" parent="Pickeables" instance=ExtResource("11_ehm1h")]
+[node name="PickeablePowerUp4" parent="Pickeables/Spawner1" instance=ExtResource("11_ehm1h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.210102, -0.6218395, -30.15513)
+
+[node name="Spawner2" type="Node3D" parent="Pickeables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.172348, 0, 59.159275)
+
+[node name="PickeablePowerUp1" parent="Pickeables/Spawner2" instance=ExtResource("11_ehm1h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6218395, -30.15513)
+power_up_type = 1
+
+[node name="PickeablePowerUp2" parent="Pickeables/Spawner2" instance=ExtResource("11_ehm1h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9767866, -0.6218395, -30.15513)
+power_up_type = 2
+
+[node name="PickeablePowerUp3" parent="Pickeables/Spawner2" instance=ExtResource("11_ehm1h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3068342, -0.6218395, -30.15513)
+power_up_type = 2
+
+[node name="PickeablePowerUp4" parent="Pickeables/Spawner2" instance=ExtResource("11_ehm1h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.210102, -0.6218395, -30.15513)
+
+[node name="Spawner3" type="Node3D" parent="Pickeables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.1689, 0, 40.97178)
+
+[node name="PickeablePowerUp1" parent="Pickeables/Spawner3" instance=ExtResource("11_ehm1h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6218395, -30.15513)
+power_up_type = 1
+
+[node name="PickeablePowerUp2" parent="Pickeables/Spawner3" instance=ExtResource("11_ehm1h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9767866, -0.6218395, -30.15513)
+power_up_type = 2
+
+[node name="PickeablePowerUp3" parent="Pickeables/Spawner3" instance=ExtResource("11_ehm1h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3068342, -0.6218395, -30.15513)
+power_up_type = 2
+
+[node name="PickeablePowerUp4" parent="Pickeables/Spawner3" instance=ExtResource("11_ehm1h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.210102, -0.6218395, -30.15513)
