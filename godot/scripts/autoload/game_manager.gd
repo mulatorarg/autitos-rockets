@@ -1,5 +1,4 @@
 extends Node
-
 ## Singleton para gestionar el estado global del juego
 
 enum GameState {
@@ -49,8 +48,6 @@ func finish_race() -> void:
 
 
 func restart_race() -> void:
-	# Solo recargamos la escena. El Track en _ready llamará a start_race()
-	# para iniciar la cuenta regresiva cuando todo esté listo.
 	var tree := get_tree()
 	if tree:
 		tree.reload_current_scene()

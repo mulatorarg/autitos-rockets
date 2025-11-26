@@ -16,8 +16,7 @@ Adaptación de varios juegos de carreras arcade, desarrollado en Godot Engine 4.
 
 ## 📖 Documentación
 
-- **[QUICK_START.md](QUICK_START.md)** - Guía rápida para empezar a usar el sistema
-- **[RACING_SYSTEM.md](RACING_SYSTEM.md)** - Documentación técnica completa del sistema de carreras
+- En redacción.
 
 ## 🎮 Estado Actual del Proyecto
 
@@ -46,7 +45,7 @@ Juego de carreras arcade en 3D donde el jugador compite contra oponentes control
 
 - Micro Machines (estilo arcade)
 - Mario Kart (jugabilidad arcade divertida)
-- GTA (mundo abierto y variedad)
+- RollCage (jugabilidad arcade divertida)
 
 ### 3. Meta de desarrollo
 

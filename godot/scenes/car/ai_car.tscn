@@ -5,5 +5,10 @@
 
 [node name="AICar" instance=ExtResource("1_carbase")]
 script = ExtResource("2_aicar")
+ai_reaction_time = 0.01
+ai_steering_smoothness = 8.0
+ai_target_speed = 1.0
+ai_brake_distance = 8.0
+ai_obstacle_avoidance_strength = 2.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="2"]

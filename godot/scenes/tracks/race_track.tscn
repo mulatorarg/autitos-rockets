@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cpx0wf67jxmul"]
+[gd_scene load_steps=20 format=3 uid="uid://cpx0wf67jxmul"]
 
 [ext_resource type="Script" uid="uid://clmfqv5xh2ybh" path="res://scripts/track/track.gd" id="1_track"]
 [ext_resource type="Texture2D" uid="uid://cgp83mg08qobe" path="res://assets/skies/citrus_orchard_road_puresky_2k.hdr" id="2_nkcmi"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bhpgx8l2yjg4c" path="res://scenes/track/checkpoint.tscn" id="6_checkpoint"]
 [ext_resource type="PackedScene" uid="uid://cq4xwf2ry6uy5" path="res://scenes/ui/race_hud.tscn" id="7_hud"]
 [ext_resource type="PackedScene" uid="uid://bm5vyak2p8r1a" path="res://scenes/track/rolling_obstacle.tscn" id="9_3mpdv"]
+[ext_resource type="Script" uid="uid://b8d4qty2jnvhx" path="res://scripts/impact/impact_receiver.gd" id="10_23cl5"]
+[ext_resource type="PackedScene" uid="uid://b2yuhgimwceb5" path="res://scenes/power_up/pickeable_power_up.tscn" id="11_ehm1h"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3mpdv"]
 panorama = ExtResource("2_nkcmi")
@@ -24,8 +26,9 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_nav"]
-vertices = PackedVector3Array(-9.000004, 4, -2.75, -8.750004, 4, -2.75, -8.750004, 4, -8.25, -9.250004, 4, -8.5, -50.000004, 4, -50, -50.000004, 4, -8.25, -6.500004, 4, -50, -6.750004, 4, -8.5, 10.499996, -1, -42.25, 12.249996, -1, -42.5, 11.999996, -1, -48.75, -5.750004, -1, -48.75, -5.750004, -1, -7.5, -7.500004, -1, -7.25, -7.250004, -1, 2, 10.499996, -1, 2, 32.999996, -1, -42.5, 33.249996, -1, -48.75, 34.749996, -1, -4, 38.749996, -1, -4, 38.999996, -1, -6.25, 34.749996, -1, -42.25, 44.749996, -1, -6.25, 44.999996, -1, -4, 48.999996, -1, -4, 48.999996, -1, -48.75, 11.499996, 4, 1.25, 33.749996, 4, 1.5, 33.749996, 4, -41.5, 11.499996, 4, -41.5, -37.250004, -1, 2.25, -35.500004, -1, 2, -35.750004, -1, -7.25, -48.750004, -1, 4.25, -37.250004, -1, 4.25, -48.750004, -1, -7.25, 39.749996, 4, -5.25, 39.749996, 4, 4, 43.999996, 4, 4, 43.999996, 4, -5.25, 34.749996, -1, 2.75, 38.749996, -1, 2.75, 44.999996, -1, 2.75, 48.999996, -1, 2.75, -8.500004, 4, 3, -9.250004, 4, 3, -36.250004, 4, 3, -36.250004, 4, 35.75, 9.999996, 4, 35.75, 9.749996, 4, 3, 11.249996, 4, 3, 33.749996, 4, 35.75, 44.749996, -1, 5, 48.999996, -1, 35.25, 38.999996, -1, 5, 34.749996, -1, 35, -48.750004, -1, 34.5, -37.250004, -1, 34.5, -37.250004, -1, 36.5, -35.750004, -1, 49, -35.500004, -1, 36.75, -48.750004, -1, 49, 34.499996, -1, 36.75, 32.999996, -1, 36.75, 33.249996, -1, 49, 48.999996, -1, 49, -50.000004, 4, 48.75, -50.000004, 4, 50, -49.500004, 4, 50)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 3), PackedInt32Array(3, 4, 6), PackedInt32Array(2, 3, 7), PackedInt32Array(7, 3, 6), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(11, 8, 12), PackedInt32Array(12, 8, 15), PackedInt32Array(9, 10, 16), PackedInt32Array(16, 10, 17), PackedInt32Array(19, 18, 20), PackedInt32Array(20, 18, 21), PackedInt32Array(24, 23, 22), PackedInt32Array(21, 16, 17), PackedInt32Array(17, 25, 21), PackedInt32Array(21, 25, 22), PackedInt32Array(22, 25, 24), PackedInt32Array(22, 20, 21), PackedInt32Array(29, 28, 26), PackedInt32Array(26, 28, 27), PackedInt32Array(30, 32, 31), PackedInt32Array(30, 34, 33), PackedInt32Array(32, 30, 35), PackedInt32Array(35, 30, 33), PackedInt32Array(32, 13, 31), PackedInt32Array(31, 13, 14), PackedInt32Array(39, 38, 36), PackedInt32Array(36, 38, 37), PackedInt32Array(18, 19, 40), PackedInt32Array(40, 19, 41), PackedInt32Array(23, 24, 42), PackedInt32Array(42, 24, 43), PackedInt32Array(1, 44, 0), PackedInt32Array(0, 44, 45), PackedInt32Array(46, 45, 47), PackedInt32Array(47, 45, 48), PackedInt32Array(44, 49, 48), PackedInt32Array(45, 44, 48), PackedInt32Array(26, 27, 50), PackedInt32Array(50, 27, 51), PackedInt32Array(50, 51, 48), PackedInt32Array(48, 49, 50), PackedInt32Array(42, 43, 52), PackedInt32Array(52, 43, 53), PackedInt32Array(41, 54, 40), PackedInt32Array(40, 54, 55), PackedInt32Array(54, 52, 55), PackedInt32Array(55, 52, 53), PackedInt32Array(33, 34, 56), PackedInt32Array(56, 34, 57), PackedInt32Array(56, 57, 58), PackedInt32Array(58, 60, 59), PackedInt32Array(59, 61, 58), PackedInt32Array(58, 61, 56), PackedInt32Array(64, 63, 62), PackedInt32Array(62, 55, 64), PackedInt32Array(64, 55, 53), PackedInt32Array(64, 53, 65), PackedInt32Array(60, 63, 59), PackedInt32Array(59, 63, 64), PackedInt32Array(68, 67, 66)]
+vertices = PackedVector3Array(-9.250004, 4, -9, -9.000004, 4, -8.5, -8.500004, 4, -9, -7.250004, 4, -49.5, -7.250004, 4, -9, -49.500004, 4, -49.5, -49.500004, 4, -9, -48.250004, -1, -48.25, -48.250004, -1, -9, -7.500004, -1, -9, -7.500004, -1, -48.25, 10.749996, -1, -43, 12.249996, -1, -43, 11.999996, -1, -48.25, 9.999996, -1, -42.25, -5.250004, -1, -48.25, -6.000004, -1, -6.75, -7.500004, -1, -6.75, -7.250004, -1, 1.5, -5.250004, -1, -7.5, 9.999996, -1, 1.5, 32.999996, -1, -43, 33.249996, -1, -48.25, 35.249996, -1, -4, 38.249996, -1, -4, 38.249996, -1, -6, 45.499996, -1, -6, 45.499996, -1, -4, 48.499996, -1, -4, 38.999996, -1, -6.75, 35.249996, -1, -42.25, 44.749996, -1, -6.75, 48.499996, -1, -48.25, 34.499996, -1, -43, 11.999996, 4, 1.25, 33.249996, 4, 1.5, 33.249996, 4, -41, 11.999996, 4, -41, 12.249996, -1, -40.75, 12.249996, -1, 1.5, 32.999996, -1, 1.5, 32.999996, -1, -40.75, -37.000004, -1, 1.5, -35.500004, -1, 1.5, -35.750004, -1, -6.75, -37.750004, -1, 2.25, -48.250004, -1, -6.75, -48.250004, -1, 4.25, -37.750004, -1, 4.25, 40.249996, 4, -4.75, 40.249996, 4, 3.5, 43.499996, 4, 3.5, 43.499996, 4, -4.75, 40.499996, -1, -4.5, 40.499996, -1, 3.25, 43.249996, -1, 3.25, 43.249996, -1, -4.5, 45.499996, -1, 4.75, 48.499996, -1, 35.25, 38.249996, -1, 4.75, 35.249996, -1, 35, 44.749996, -1, 5.5, 38.999996, -1, 5.5, 11.999996, 4, 2.75, 11.249996, 4, 3.5, 9.999996, 4, 35.25, 33.249996, 4, 35.25, 9.749996, 4, 3.5, -8.500004, 4, 3.5, -9.000004, 4, 3, -9.250004, 4, 3.5, -35.750004, 4, 3.5, -35.750004, 4, 35.25, 32.999996, -1, 35, 32.999996, -1, 4.25, 10.749996, -1, 4.25, 10.499996, -1, 3.75, -35.500004, -1, 3.75, -35.500004, -1, 35, -48.250004, -1, 34.5, -37.750004, -1, 34.5, -37.750004, -1, 36.5, -35.750004, -1, 48.5, -35.500004, -1, 37.25, -37.000004, -1, 37.25, -48.250004, -1, 48.5, 34.499996, -1, 37.25, 32.999996, -1, 37.25, 33.249996, -1, 48.5, 35.249996, -1, 36.5, 48.499996, -1, 48.5)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 4, 2), PackedInt32Array(6, 5, 0), PackedInt32Array(0, 5, 3), PackedInt32Array(10, 9, 7), PackedInt32Array(7, 9, 8), PackedInt32Array(13, 12, 11), PackedInt32Array(11, 14, 13), PackedInt32Array(13, 14, 15), PackedInt32Array(18, 17, 16), PackedInt32Array(16, 19, 18), PackedInt32Array(18, 19, 20), PackedInt32Array(15, 14, 19), PackedInt32Array(19, 14, 20), PackedInt32Array(12, 13, 21), PackedInt32Array(21, 13, 22), PackedInt32Array(25, 24, 23), PackedInt32Array(28, 27, 26), PackedInt32Array(25, 23, 29), PackedInt32Array(29, 23, 30), PackedInt32Array(26, 31, 28), PackedInt32Array(28, 31, 30), PackedInt32Array(28, 30, 32), PackedInt32Array(33, 21, 22), PackedInt32Array(33, 22, 30), PackedInt32Array(30, 22, 32), PackedInt32Array(31, 29, 30), PackedInt32Array(37, 36, 34), PackedInt32Array(34, 36, 35), PackedInt32Array(41, 40, 38), PackedInt32Array(38, 40, 39), PackedInt32Array(44, 43, 42), PackedInt32Array(42, 45, 44), PackedInt32Array(44, 45, 46), PackedInt32Array(46, 45, 47), PackedInt32Array(45, 48, 47), PackedInt32Array(44, 17, 43), PackedInt32Array(43, 17, 18), PackedInt32Array(52, 51, 49), PackedInt32Array(49, 51, 50), PackedInt32Array(56, 55, 53), PackedInt32Array(53, 55, 54), PackedInt32Array(27, 28, 57), PackedInt32Array(57, 28, 58), PackedInt32Array(24, 59, 23), PackedInt32Array(23, 59, 60), PackedInt32Array(61, 57, 58), PackedInt32Array(60, 59, 62), PackedInt32Array(62, 61, 60), PackedInt32Array(60, 61, 58), PackedInt32Array(63, 34, 35), PackedInt32Array(63, 35, 64), PackedInt32Array(64, 35, 66), PackedInt32Array(64, 66, 65), PackedInt32Array(65, 67, 64), PackedInt32Array(69, 68, 70), PackedInt32Array(70, 68, 65), PackedInt32Array(68, 67, 65), PackedInt32Array(71, 70, 72), PackedInt32Array(72, 70, 65), PackedInt32Array(75, 74, 73), PackedInt32Array(77, 76, 75), PackedInt32Array(77, 75, 78), PackedInt32Array(78, 75, 73), PackedInt32Array(47, 48, 79), PackedInt32Array(79, 48, 80), PackedInt32Array(79, 80, 81), PackedInt32Array(84, 83, 82), PackedInt32Array(81, 84, 79), PackedInt32Array(79, 84, 85), PackedInt32Array(85, 84, 82), PackedInt32Array(88, 87, 86), PackedInt32Array(86, 89, 88), PackedInt32Array(88, 89, 90), PackedInt32Array(90, 89, 58), PackedInt32Array(89, 60, 58), PackedInt32Array(83, 87, 82), PackedInt32Array(82, 87, 88)]
+agent_radius = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtvcv"]
 albedo_texture = ExtResource("2_texture")
@@ -37,6 +40,9 @@ load_path = "res://.godot/imported/texture_09.png-08f51693f50c39f0d83de9a970412a
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nkcmi"]
 albedo_texture = SubResource("CompressedTexture2D_nkcmi")
 uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ehm1h"]
+size = Vector3(7.0352173, 1, 3.5663452)
 
 [node name="RaceTrack" type="Node3D"]
 script = ExtResource("1_track")
@@ -114,26 +120,26 @@ material = SubResource("StandardMaterial3D_nkcmi")
 [node name="Checkpoints" type="Node3D" parent="."]
 
 [node name="Checkpoint0" parent="Checkpoints" instance=ExtResource("6_checkpoint")]
-transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 0.82995605, 2.5, -43.52736)
+transform = Transform3D(-4.3711385e-08, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -4.3711385e-08, 12, 0, -44)
 
 [node name="Checkpoint1" parent="Checkpoints" instance=ExtResource("6_checkpoint")]
-transform = Transform3D(0.76604444, 0, 0.6427876, 0, 1, 0, -0.6427876, 0, 0.76604444, 41.539654, 2.5, -43.71949)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, -40)
 checkpoint_index = 1
 
 [node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("6_checkpoint")]
-transform = Transform3D(-0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, -0.81915206, 40.17508, 2.5, 42.991768)
+transform = Transform3D(-0.015393227, 0, 0.9998816, 0, 1, 0, -0.9998816, 0, -0.015393227, 30, 0, 43)
 checkpoint_index = 2
 
 [node name="Checkpoint3" parent="Checkpoints" instance=ExtResource("6_checkpoint")]
-transform = Transform3D(-0.8660253, 0, -0.5, 0, 1, 0, 0.5, 0, -0.8660253, -41.055603, 2.5, 44.047367)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -42.179695, 0, 35.27942)
 checkpoint_index = 3
 
 [node name="Checkpoint4" parent="Checkpoints" instance=ExtResource("6_checkpoint")]
-transform = Transform3D(0.85730207, 0, -0.51481366, 0, 1, 0, 0.51481366, 0, 0.85730207, -41.055603, 2.5, -2.3787384)
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -34.893215, 0, -2.3787384)
 checkpoint_index = 4
 
 [node name="Checkpoint5" parent="Checkpoints" instance=ExtResource("6_checkpoint")]
-transform = Transform3D(0.24217588, 0, -0.9702323, 0, 1, 0, 0.9702323, 0, 0.24217588, -9.350464, 2.5, -2.3787384)
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -6.4659424, 0, -2.3787384)
 checkpoint_index = 5
 
 [node name="ObstaclesDinamic" type="Node3D" parent="."]
@@ -163,31 +169,18 @@ display_name = "Jugador"
 [node name="AICar1" parent="Cars" instance=ExtResource("5_aicar")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -12)
 mass = 1.5
-ai_reaction_time = 0.01
-ai_steering_smoothness = 8.0
-ai_target_speed = 1.0
-ai_brake_distance = 8.0
-ai_obstacle_avoidance_strength = 2.0
 display_name = "Fangio"
 
 [node name="AICar2" parent="Cars" instance=ExtResource("5_aicar")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -8)
 mass = 1.5
-ai_reaction_time = 0.01
-ai_steering_smoothness = 8.0
 ai_target_speed = 0.85
-ai_brake_distance = 8.0
-ai_obstacle_avoidance_strength = 2.0
 display_name = "Reuteman"
 
 [node name="AICar3" parent="Cars" instance=ExtResource("5_aicar")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -8)
 mass = 1.5
-ai_reaction_time = 0.01
-ai_steering_smoothness = 8.0
 ai_target_speed = 0.8
-ai_brake_distance = 8.0
-ai_obstacle_avoidance_strength = 2.0
 display_name = "Colapinto"
 
 [node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
@@ -197,3 +190,35 @@ offset = Vector3(0, 3, 6)
 target = NodePath("../Cars/PlayerCar/Pivot/CarModel")
 
 [node name="RaceHUD" parent="." instance=ExtResource("7_hud")]
+total_laps = 5
+
+[node name="ActivePowerUpsContainer" type="Node3D" parent="." groups=["ActivePowerUpsContainer"]]
+
+[node name="MissileTargeteableWall" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -17, 4, 42.5)
+size = Vector3(10, 1.5, 1)
+
+[node name="TargetHitArea" type="Area3D" parent="MissileTargeteableWall"]
+collision_layer = 512
+collision_mask = 0
+script = ExtResource("10_23cl5")
+
+[node name="TargetHitCollisionShape" type="CollisionShape3D" parent="MissileTargeteableWall/TargetHitArea"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.01260376, -0.052825928, 0)
+shape = SubResource("BoxShape3D_ehm1h")
+
+[node name="Pickeables" type="Node3D" parent="."]
+
+[node name="PickeablePowerUp" parent="Pickeables" instance=ExtResource("11_ehm1h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6218395, -30.15513)
+power_up_type = 1
+
+[node name="PickeablePowerUp2" parent="Pickeables" instance=ExtResource("11_ehm1h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9767866, -0.6218395, -30.15513)
+
+[node name="PickeablePowerUp3" parent="Pickeables" instance=ExtResource("11_ehm1h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3068342, -0.6218395, -30.15513)
+power_up_type = 2
+
+[node name="PickeablePowerUp4" parent="Pickeables" instance=ExtResource("11_ehm1h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.210102, -0.6218395, -30.15513)

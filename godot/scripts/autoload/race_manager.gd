@@ -75,9 +75,18 @@ func on_checkpoint_passed(car: Car, checkpoint_index: int) -> void:
 	
 	# Verificar que sea el checkpoint correcto (en orden)
 	var expected_checkpoint = data.current_checkpoint % checkpoints.size()
+	print("DEBUG RM: %s current_checkpoint=%d expected=%d recibido=%d" % [car.name, data.current_checkpoint, expected_checkpoint, checkpoint_index])
 	if checkpoint_index != expected_checkpoint:
-		print("%s pasó checkpoint %d pero esperaba %d (ignorado)" % [car.name, checkpoint_index, expected_checkpoint])
-		return  # Checkpoint fuera de orden
+		# Si entra a un checkpoint distinto al esperado, comprobamos si al menos
+		# está suficientemente cerca del checkpoint esperado. Esto hace el sistema
+		# un poco más tolerante a pequeñas desviaciones en el volumen del Area3D.
+		var expected_node := checkpoints[expected_checkpoint]
+		var distance_to_expected := car.global_position.distance_to(expected_node.global_position)
+		if distance_to_expected > 8.0:
+			print("%s pasó checkpoint %d pero esperaba %d (ignorado, distancia %.2f)" % [car.name, checkpoint_index, expected_checkpoint, distance_to_expected])
+			return  # Checkpoint fuera de orden y lejos del esperado
+		else:
+			print("%s pasó checkpoint %d pero estaba cerca del esperado %d (distancia %.2f) -> se acepta" % [car.name, checkpoint_index, expected_checkpoint, distance_to_expected])
 	
 	data.current_checkpoint += 1
 	data.total_checkpoints += 1

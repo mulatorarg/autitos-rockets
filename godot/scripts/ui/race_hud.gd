@@ -2,6 +2,8 @@ extends CanvasLayer
 class_name RaceHUD
 ## HUD para mostrar información de la carrera
 
+@export var total_laps: int = 3
+
 @onready var speed_label: Label = $MarginContainer/VBoxContainer/SpeedLabel
 @onready var position_label: Label = $MarginContainer/VBoxContainer/PositionLabel
 @onready var lap_label: Label = $MarginContainer/VBoxContainer/LapLabel
@@ -15,6 +17,7 @@ class_name RaceHUD
 func _ready() -> void:
 	GameManager.state_changed.connect(_on_game_state_changed)
 	RaceManager.race_completed.connect(_on_race_completed)
+	RaceManager.total_laps = total_laps
 	finish_panel.hide()
 	countdown_label.hide()
 

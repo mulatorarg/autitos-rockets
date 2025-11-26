@@ -30,5 +30,6 @@ func _on_body_entered(body: Node3D) -> void:
 	if GameManager.current_state != GameManager.GameState.COUNTDOWN and GameManager.current_state != GameManager.GameState.RACING:
 		return
 	print("Checkpoint %d: Detectó body %s (es Car: %s)" % [checkpoint_index, body.name, body is Car])
+	print("DEBUG CP: %s entra al checkpoint_index=%d (nodo=%s)" % [body.name, checkpoint_index, name])
 	if body is Car:
 		RaceManager.on_checkpoint_passed(body, checkpoint_index)
