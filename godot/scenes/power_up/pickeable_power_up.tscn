@@ -1,15 +1,84 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2yuhgimwceb5"]
+[gd_scene load_steps=7 format=3 uid="uid://b2yuhgimwceb5"]
 
 [ext_resource type="Script" uid="uid://dqt7481ribvnv" path="res://scripts/power_up/pickeable_power_up.gd" id="1_aguvr"]
+[ext_resource type="PackedScene" uid="uid://cjfj84qdnx2ee" path="res://assets/models/power_ups/hallow_cube.glb" id="2_qt8aw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1wxo3"]
+
+[sub_resource type="Animation" id="Animation_acdep"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CubeModel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CubeModel:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qt8aw"]
+resource_name = "move"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CubeModel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.3, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CubeModel:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 3.1415927, 0), Vector3(0, 6.2831855, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qyhin"]
+_data = {
+&"RESET": SubResource("Animation_acdep"),
+&"move": SubResource("Animation_qt8aw")
+}
 
 [node name="PickeablePowerUp" type="Area3D"]
 collision_layer = 256
 collision_mask = 0
 script = ExtResource("1_aguvr")
 
-[node name="Mesh" type="CSGBox3D" parent="."]
-
 [node name="PickupAreaCollisionShape" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_1wxo3")
+
+[node name="CubeModel" parent="." instance=ExtResource("2_qt8aw")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qyhin")
+}
+autoplay = "move"

@@ -60,6 +60,7 @@ navigation_mesh = SubResource("NavigationMesh_nav")
 [node name="Piso" type="CSGBox3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 use_collision = true
+collision_layer = 2147483649
 size = Vector3(100, 3, 100)
 material = SubResource("StandardMaterial3D_vtvcv")
 
@@ -215,6 +216,10 @@ power_up_type = 1
 
 [node name="PickeablePowerUp2" parent="Pickeables" instance=ExtResource("11_ehm1h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9767866, -0.6218395, -30.15513)
+power_up_type = 2
+
+[node name="PickeablePowerUp5" parent="Pickeables" instance=ExtResource("11_ehm1h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9767866, -0.6218395, -33.675617)
 
 [node name="PickeablePowerUp3" parent="Pickeables" instance=ExtResource("11_ehm1h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3068342, -0.6218395, -30.15513)

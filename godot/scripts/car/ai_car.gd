@@ -14,13 +14,12 @@ var current_target_position: Vector3
 var desired_speed: float = 1.0
 var desired_turn: float = 0.0
 var reaction_timer: float = 0.0
-var last_checkpoint_index: int = -1
+var _has_missile_power_up: bool
 
 
 #Registrar este auto como enemigo en el RaceManager
 func _ready() -> void:
 	super._ready()
-	
 	RaceManager.register_car(self, false)
 	
 	# Configurar NavigationAgent3D
@@ -32,7 +31,8 @@ func _ready() -> void:
 	
 	# Esperar a que el NavigationServer esté listo
 	call_deferred("_setup_navigation")
-
+	
+	_power_up_manager.power_up_picked_up.connect(_on_power_up_picked_up)
 
 func _setup_navigation() -> void:
 	await get_tree().physics_frame
@@ -55,10 +55,6 @@ func _process(delta: float) -> void:
 func _update_target_checkpoint() -> void:
 	var checkpoint_index = RaceManager.get_car_checkpoint(self)
 	
-	# Si el checkpoint no cambió, no reconfiguramos el destino
-	if checkpoint_index == last_checkpoint_index:
-		return
-	
 	if RaceManager.checkpoints.size() == 0:
 		print("%s: No hay checkpoints disponibles" % name)
 		return
@@ -68,7 +64,6 @@ func _update_target_checkpoint() -> void:
 		var target_checkpoint = RaceManager.checkpoints[target_checkpoint_index]
 		current_target_position = target_checkpoint.global_position
 		navigation_agent.target_position = current_target_position
-		last_checkpoint_index = checkpoint_index
 		# print("%s: Objetivo checkpoint %d en posición %v" % [name, target_checkpoint_index, current_target_position])
 
 
@@ -80,22 +75,6 @@ func _update_ai_input() -> void:
 		return
 	
 	_update_target_checkpoint()
-	
-	# Si no hay checkpoints configurados, no hacemos nada
-	if RaceManager.checkpoints.size() == 0:
-		desired_speed = 0.0
-		desired_turn = 0.0
-		return
-
-	# Si estamos suficientemente cerca del objetivo, evitamos sobrecorrecciones
-	if current_target_position != Vector3.ZERO:
-		var distance_to_target := global_position.distance_to(current_target_position)
-		var close_distance: float = max(2.0, float(navigation_agent.target_desired_distance))
-		if distance_to_target <= close_distance:
-			# Mantener el auto más recto al cruzar el checkpoint
-			desired_turn = 0.0
-			desired_speed = ai_target_speed
-			return
 	
 	if not navigation_agent.is_navigation_finished():
 		var next_path_position: Vector3 = navigation_agent.get_next_path_position()
@@ -177,3 +156,20 @@ func _read_steer_input() -> void:
 	# Suavizar el giro
 	var target_turn = desired_turn * deg_to_rad(_steering)
 	_turn_input = lerp(_turn_input, target_turn, ai_steering_smoothness * get_process_delta_time())
+
+func _on_power_up_picked_up(type: PowerUpManager.PowerUpType) -> void:
+	if type == PowerUpManager.PowerUpType.MISSILE:
+		_has_missile_power_up = true
+	else:
+		_has_missile_power_up = false
+		_power_up_manager.try_to_activate()
+
+func _on_missile_trigger_area_area_entered(_area: ImpactReceiver) -> void:
+	if _has_missile_power_up:
+		_power_up_manager.try_to_activate()
+		_has_missile_power_up = false
+
+
+
+
+#

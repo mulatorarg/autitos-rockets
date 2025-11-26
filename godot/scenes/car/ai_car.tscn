@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjx5kk0m6qhva"]
+[gd_scene load_steps=4 format=3 uid="uid://cjx5kk0m6qhva"]
 
 [ext_resource type="PackedScene" uid="uid://cvh0fwg53wpus" path="res://scenes/car/car.tscn" id="1_carbase"]
 [ext_resource type="Script" uid="uid://cu4nuf6whs6rk" path="res://scripts/car/ai_car.gd" id="2_aicar"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vl3dp"]
+height = 8.281738
+radius = 1.168457
 
 [node name="AICar" instance=ExtResource("1_carbase")]
 script = ExtResource("2_aicar")
@@ -11,4 +15,14 @@ ai_target_speed = 1.0
 ai_brake_distance = 8.0
 ai_obstacle_avoidance_strength = 2.0
 
+[node name="AIMissileTriggerArea" type="Area3D" parent="Pivot/PowerUpManager" index="2"]
+collision_layer = 0
+collision_mask = 512
+
+[node name="MissileTriggerCollisionShape" type="CollisionShape3D" parent="Pivot/PowerUpManager/AIMissileTriggerArea" index="0"]
+transform = Transform3D(1, 0, 9.769963e-15, 0, -4.371139e-08, -1, 0, 1, -4.3711186e-08, 0.1538082, 0.59014714, -5.6444974)
+shape = SubResource("CylinderShape3D_vl3dp")
+
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="2"]
+
+[connection signal="area_entered" from="Pivot/PowerUpManager/AIMissileTriggerArea" to="." method="_on_missile_trigger_area_area_entered"]

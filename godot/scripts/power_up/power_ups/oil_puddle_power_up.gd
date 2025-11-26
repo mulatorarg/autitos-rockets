@@ -6,7 +6,7 @@ extends Node3D
 ## Cuanto dura el efecto sobre el auto que lo toca
 @export var _effect_duration: float = 3.0
 ## Multiplicador al material fisico del auto, a valores bajos es mas resbaladizo
-@export_range(0.1, 0.9, 0.01) var _friction_multiplier: float = 0.5
+@export_range(0, 0.9, 0.01) var _friction_multiplier: float = 0.0
 
 
 func _ready() -> void:

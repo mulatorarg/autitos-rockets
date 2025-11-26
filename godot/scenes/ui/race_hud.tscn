@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cq4xwf2ry6uy5"]
+[gd_scene load_steps=7 format=3 uid="uid://cq4xwf2ry6uy5"]
 
 [ext_resource type="Script" uid="uid://c2wxm8qafkv5t" path="res://scripts/ui/race_hud.gd" id="1_racehud"]
 [ext_resource type="Script" uid="uid://bi4vw77plqxyl" path="res://scripts/ui/minimap.gd" id="2_minimap"]
 [ext_resource type="Script" uid="uid://dg8286tmkdsp6" path="res://scripts/ui/minimap_topview.gd" id="3_minimap_cam"]
+[ext_resource type="Script" uid="uid://dnfpe3xrg4fst" path="res://scripts/ui/power_up/power_ups_ui.gd" id="4_gekfi"]
+[ext_resource type="PackedScene" uid="uid://cpct1p0oy54vi" path="res://scenes/ui/power_up_ui.tscn" id="5_gekfi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 bg_color = Color(0, 0, 0, 0.7)
@@ -195,3 +197,26 @@ script = ExtResource("3_minimap_cam")
 
 [node name="MinimapCamera" type="Camera3D" parent="MinimapCamPanel/SubViewportContainer/MinimapViewport"]
 current = true
+
+[node name="PowerUps" type="Control" parent="." node_paths=PackedStringArray("_power_ups_container")]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 15.0
+offset_bottom = 90.0
+grow_horizontal = 2
+mouse_filter = 2
+script = ExtResource("4_gekfi")
+_power_ups_container = NodePath("HBoxContainer")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PowerUps"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PowerUp" parent="PowerUps/HBoxContainer" instance=ExtResource("5_gekfi")]
+layout_mode = 2

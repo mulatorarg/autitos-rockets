@@ -5,3 +5,7 @@
 
 [node name="PlayerCar" instance=ExtResource("1_carbase")]
 script = ExtResource("2_playercar")
+_max_amount_of_active_power_ups = 3
+
+[node name="PowerUpManager" parent="Pivot" index="2"]
+is_player = true

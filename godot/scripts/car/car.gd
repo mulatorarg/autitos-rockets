@@ -22,10 +22,15 @@ extends RigidBody3D
 @export var _brake_force: float = 0.01
 ## Reduccion de la potencia del motor cuando se esta frenando
 @export_range(0.1, 0.9, 0.01) var _engine_power_during_brake: float = 0.5
+## Cantidad maxima de power ups que puede tener almacenados
+@export_range(0, 10, 1) var _max_amount_of_active_power_ups: int = 1
 
 @onready var _pivot: CarPivot = $Pivot
 @onready var _ground_ray_cast: RayCast3D = $Pivot/GroundRayCast
 @onready var _impact_receiver: ImpactReceiver = $Pivot/ImpactReceiver
+@warning_ignore("unused_private_class_variable")
+@onready var _power_up_manager: PowerUpManager = $Pivot/PowerUpManager
+
 
 var _speed_input: float = 0
 var _turn_input: float = 0
@@ -42,6 +47,8 @@ var _is_slipping := false
 
 func _ready() -> void:
 	_impact_receiver.impacted.connect(_apply_knockback)
+	_power_up_manager.initialize(_max_amount_of_active_power_ups)
+	physics_material_override = physics_material_override.duplicate() # Para que no compartan el resource
 
 func _process(_delta):
 	if not _is_grounded():

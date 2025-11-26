@@ -41,11 +41,16 @@ offset = Vector3(2.08165e-12, 3, 4)
 target = NodePath("../PlayerCar/Pivot/CarModel")
 
 [node name="PlayerCar" parent="." instance=ExtResource("2_g8b4m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.988041, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.7917218)
+_override_block = true
+
+[node name="PlayerCar2" parent="." instance=ExtResource("2_g8b4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -11)
 _override_block = true
 
 [node name="TrackContainer" type="CSGCombiner3D" parent="."]
 use_collision = true
+collision_layer = 2147483649
 
 [node name="Ground" type="CSGBox3D" parent="TrackContainer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.48804, 0)
@@ -84,6 +89,8 @@ shape = SubResource("BoxShape3D_q24t1")
 [node name="ActivePowerUpsContainer" type="Node3D" parent="." groups=["ActivePowerUpsContainer"]]
 
 [node name="PickeablePowerUp" parent="." instance=ExtResource("3_q24t1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.4878483, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.054611, -6.969326)
+power_up_type = 2
 
 [editable path="PlayerCar"]
+[editable path="PlayerCar2"]

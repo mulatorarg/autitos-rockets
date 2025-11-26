@@ -2,28 +2,39 @@ class_name OilPuddleSpawner
 extends PowerUpSpawner
 
 const OIL_PUDDLE_SCENE: PackedScene = preload("uid://b70bn0vkqgxkv")
+const SPAWN_OFFSET_DISTANCE := 15.0
 
 
 func get_type() -> PowerUpManager.PowerUpType:
 	return PowerUpManager.PowerUpType.OIL_PUDDLE
 
 func spawn(root_vehicle: Car, active_power_ups_container: Node3D) -> void:
-	var terrain_collision: Dictionary = _get_terrain_collision_data(root_vehicle)
+	var floor_collision: Dictionary = _get_floor_collision_data(root_vehicle)
 	
-	if not terrain_collision.is_empty():
+	if not floor_collision.is_empty():
 		_spawn_oil_puddle(
 			root_vehicle.get_pivot_transform().basis,
-			terrain_collision.position,
+			floor_collision.position,
 			active_power_ups_container
 		)
 
-func _get_terrain_collision_data(root_vehicle: Node3D) -> Dictionary:
-	var raycast_from: Vector3 = root_vehicle.global_position + Vector3.UP
+func _get_floor_collision_data(root_vehicle: Car) -> Dictionary:
+	var car_backwards: Vector3 = root_vehicle.get_forward() * -1
+	var raycast_from: Vector3 = root_vehicle.global_position + Vector3.UP + car_backwards * SPAWN_OFFSET_DISTANCE
 	var raycast_to: Vector3 = root_vehicle.global_position + Vector3.DOWN * 2
-	var terrain_mask = 1 << 31  # mask = 1 << (layer_number - 1) => layer 32. TODO: no me gusta esto.
+	var terrain_layer: int = 1 << 31
+	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	
-	var query := PhysicsRayQueryParameters3D.create(raycast_from, raycast_to, terrain_mask)
-	return get_world_3d().direct_space_state.intersect_ray(query)
+	var terrain_query := PhysicsRayQueryParameters3D.create(raycast_from, raycast_to, terrain_layer)
+	var terrain_hit: Dictionary = space_state.intersect_ray(terrain_query)
+	
+	if terrain_hit.is_empty():
+		push_warning("Layer de terrain (32) no hitteado, defaulteando a cualquier cosa debajo del auto si es que hay")
+	else:
+		return terrain_hit
+	
+	var generic_query := PhysicsRayQueryParameters3D.create(raycast_from, raycast_to)
+	return space_state.intersect_ray(generic_query)
 
 func _spawn_oil_puddle(oil_puddle_basis: Basis, collision_point: Vector3, container: Node3D) -> void:
 	var oil_puddle_instance: OilPuddlePowerUp = OIL_PUDDLE_SCENE.instantiate()

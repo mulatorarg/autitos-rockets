@@ -3,13 +3,17 @@ extends Car
 
 ## Auto controlado por el jugador mediante teclado/gamepad
 
-
 func _ready() -> void:
 	super._ready()
-	
 	# Registrar este auto como el del jugador en el RaceManager
 	RaceManager.register_car(self, true)
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("activate_power_up"):
+		_power_up_manager.try_to_activate()
+	
+	if event.is_action_pressed("swap_power_up"):
+		_power_up_manager.swap_power_up()
 
 func _read_movement_input() -> void:
 	var accel: bool = Input.is_action_pressed("accelerate")
