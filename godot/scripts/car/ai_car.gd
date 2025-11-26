@@ -19,6 +19,8 @@ var last_checkpoint_index: int = -1
 
 #Registrar este auto como enemigo en el RaceManager
 func _ready() -> void:
+	super._ready()
+	
 	RaceManager.register_car(self, false)
 	
 	# Configurar NavigationAgent3D

@@ -5,6 +5,8 @@ extends Car
 
 
 func _ready() -> void:
+	super._ready()
+	
 	# Registrar este auto como el del jugador en el RaceManager
 	RaceManager.register_car(self, true)
 
