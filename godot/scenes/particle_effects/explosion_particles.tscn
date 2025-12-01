@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://evbr8n5dfye3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_up1en"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_oe4bm"]
+material = SubResource("StandardMaterial3D_up1en")
+
+[sub_resource type="Curve" id="Curve_u4flc"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3821839, 1), 0.0, 0.0, 0, 0, Vector2(0.7614943, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_amx4q"]
+offsets = PackedFloat32Array(0, 0.5073099, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.24313726, 0, 0, 1, 0, 0, 0, 1)
+
+[node name="ExplosionParticles" type="CPUParticles3D"]
+amount = 300
+lifetime = 0.5
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_oe4bm")
+spread = 180.0
+gravity = Vector3(0, -2, 0)
+initial_velocity_max = 10.0
+damping_min = 15.0
+damping_max = 30.0
+scale_amount_curve = SubResource("Curve_u4flc")
+color_ramp = SubResource("Gradient_amx4q")

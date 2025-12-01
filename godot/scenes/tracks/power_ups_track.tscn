@@ -90,7 +90,9 @@ shape = SubResource("BoxShape3D_q24t1")
 
 [node name="PickeablePowerUp" parent="." instance=ExtResource("3_q24t1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.054611, -6.969326)
-power_up_type = 2
+power_up_type = 1
+
+[node name="ParticleEffectsContainer" type="Node3D" parent="." groups=["ParticleEffectsContainer"]]
 
 [editable path="PlayerCar"]
 [editable path="PlayerCar2"]
