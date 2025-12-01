@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bq46gsh8ddip6"]
+[gd_scene load_steps=9 format=3 uid="uid://bq46gsh8ddip6"]
 
 [ext_resource type="Script" uid="uid://b3jl3ue4blsw8" path="res://scripts/power_up/power_ups/missile_power_up.gd" id="1_warha"]
+[ext_resource type="PackedScene" uid="uid://ci56v81hrlnsv" path="res://assets/models/power_ups/missile.glb" id="2_eecec"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_warha"]
 radius = 3.7122736
@@ -8,15 +9,29 @@ radius = 3.7122736
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_warha"]
 radius = 0.3
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eecec"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_eecec"]
+material = SubResource("StandardMaterial3D_eecec")
+radius = 0.3
+height = 0.3
+
+[sub_resource type="Curve" id="Curve_874c4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.3831522, 1), 0.0, 0.0, 0, 0, Vector2(0.7513587, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_eecec"]
+offsets = PackedFloat32Array(0, 0.8731343, 0.99701494)
+colors = PackedColorArray(0, 0, 0, 1, 0.23031491, 0.23031494, 0.23031494, 1, 0.80049086, 0.80049074, 0.80049074, 1)
+
 [node name="MissilePowerUp" type="Node3D"]
 script = ExtResource("1_warha")
+_speed = 15.0
 _explosion_impulse = 50.0
 
-[node name="Mesh" type="CSGCylinder3D" parent="."]
+[node name="Model" parent="." instance=ExtResource("2_eecec")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
-radius = 0.3
-sides = 16
-cone = true
 
 [node name="TargetDetectionArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.577394)
@@ -33,6 +48,22 @@ collision_mask = 512
 [node name="TargetHitCollisionShape" type="CollisionShape3D" parent="TargetHitArea"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_warha")
+
+[node name="SmokeTrailCPUParticles" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.105391)
+amount = 250
+mesh = SubResource("SphereMesh_eecec")
+direction = Vector3(0, 0, 1)
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+angular_velocity_min = 0.5
+angular_velocity_max = 1.0
+damping_min = 0.1
+damping_max = 0.3
+scale_amount_curve = SubResource("Curve_874c4")
+color_ramp = SubResource("Gradient_eecec")
 
 [connection signal="area_entered" from="TargetDetectionArea" to="." method="_on_target_detection_area_entered"]
 [connection signal="area_entered" from="TargetHitArea" to="." method="_on_target_hit_area_entered"]

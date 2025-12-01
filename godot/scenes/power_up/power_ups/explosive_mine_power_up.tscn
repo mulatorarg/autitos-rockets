@@ -1,8 +1,47 @@
-[gd_scene load_steps=3 format=3 uid="uid://djitbauvee1dj"]
+[gd_scene load_steps=7 format=3 uid="uid://djitbauvee1dj"]
 
 [ext_resource type="Script" uid="uid://dtdppxlfinaa0" path="res://scripts/power_up/power_ups/explosive_mine_power_up.gd" id="1_346fx"]
+[ext_resource type="PackedScene" uid="uid://d3e6xrwhr8fxa" path="res://assets/models/power_ups/explosive_mine.glb" id="2_l3jq4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_y848o"]
+
+[sub_resource type="Animation" id="Animation_l3jq4"]
+resource_name = "spin"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.2831855, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nu5gv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Model:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nu5gv"]
+_data = {
+&"RESET": SubResource("Animation_nu5gv"),
+&"move": SubResource("Animation_l3jq4")
+}
 
 [node name="ExplosiveMinePowerUp" type="Area3D"]
 collision_layer = 0
@@ -10,9 +49,15 @@ collision_mask = 512
 script = ExtResource("1_346fx")
 _explosion_impulse = 35.0
 
-[node name="Mesh" type="CSGSphere3D" parent="."]
+[node name="Model" parent="." instance=ExtResource("2_l3jq4")]
 
 [node name="TriggerCollisionShape" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_y848o")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nu5gv")
+}
+autoplay = "move"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

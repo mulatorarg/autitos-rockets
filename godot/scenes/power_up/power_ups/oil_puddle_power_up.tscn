@@ -1,11 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://b70bn0vkqgxkv"]
+[gd_scene load_steps=7 format=3 uid="uid://b70bn0vkqgxkv"]
 
 [ext_resource type="Script" uid="uid://dsj6oq888fo8y" path="res://scripts/power_up/power_ups/oil_puddle_power_up.gd" id="1_6w2tw"]
-[ext_resource type="Texture2D" uid="uid://pxpipolidxt6" path="res://icon.svg" id="2_6w2tw"]
+[ext_resource type="Texture2D" uid="uid://b1htwgr62luvy" path="res://assets/textures/oil_puddle/oil_albedo_texture.png" id="2_6w2tw"]
+[ext_resource type="Texture2D" uid="uid://cw1kvue7x8les" path="res://assets/textures/oil_puddle/oil_normal_map_texture.png" id="3_jfmhd"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sak8f"]
 height = 0.1
 radius = 2.5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jfmhd"]
+size = Vector2(5, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrdyx"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0.5019608)
+albedo_texture = ExtResource("2_6w2tw")
+metallic = 0.5
+roughness = 0.2
 
 [node name="OilPuddlePowerUp" type="Node3D"]
 script = ExtResource("1_6w2tw")
@@ -22,5 +33,14 @@ debug_color = Color(0.999953, 0.019996041, 3.85046e-07, 0.41960785)
 [node name="OilPuddleDecal" type="Decal" parent="."]
 size = Vector3(5, 1, 5)
 texture_albedo = ExtResource("2_6w2tw")
+texture_normal = ExtResource("3_jfmhd")
+modulate = Color(1, 1, 1, 0.5372549)
+albedo_mix = 0.7
+normal_fade = 0.3
+
+[node name="OilEffect" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("PlaneMesh_jfmhd")
+surface_material_override/0 = SubResource("StandardMaterial3D_wrdyx")
 
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
