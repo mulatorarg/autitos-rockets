@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cvgwa2alibipg" path="res://scripts/track/rolling_obstacle.gd" id="1_rolling"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1"]
+radius = 1.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4mum"]
 albedo_color = Color(0.56078434, 0, 0.050980393, 1)
@@ -19,4 +20,6 @@ bounce_interval = 1.5
 shape = SubResource("SphereShape3D_1")
 
 [node name="MeshSphere" type="CSGSphere3D" parent="."]
+radius = 1.5
+radial_segments = 50
 material = SubResource("StandardMaterial3D_r4mum")
