@@ -3,6 +3,7 @@ extends PowerUpSpawner
 
 const OIL_PUDDLE_SCENE: PackedScene = preload("uid://b70bn0vkqgxkv")
 const SPAWN_OFFSET_DISTANCE := 15.0
+const OIL_PUDDLE_DROP_SFX: AudioStream = preload("uid://cr2npcw7tdeea")
 
 
 func get_type() -> PowerUpManager.PowerUpType:
@@ -12,6 +13,8 @@ func spawn(root_vehicle: Car, active_power_ups_container: Node3D) -> void:
 	var floor_collision: Dictionary = _get_floor_collision_data(root_vehicle)
 	
 	if not floor_collision.is_empty():
+		AudioManager.play_sfx(OIL_PUDDLE_DROP_SFX, global_position)
+		
 		_spawn_oil_puddle(
 			root_vehicle.get_pivot_transform().basis,
 			floor_collision.position,
@@ -29,6 +32,7 @@ func _get_floor_collision_data(root_vehicle: Car) -> Dictionary:
 	var terrain_hit: Dictionary = space_state.intersect_ray(terrain_query)
 	
 	if terrain_hit.is_empty():
+		# Si queremos que el aceite se ponga exclusivamente sobre el suelo hay que taggearlo con la Layer 32.
 		push_warning("Layer de terrain (32) no hitteado, defaulteando a cualquier cosa debajo del auto si es que hay")
 	else:
 		return terrain_hit
@@ -45,7 +49,8 @@ func _spawn_oil_puddle(oil_puddle_basis: Basis, collision_point: Vector3, contai
 	var spawn_position = collision_point + z_fighting_offset
 	oil_puddle_instance.global_transform = Transform3D(oil_puddle_basis, spawn_position)
 
-
+func can_spawn(root_vehicle: Car) -> bool:
+	return not _get_floor_collision_data(root_vehicle).is_empty()
 
 
 #

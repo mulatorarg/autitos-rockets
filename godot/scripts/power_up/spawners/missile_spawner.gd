@@ -3,12 +3,14 @@ extends PowerUpSpawner
 
 const MISSILE_SCENE: PackedScene = preload("uid://bq46gsh8ddip6")
 const SPAWN_OFFSET_DISTANCE := 3.0
-
+const TEST_SFX = preload("uid://cf7dqiag2412y")
 
 func get_type() -> PowerUpManager.PowerUpType:
 	return PowerUpManager.PowerUpType.MISSILE
 
 func spawn(root_vehicle: Car, active_power_ups_container: Node3D) -> void:
+	AudioManager.play_sfx(TEST_SFX, global_position)
+	
 	var missile_instance: MissilePowerUp = MISSILE_SCENE.instantiate()
 	active_power_ups_container.add_child(missile_instance)
 	
@@ -19,3 +21,6 @@ func spawn(root_vehicle: Car, active_power_ups_container: Node3D) -> void:
 	
 	missile_instance.global_transform = missile_transform
 	missile_instance.set_forward(forward)
+
+func can_spawn(_root_vehicle: Car) -> bool:
+	return true

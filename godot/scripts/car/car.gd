@@ -30,6 +30,7 @@ extends RigidBody3D
 @onready var _impact_receiver: ImpactReceiver = $Pivot/ImpactReceiver
 @warning_ignore("unused_private_class_variable")
 @onready var _power_up_manager: PowerUpManager = $Pivot/PowerUpManager
+@onready var _sfxs: CarSFX = $SFXs
 
 
 var _speed_input: float = 0
@@ -51,6 +52,8 @@ func _ready() -> void:
 	physics_material_override = physics_material_override.duplicate() # Para que no compartan el resource
 
 func _process(_delta):
+	_sfxs.handle_sound(linear_velocity.length(), _max_speed, _is_braking)
+	
 	if not _is_grounded():
 		return
 	

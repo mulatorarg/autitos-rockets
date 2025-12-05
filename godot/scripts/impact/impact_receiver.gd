@@ -4,6 +4,7 @@ extends Area3D
 signal impacted(source: Node3D, force: Vector3)
 
 const EXPLOSION_PARTICLES_SCENE: PackedScene = preload("uid://evbr8n5dfye3")
+const SMALL_EXPLOSION_SFX: AudioStream = preload("uid://enu7j01ylwqp")
 
 
 func receive_impact(source: Node3D, force: Vector3) -> void:
@@ -16,6 +17,8 @@ func _create_explosion_effect() -> void:
 	if particle_effects_container == null:
 		push_warning("Tiene que existir un Node3D en cualquier lugar de la escena con el grupo 'ParticleEffectsContainer' para almacenar instancias de efectos de particulas")
 		return
+	
+	AudioManager.play_sfx(SMALL_EXPLOSION_SFX, global_position)
 	
 	var explosion_effect_instance: CPUParticles3D = EXPLOSION_PARTICLES_SCENE.instantiate()
 	explosion_effect_instance.emitting = false

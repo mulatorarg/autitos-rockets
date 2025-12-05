@@ -202,3 +202,5 @@ power_up_type = 2
 
 [node name="PickeablePowerUp4" parent="Pickeables/Spawner3" instance=ExtResource("11_gsrkd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.210102, -0.6218395, -30.15513)
+
+[node name="ParticleEffectsContainer" type="Node3D" parent="." groups=["ParticleEffectsContainer"]]

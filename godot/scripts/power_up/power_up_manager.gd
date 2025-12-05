@@ -52,6 +52,10 @@ func _on_power_up_pickup_area_entered(pickeable_power_up: PickeablePowerUp) -> v
 
 func _activate() -> void:
 	var spawner: PowerUpSpawner = _active_spawners[_current_spawner_index]
+	
+	if not spawner.can_spawn(owner):
+		return
+	
 	spawner.spawn(owner, _active_power_ups_container)
 	_active_spawners.erase(spawner)
 	

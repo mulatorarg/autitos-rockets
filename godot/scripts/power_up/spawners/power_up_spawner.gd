@@ -8,3 +8,6 @@ func get_type() -> PowerUpManager.PowerUpType
 
 @abstract
 func spawn(root_vehicle: Car, active_power_ups_container: Node3D) -> void
+
+@abstract
+func can_spawn(root_vehicle: Car) -> bool

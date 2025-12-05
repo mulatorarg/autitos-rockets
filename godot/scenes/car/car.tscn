@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cvh0fwg53wpus"]
+[gd_scene load_steps=16 format=3 uid="uid://cvh0fwg53wpus"]
 
 [ext_resource type="Script" uid="uid://cma37fpblrefh" path="res://scripts/car/car.gd" id="1_0cfhi"]
 [ext_resource type="Script" uid="uid://bdm5yd4eenetj" path="res://scripts/car/car_pivot.gd" id="2_tcn38"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" uid="uid://dxqcp3644huod" path="res://scripts/power_up/spawners/missile_spawner.gd" id="6_u0012"]
 [ext_resource type="Script" uid="uid://cmmu22pbksnqv" path="res://scripts/power_up/spawners/explosive_mine_spawner.gd" id="7_s371w"]
 [ext_resource type="Script" uid="uid://uk00mxx2cncb" path="res://scripts/power_up/spawners/oil_puddle_spawner.gd" id="8_xs4xl"]
+[ext_resource type="AudioStream" uid="uid://bbnimlcc0pnpv" path="res://assets/audio/sfx/car/car_engine.wav" id="9_dmhln"]
+[ext_resource type="Script" uid="uid://bog3bllgqlbxs" path="res://scripts/car/audio/car_sfx.gd" id="9_duf8q"]
+[ext_resource type="AudioStream" uid="uid://b0cwohla5svf6" path="res://assets/audio/sfx/car/tire-screech.mp3" id="12_krfcv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dtpcx"]
 bounce = 0.1
@@ -73,5 +76,19 @@ script = ExtResource("6_b3ski")
 [node name="ImpactReceiverCollisionShape" type="CollisionShape3D" parent="Pivot/ImpactReceiver"]
 shape = SubResource("BoxShape3D_b3ski")
 debug_color = Color(0.9350845, 0.2562831, 0, 0.41960785)
+
+[node name="SFXs" type="Node3D" parent="."]
+script = ExtResource("9_duf8q")
+
+[node name="EngineSFX" type="AudioStreamPlayer3D" parent="SFXs"]
+stream = ExtResource("9_dmhln")
+volume_db = -10.0
+autoplay = true
+bus = &"SFX"
+
+[node name="BrakeSFX" type="AudioStreamPlayer3D" parent="SFXs"]
+stream = ExtResource("12_krfcv")
+volume_db = -10.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="Pivot/PowerUpManager/PowerUpPickupArea" to="Pivot/PowerUpManager" method="_on_power_up_pickup_area_entered"]
