@@ -1,20 +1,28 @@
 class_name Checkpoint
 extends Node3D
-
 ## Checkpoint que detecta cuando un auto pasa por él
 
-@export var checkpoint_index: int = 0  ## Índice del checkpoint en la secuencia
+
+## Índice del checkpoint en la secuencia
+@export var checkpoint_index: int = 0:
+	set(new_value):
+		checkpoint_index = new_value
+		await ready
+		label_3d.text = "Checkpoint " + str(checkpoint_index + 1)
+
 ## Color para visualización en el editor (reservado para futura implementación)
 @warning_ignore("unused_private_class_variable")
 @export var debug_color: Color = Color.GREEN
 @export var show_debug: bool = false
 @onready var area_3d: Area3D = $Area3D
 @onready var debug_mesh: MeshInstance3D = $DebugMesh
+@onready var label_3d: Label3D = $Label3D
 
 
 func _ready() -> void:
 	area_3d.body_entered.connect(_on_body_entered)
 	debug_mesh.visible = show_debug
+	label_3d.text = "Checkpoint " + str(checkpoint_index + 1)
 	
 	# Cambiar color del debug mesh según el índice
 	if show_debug and debug_mesh.material_override:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhpgx8l2yjg4c"]
+[gd_scene load_steps=7 format=3 uid="uid://bhpgx8l2yjg4c"]
 
 [ext_resource type="Script" uid="uid://b36o7xjbq0e3v" path="res://scripts/track/checkpoint.gd" id="1_checkpoint"]
 
@@ -12,12 +12,17 @@ albedo_color = Color(0, 1, 0, 0.3)
 [sub_resource type="BoxMesh" id="BoxMesh_debug"]
 size = Vector3(15, 3, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lhwtn"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2oslx"]
+albedo_color = Color(0, 0, 0, 1)
+
 [node name="Checkpoint" type="Node3D"]
 script = ExtResource("1_checkpoint")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 0
-collision_mask = 1
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
@@ -26,3 +31,28 @@ shape = SubResource("BoxShape3D_checkpoint")
 [node name="DebugMesh" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_debug")
 mesh = SubResource("BoxMesh_debug")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2.5, 0)
+radius = 0.2
+height = 5.0
+material = SubResource("StandardMaterial3D_lhwtn")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2.5, 0)
+radius = 0.2
+height = 5.0
+material = SubResource("StandardMaterial3D_lhwtn")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16400146, 4.562438, -0.003540039)
+size = Vector3(15, 1.4, 0.5)
+material = SubResource("StandardMaterial3D_2oslx")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5071144, 0.25646484)
+outline_modulate = Color(0.6262081, 0.5304036, 1.92523e-07, 1)
+text = "CHECKPOINT x"
+font_size = 112
+outline_size = 50
+uppercase = true

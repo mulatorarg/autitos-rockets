@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b1htwgr62luvy"
 path.s3tc="res://.godot/imported/oil_albedo_texture.png-853da9425d5563bbbad6087d2afc1c83.s3tc.ctex"
+path.etc2="res://.godot/imported/oil_albedo_texture.png-853da9425d5563bbbad6087d2afc1c83.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/textures/oil_puddle/oil_albedo_texture.png"
-dest_files=["res://.godot/imported/oil_albedo_texture.png-853da9425d5563bbbad6087d2afc1c83.s3tc.ctex"]
+dest_files=["res://.godot/imported/oil_albedo_texture.png-853da9425d5563bbbad6087d2afc1c83.s3tc.ctex", "res://.godot/imported/oil_albedo_texture.png-853da9425d5563bbbad6087d2afc1c83.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cw1kvue7x8les"
 path.s3tc="res://.godot/imported/oil_normal_map_texture.png-11da1082add1e38d015dc27c9d4fa87d.s3tc.ctex"
+path.etc2="res://.godot/imported/oil_normal_map_texture.png-11da1082add1e38d015dc27c9d4fa87d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/textures/oil_puddle/oil_normal_map_texture.png"
-dest_files=["res://.godot/imported/oil_normal_map_texture.png-11da1082add1e38d015dc27c9d4fa87d.s3tc.ctex"]
+dest_files=["res://.godot/imported/oil_normal_map_texture.png-11da1082add1e38d015dc27c9d4fa87d.s3tc.ctex", "res://.godot/imported/oil_normal_map_texture.png-11da1082add1e38d015dc27c9d4fa87d.etc2.ctex"]
 
 [params]
 

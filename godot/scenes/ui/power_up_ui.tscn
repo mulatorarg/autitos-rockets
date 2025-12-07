@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cpct1p0oy54vi"]
 
-[ext_resource type="Script" path="res://scripts/ui/power_up/power_up_ui.gd" id="1_v0t3y"]
+[ext_resource type="Script" uid="uid://bj7xe04ws2vvj" path="res://scripts/ui/power_up/power_up_ui.gd" id="1_v0t3y"]
 [ext_resource type="Texture2D" uid="uid://c867v1lixqhpj" path="res://assets/icons/power_ups/missile.png" id="2_v0t3y"]
 
 [sub_resource type="Animation" id="Animation_qpxou"]

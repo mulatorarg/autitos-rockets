@@ -12,6 +12,7 @@ script = ExtResource("2_aicar")
 ai_reaction_time = 0.01
 ai_steering_smoothness = 8.0
 ai_target_speed = 1.1
+ai_corner_speed_floor = 0.8
 ai_brake_distance = 8.0
 ai_obstacle_avoidance_strength = 2.0
 

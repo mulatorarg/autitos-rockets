@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://clmfqv5xh2ybh" path="res://scripts/track/track.gd" id="1_track"]
 [ext_resource type="Texture2D" uid="uid://cgp83mg08qobe" path="res://assets/skies/citrus_orchard_road_puresky_2k.hdr" id="2_nkcmi"]
-[ext_resource type="Texture2D" uid="uid://0wof2ikeolop" path="res://assets/models/houses/texture_01.png" id="2_texture"]
+[ext_resource type="Texture2D" uid="uid://0wof2ikeolop" path="res://assets/textures/texture_01.png" id="2_texture"]
 [ext_resource type="Script" uid="uid://cvuwsasmbq25i" path="res://scripts/camera/node_follow_camera.gd" id="3_camera"]
 [ext_resource type="PackedScene" uid="uid://dyv6qnrj8n1h3" path="res://scenes/car/player_car.tscn" id="4_playercar"]
 [ext_resource type="PackedScene" uid="uid://cjx5kk0m6qhva" path="res://scenes/car/ai_car.tscn" id="5_aicar"]
@@ -170,21 +170,18 @@ display_name = "Jugador"
 [node name="AICar1" parent="Cars" instance=ExtResource("5_aicar")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -12)
 mass = 1.5
-ai_corner_speed_floor = 0.8
 display_name = "Fangio"
 
 [node name="AICar2" parent="Cars" instance=ExtResource("5_aicar")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -8)
 mass = 1.5
 ai_target_speed = 1.05
-ai_corner_speed_floor = 0.8
 display_name = "Reuteman"
 
 [node name="AICar3" parent="Cars" instance=ExtResource("5_aicar")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -8)
 mass = 1.5
 ai_target_speed = 0.95
-ai_corner_speed_floor = 0.8
 display_name = "Colapinto"
 
 [node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
