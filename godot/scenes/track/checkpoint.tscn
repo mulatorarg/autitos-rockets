@@ -22,6 +22,7 @@ albedo_color = Color(0, 0, 0, 1)
 script = ExtResource("1_checkpoint")
 
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 collision_layer = 0
 monitorable = false
 
@@ -29,6 +30,7 @@ monitorable = false
 shape = SubResource("BoxShape3D_checkpoint")
 
 [node name="DebugMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 material_override = SubResource("StandardMaterial3D_debug")
 mesh = SubResource("BoxMesh_debug")
 

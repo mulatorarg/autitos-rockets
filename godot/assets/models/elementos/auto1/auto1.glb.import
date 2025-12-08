@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c3lwcs7g8o4ww"
-path="res://.godot/imported/farol.glb-86712546847dd360b666a40ad56ec8b1.scn"
+uid="uid://dwre3nupaqmmv"
+path="res://.godot/imported/auto1.glb-3b2b523ac63b626dd50a53eb236fd38a.scn"
 
 [deps]
 
-source_file="res://assets/models/elementos/farol/farol.glb"
-dest_files=["res://.godot/imported/farol.glb-86712546847dd360b666a40ad56ec8b1.scn"]
+source_file="res://assets/models/elementos/auto1/auto1.glb"
+dest_files=["res://.godot/imported/auto1.glb-3b2b523ac63b626dd50a53eb236fd38a.scn"]
 
 [params]
 
@@ -39,7 +39,7 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "nodes": {
-"PATH:farol": {
+"PATH:auto1": {
 "generate/physics": true
 }
 }

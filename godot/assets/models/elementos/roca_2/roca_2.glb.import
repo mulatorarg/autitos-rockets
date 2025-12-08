@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c3lwcs7g8o4ww"
-path="res://.godot/imported/farol.glb-86712546847dd360b666a40ad56ec8b1.scn"
+uid="uid://djbxgvwd7dgi6"
+path="res://.godot/imported/roca_2.glb-a8c0e42652f0f99dd839e62da6ccb25d.scn"
 
 [deps]
 
-source_file="res://assets/models/elementos/farol/farol.glb"
-dest_files=["res://.godot/imported/farol.glb-86712546847dd360b666a40ad56ec8b1.scn"]
+source_file="res://assets/models/elementos/roca_2/roca_2.glb"
+dest_files=["res://.godot/imported/roca_2.glb-a8c0e42652f0f99dd839e62da6ccb25d.scn"]
 
 [params]
 
@@ -17,7 +17,7 @@ nodes/root_type=""
 nodes/root_name=""
 nodes/root_script=null
 nodes/apply_root_scale=true
-nodes/root_scale=0.2
+nodes/root_scale=0.1
 nodes/import_as_skeleton_bones=false
 nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
@@ -39,7 +39,7 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "nodes": {
-"PATH:farol": {
+"PATH:roca_2": {
 "generate/physics": true
 }
 }

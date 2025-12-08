@@ -21,7 +21,7 @@ extends Node3D
 
 func _ready() -> void:
 	area_3d.body_entered.connect(_on_body_entered)
-	debug_mesh.visible = show_debug
+	#debug_mesh.visible = show_debug
 	label_3d.text = "Checkpoint " + str(checkpoint_index + 1)
 	
 	# Cambiar color del debug mesh según el índice

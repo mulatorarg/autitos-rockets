@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c3lwcs7g8o4ww"
-path="res://.godot/imported/farol.glb-86712546847dd360b666a40ad56ec8b1.scn"
+uid="uid://chqjvsmgn2a51"
+path="res://.godot/imported/patineta.glb-1930831cbc7815b342105f91a51f3e2a.scn"
 
 [deps]
 
-source_file="res://assets/models/elementos/farol/farol.glb"
-dest_files=["res://.godot/imported/farol.glb-86712546847dd360b666a40ad56ec8b1.scn"]
+source_file="res://assets/models/elementos/patineta/patineta.glb"
+dest_files=["res://.godot/imported/patineta.glb-1930831cbc7815b342105f91a51f3e2a.scn"]
 
 [params]
 
@@ -39,7 +39,7 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "nodes": {
-"PATH:farol": {
+"PATH:patineta": {
 "generate/physics": true
 }
 }

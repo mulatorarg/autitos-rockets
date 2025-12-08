@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c3lwcs7g8o4ww"
-path="res://.godot/imported/farol.glb-86712546847dd360b666a40ad56ec8b1.scn"
+uid="uid://bc83iuio6isf0"
+path="res://.godot/imported/sombrilla_jardin.glb-003e3ea7e29b1771b8da47a5dcb4bf19.scn"
 
 [deps]
 
-source_file="res://assets/models/elementos/farol/farol.glb"
-dest_files=["res://.godot/imported/farol.glb-86712546847dd360b666a40ad56ec8b1.scn"]
+source_file="res://assets/models/elementos/sombrilla_jardin/sombrilla_jardin.glb"
+dest_files=["res://.godot/imported/sombrilla_jardin.glb-003e3ea7e29b1771b8da47a5dcb4bf19.scn"]
 
 [params]
 
@@ -39,7 +39,7 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "nodes": {
-"PATH:farol": {
+"PATH:sombrilla_jardin": {
 "generate/physics": true
 }
 }
