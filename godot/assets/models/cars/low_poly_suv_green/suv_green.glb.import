@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b7to78d8cuybh"
-path="res://.godot/imported/suv.glb-5a354ae9d0fae375bf1d362d441f1b76.scn"
+path="res://.godot/imported/suv_green.glb-e9b35131c874fad92979ae8d8dcc9fd9.scn"
 
 [deps]
 
-source_file="res://assets/models/cars/low_poly_suv/suv.glb"
-dest_files=["res://.godot/imported/suv.glb-5a354ae9d0fae375bf1d362d441f1b76.scn"]
+source_file="res://assets/models/cars/low_poly_suv_green/suv_green.glb"
+dest_files=["res://.godot/imported/suv_green.glb-e9b35131c874fad92979ae8d8dcc9fd9.scn"]
 
 [params]
 

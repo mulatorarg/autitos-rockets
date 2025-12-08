@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bbwf2gfyab4g2"]
+
+[resource]
+resource_name = "wheelInside"
+albedo_color = Color(0.79605734, 0.8047704, 0.8396227, 1)
+metallic = 1.0

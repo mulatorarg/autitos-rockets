@@ -1,75 +1,209 @@
-[gd_scene load_steps=7 format=3 uid="uid://cq4xwf2ry6uy5"]
+[gd_scene load_steps=13 format=3 uid="uid://cq4xwf2ry6uy5"]
 
 [ext_resource type="Script" uid="uid://c2wxm8qafkv5t" path="res://scripts/ui/race_hud.gd" id="1_racehud"]
-[ext_resource type="Script" uid="uid://bi4vw77plqxyl" path="res://scripts/ui/minimap.gd" id="2_minimap"]
 [ext_resource type="Script" uid="uid://dg8286tmkdsp6" path="res://scripts/ui/minimap_topview.gd" id="3_minimap_cam"]
 [ext_resource type="Script" uid="uid://dnfpe3xrg4fst" path="res://scripts/ui/power_up/power_ups_ui.gd" id="4_gekfi"]
 [ext_resource type="PackedScene" uid="uid://cpct1p0oy54vi" path="res://scenes/ui/power_up_ui.tscn" id="5_gekfi"]
+[ext_resource type="Texture2D" uid="uid://bgwlp2eo0gxli" path="res://assets/icons/hud/hud_speed.svg" id="6_speed"]
+[ext_resource type="Texture2D" uid="uid://b02b7xj0cly2o" path="res://assets/icons/hud/hud_position.svg" id="7_position"]
+[ext_resource type="Texture2D" uid="uid://br8bwdqj6tb1m" path="res://assets/icons/hud/hud_lap.svg" id="8_lap"]
+[ext_resource type="Texture2D" uid="uid://ds51bkyqvjwkd" path="res://assets/icons/hud/hud_time.svg" id="9_time"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
-bg_color = Color(0, 0, 0, 0.7)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+bg_color = Color(0.08, 0.08, 0.12, 0.9)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+border_color = Color(0.19, 0.75, 0.58, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0, 0, 0, 0.75)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5, 0.9, 0.72, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pause"]
+bg_color = Color(0.06, 0.06, 0.08, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.85, 0.66, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
+bg_color = Color(0.18, 0.18, 0.18, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.31, 0.91, 0.69, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="RaceHUD" type="CanvasLayer"]
 script = ExtResource("1_racehud")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = -200.0
-offset_right = 320.0
-offset_bottom = -20.0
-grow_vertical = 0
+[node name="TopBar" type="MarginContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 40.0
+offset_top = 10.0
+offset_right = -40.0
+offset_bottom = 120.0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TopBar"]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 16
 
-[node name="SpeedLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="SpeedCard" type="PanelContainer" parent="TopBar/HBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_font_sizes/font_size = 24
-text = "Velocidad: 0 km/h"
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
 
-[node name="PositionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="CardContent" type="HBoxContainer" parent="TopBar/HBoxContainer/SpeedCard"]
 layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_font_sizes/font_size = 24
-text = "Posición: 1"
+alignment = 1
 
-[node name="LapLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="SpeedIcon" type="TextureRect" parent="TopBar/HBoxContainer/SpeedCard/CardContent"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_font_sizes/font_size = 24
-text = "Vuelta: 1 / 3"
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("6_speed")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="TimeLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="SpeedTexts" type="VBoxContainer" parent="TopBar/HBoxContainer/SpeedCard/CardContent"]
 layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_font_sizes/font_size = 24
-text = "Tiempo: 00:00.000"
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="SpeedTitle" type="Label" parent="TopBar/HBoxContainer/SpeedCard/CardContent/SpeedTexts"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.9, 0.83, 1)
+theme_override_font_sizes/font_size = 16
+text = "Velocidad"
+
+[node name="SpeedLabel" type="Label" parent="TopBar/HBoxContainer/SpeedCard/CardContent/SpeedTexts"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "0 km/h"
+
+[node name="PositionCard" type="PanelContainer" parent="TopBar/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="CardContent" type="HBoxContainer" parent="TopBar/HBoxContainer/PositionCard"]
+layout_mode = 2
+alignment = 1
+
+[node name="PositionIcon" type="TextureRect" parent="TopBar/HBoxContainer/PositionCard/CardContent"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("7_position")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PositionTexts" type="VBoxContainer" parent="TopBar/HBoxContainer/PositionCard/CardContent"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PositionTitle" type="Label" parent="TopBar/HBoxContainer/PositionCard/CardContent/PositionTexts"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.9, 0.83, 1)
+theme_override_font_sizes/font_size = 16
+text = "Posición"
+
+[node name="PositionLabel" type="Label" parent="TopBar/HBoxContainer/PositionCard/CardContent/PositionTexts"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "1º"
+
+[node name="LapCard" type="PanelContainer" parent="TopBar/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="CardContent" type="HBoxContainer" parent="TopBar/HBoxContainer/LapCard"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="LapIcon" type="TextureRect" parent="TopBar/HBoxContainer/LapCard/CardContent"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("8_lap")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LapTexts" type="VBoxContainer" parent="TopBar/HBoxContainer/LapCard/CardContent"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LapTitle" type="Label" parent="TopBar/HBoxContainer/LapCard/CardContent/LapTexts"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.9, 0.83, 1)
+theme_override_font_sizes/font_size = 16
+text = "Vuelta"
+
+[node name="LapLabel" type="Label" parent="TopBar/HBoxContainer/LapCard/CardContent/LapTexts"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "1 / 3"
+
+[node name="TimeCard" type="PanelContainer" parent="TopBar/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="CardContent" type="HBoxContainer" parent="TopBar/HBoxContainer/TimeCard"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="TimeIcon" type="TextureRect" parent="TopBar/HBoxContainer/TimeCard/CardContent"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("9_time")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TimeTexts" type="VBoxContainer" parent="TopBar/HBoxContainer/TimeCard/CardContent"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TimeTitle" type="Label" parent="TopBar/HBoxContainer/TimeCard/CardContent/TimeTexts"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.9, 0.83, 1)
+theme_override_font_sizes/font_size = 16
+text = "Tiempo"
+
+[node name="TimeLabel" type="Label" parent="TopBar/HBoxContainer/TimeCard/CardContent/TimeTexts"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "00:00.000"
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = 8
@@ -101,9 +235,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -250.0
-offset_top = -150.0
+offset_top = -170.0
 offset_right = 250.0
-offset_bottom = 150.0
+offset_bottom = 170.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
@@ -118,7 +252,16 @@ grow_vertical = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="FinishPositionLabel" type="Label" parent="FinishPanel/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="FinishPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="FinishIcon" type="TextureRect" parent="FinishPanel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+texture = ExtResource("7_position")
+stretch_mode = 4
+
+[node name="FinishPositionLabel" type="Label" parent="FinishPanel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.85, 0, 1)
 theme_override_font_sizes/font_size = 36
@@ -140,29 +283,6 @@ theme_override_font_sizes/font_size = 20
 text = "Presiona R para reiniciar"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="MinimapPanel" type="Panel" parent="."]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -240.0
-offset_top = -240.0
-offset_right = -20.0
-offset_bottom = -20.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
-
-[node name="Minimap" type="Control" parent="MinimapPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("2_minimap")
 
 [node name="MinimapCamPanel" type="Panel" parent="."]
 anchors_preset = 3
@@ -202,8 +322,8 @@ current = true
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 15.0
-offset_bottom = 90.0
+offset_top = 150.0
+offset_bottom = 225.0
 grow_horizontal = 2
 mouse_filter = 2
 script = ExtResource("4_gekfi")
@@ -220,3 +340,85 @@ alignment = 1
 
 [node name="PowerUp" parent="PowerUps/HBoxContainer" instance=ExtResource("5_gekfi")]
 layout_mode = 2
+
+[node name="PauseOverlay" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Dimmer" type="ColorRect" parent="PauseOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.65)
+
+[node name="PausePanel" type="Panel" parent="PauseOverlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -200.0
+offset_right = 250.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pause")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseOverlay/PausePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="PauseLabel" type="Label" parent="PauseOverlay/PausePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Pausa"
+horizontal_alignment = 1
+
+[node name="PauseHint" type="Label" parent="PauseOverlay/PausePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.69, 0.87, 0.78, 1)
+theme_override_font_sizes/font_size = 18
+text = "Presiona ESC para continuar"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PauseOverlay/PausePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_card")
+text = "Continuar"
+
+[node name="RestartButton" type="Button" parent="PauseOverlay/PausePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_card")
+text = "Reiniciar"
+
+[node name="MenuButton" type="Button" parent="PauseOverlay/PausePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_card")
+text = "Salir al Menú"

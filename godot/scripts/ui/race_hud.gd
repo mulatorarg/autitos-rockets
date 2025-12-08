@@ -4,22 +4,33 @@ class_name RaceHUD
 
 @export var total_laps: int = 3
 
-@onready var speed_label: Label = $MarginContainer/VBoxContainer/SpeedLabel
-@onready var position_label: Label = $MarginContainer/VBoxContainer/PositionLabel
-@onready var lap_label: Label = $MarginContainer/VBoxContainer/LapLabel
-@onready var time_label: Label = $MarginContainer/VBoxContainer/TimeLabel
+@onready var speed_label: Label = $TopBar/HBoxContainer/SpeedCard/CardContent/SpeedTexts/SpeedLabel
+@onready var position_label: Label = $TopBar/HBoxContainer/PositionCard/CardContent/PositionTexts/PositionLabel
+@onready var lap_label: Label = $TopBar/HBoxContainer/LapCard/CardContent/LapTexts/LapLabel
+@onready var time_label: Label = $TopBar/HBoxContainer/TimeCard/CardContent/TimeTexts/TimeLabel
 @onready var countdown_label: Label = $CenterContainer/CountdownLabel
 @onready var finish_panel: Panel = $FinishPanel
 @onready var finish_time_label: Label = $FinishPanel/VBoxContainer/FinishTimeLabel
-@onready var finish_position_label: Label = $FinishPanel/VBoxContainer/FinishPositionLabel
+@onready var finish_position_label: Label = $FinishPanel/VBoxContainer/HBoxContainer/FinishPositionLabel
+@onready var pause_overlay: Control = $PauseOverlay
+@onready var resume_button: Button = $PauseOverlay/PausePanel/VBoxContainer/ResumeButton
+@onready var restart_button: Button = $PauseOverlay/PausePanel/VBoxContainer/RestartButton
+@onready var menu_button: Button = $PauseOverlay/PausePanel/VBoxContainer/MenuButton
+
+var _previous_mouse_mode: Input.MouseMode = Input.MOUSE_MODE_VISIBLE
 
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	GameManager.state_changed.connect(_on_game_state_changed)
 	RaceManager.race_completed.connect(_on_race_completed)
 	RaceManager.total_laps = total_laps
+	resume_button.pressed.connect(_on_resume_button_pressed)
+	restart_button.pressed.connect(_on_restart_button_pressed)
+	menu_button.pressed.connect(_on_menu_button_pressed)
 	finish_panel.hide()
 	countdown_label.hide()
+	_set_pause_menu_visible(false)
 
 
 func _process(_delta: float) -> void:
@@ -36,30 +47,36 @@ func _update_hud() -> void:
 	
 	# Velocidad en km/h (conversión aproximada)
 	var speed_kmh = stats.speed * 3.6  # m/s a km/h aproximado
-	speed_label.text = "Velocidad: %d km/h" % int(speed_kmh)
+	speed_label.text = "%d km/h" % int(speed_kmh)
 	
 	# Posición
-	position_label.text = "Posición: %d" % stats.position
+	position_label.text = "%dº" % stats.position
 	
 	# Vuelta
-	lap_label.text = "Vuelta: %d / %d" % [stats.laps + 1, RaceManager.total_laps]
+	lap_label.text = "%d / %d" % [stats.laps + 1, RaceManager.total_laps]
 	
 	# Tiempo
 	var time_seconds = stats.time
 	var minutes = int(time_seconds / 60)
 	var seconds = int(time_seconds) % 60
 	var milliseconds = int((time_seconds - int(time_seconds)) * 1000)
-	time_label.text = "Tiempo: %02d:%02d.%03d" % [minutes, seconds, milliseconds]
+	time_label.text = "%02d:%02d.%03d" % [minutes, seconds, milliseconds]
 
 
 func _on_game_state_changed(new_state: GameManager.GameState) -> void:
 	match new_state:
 		GameManager.GameState.COUNTDOWN:
 			_start_countdown()
+			_set_pause_menu_visible(false)
 		GameManager.GameState.RACING:
 			countdown_label.hide()
+			_set_pause_menu_visible(false)
 		GameManager.GameState.FINISHED:
-			pass  # El panel de finalización se muestra en _on_race_completed
+			_set_pause_menu_visible(false)
+		GameManager.GameState.PAUSED:
+			_set_pause_menu_visible(true)
+		GameManager.GameState.MENU:
+			_set_pause_menu_visible(false)
 
 
 func _start_countdown() -> void:
@@ -115,3 +132,26 @@ func _show_finish_screen(final_time: float) -> void:
 			message = "¡Carrera Completada!"
 	
 	finish_position_label.text = message + "\n" + finish_position_label.text
+
+
+func _set_pause_menu_visible(value: bool) -> void:
+	pause_overlay.visible = value
+	pause_overlay.mouse_filter = Control.MOUSE_FILTER_STOP if value else Control.MOUSE_FILTER_IGNORE
+	if value:
+		_previous_mouse_mode = Input.get_mouse_mode()
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		resume_button.grab_focus()
+	else:
+		Input.set_mouse_mode(_previous_mouse_mode)
+
+
+func _on_resume_button_pressed() -> void:
+	GameManager.resume_game()
+
+
+func _on_restart_button_pressed() -> void:
+	GameManager.restart_race()
+
+
+func _on_menu_button_pressed() -> void:
+	GameManager.go_to_menu()

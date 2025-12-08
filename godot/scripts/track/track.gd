@@ -43,7 +43,14 @@ func _setup_race() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	# Reiniciar con R
-	if event.is_action_pressed("ui_cancel") or (event is InputEventKey and event.keycode == KEY_R and event.pressed):
+	if event.is_action_pressed("ui_cancel"):
+		match GameManager.current_state:
+			GameManager.GameState.RACING:
+				GameManager.pause_game()
+			GameManager.GameState.PAUSED:
+				GameManager.resume_game()
+			GameManager.GameState.FINISHED:
+				GameManager.restart_race()
+	elif event is InputEventKey and event.pressed and event.keycode == KEY_R:
 		if GameManager.current_state == GameManager.GameState.FINISHED:
 			GameManager.restart_race()

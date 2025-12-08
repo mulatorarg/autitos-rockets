@@ -1,0 +1,5 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c5sy3y566sjf5"]
+
+[resource]
+resource_name = "_defaultMat"
+metallic = 1.0

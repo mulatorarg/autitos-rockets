@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://qmp7m2paxmnm"]
+
+[resource]
+resource_name = "carTire"
+albedo_color = Color(0.23921567, 0.23921567, 0.23921567, 1)
+metallic = 1.0

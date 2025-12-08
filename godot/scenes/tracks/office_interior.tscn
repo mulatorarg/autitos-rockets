@@ -30,8 +30,9 @@ agent_radius = 1.5
 [sub_resource type="BoxShape3D" id="BoxShape3D_ehm1h"]
 size = Vector3(7.0352173, 1, 3.5663452)
 
-[node name="OfficeTrack" type="Node3D"]
+[node name="OfficeTrack" type="Node3D" node_paths=PackedStringArray("checkpoints_node")]
 script = ExtResource("1_xx4k6")
+checkpoints_node = NodePath("Checkpoints")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 15, 0)
@@ -41,6 +42,7 @@ shadow_enabled = true
 environment = SubResource("Environment_world")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -180, 0, -50)
 navigation_mesh = SubResource("NavigationMesh_nav")
 
 [node name="office_minima2" parent="NavigationRegion3D" instance=ExtResource("3_irxij")]
@@ -48,9 +50,9 @@ navigation_mesh = SubResource("NavigationMesh_nav")
 [node name="Checkpoints" type="Node3D" parent="."]
 
 [node name="ObstaclesDinamic" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2767372, 0)
 
 [node name="Cars" type="Node3D" parent="."]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 0, 0, 0)
 
 [node name="PlayerCar" parent="Cars" instance=ExtResource("19_4loa8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -12)
