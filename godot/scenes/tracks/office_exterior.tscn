@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c10c1jhqij0mf"]
+[gd_scene load_steps=32 format=3 uid="uid://c10c1jhqij0mf"]
 
 [ext_resource type="Script" uid="uid://clmfqv5xh2ybh" path="res://scripts/track/track.gd" id="1_fbdmp"]
 [ext_resource type="Texture2D" uid="uid://cgp83mg08qobe" path="res://assets/skies/citrus_orchard_road_puresky_2k.hdr" id="2_q4857"]
@@ -24,6 +24,8 @@
 [ext_resource type="PackedScene" uid="uid://ce8v1hpnnntgv" path="res://assets/models/elementos/monopatin/monopatin.glb" id="21_40m15"]
 [ext_resource type="PackedScene" uid="uid://dwre3nupaqmmv" path="res://assets/models/elementos/auto1/auto1.glb" id="21_s8cvm"]
 [ext_resource type="PackedScene" uid="uid://chqjvsmgn2a51" path="res://assets/models/elementos/patineta/patineta.glb" id="22_p814w"]
+[ext_resource type="PackedScene" uid="uid://hdka28i0bmfe" path="res://assets/models/elementos/mesa_vidrio/mesa_vidrio.glb" id="25_mj7vg"]
+[ext_resource type="PackedScene" uid="uid://d070fkvr2l25p" path="res://assets/models/elementos/maceta/maceta.glb" id="26_u50an"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3mpdv"]
 panorama = ExtResource("2_q4857")
@@ -650,3 +652,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3068314, -0.6218395, -6.820
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.210106, -0.6218395, -6.820648)
 
 [node name="ParticleEffectsContainer" type="Node3D" parent="." groups=["ParticleEffectsContainer"]]
+
+[node name="mesa_vidrio2" parent="." instance=ExtResource("25_mj7vg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 233.10587, -2.670285e-06, 40.230644)
+
+[node name="mesa_vidrio3" parent="." instance=ExtResource("25_mj7vg")]
+transform = Transform3D(0.004904326, 0, -0.99998796, 0, 1, 0, 0.99998796, 0, 0.004904326, 265.28955, -2.670285e-06, 49.89839)
+
+[node name="maceta2" parent="." instance=ExtResource("26_u50an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 230.81209, 15.339964, 43.37431)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]

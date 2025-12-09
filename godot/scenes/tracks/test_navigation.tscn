@@ -1,19 +1,19 @@
 [gd_scene load_steps=20 format=3 uid="uid://cpx0wf67jxmul"]
 
-[ext_resource type="Script" uid="uid://clmfqv5xh2ybh" path="res://scripts/track/track.gd" id="1_track"]
-[ext_resource type="Texture2D" uid="uid://cgp83mg08qobe" path="res://assets/skies/citrus_orchard_road_puresky_2k.hdr" id="2_nkcmi"]
-[ext_resource type="Texture2D" uid="uid://0wof2ikeolop" path="res://assets/textures/texture_01.png" id="2_texture"]
-[ext_resource type="Script" uid="uid://cvuwsasmbq25i" path="res://scripts/camera/node_follow_camera.gd" id="3_camera"]
-[ext_resource type="PackedScene" uid="uid://dyv6qnrj8n1h3" path="res://scenes/car/player_car.tscn" id="4_playercar"]
-[ext_resource type="PackedScene" uid="uid://cjx5kk0m6qhva" path="res://scenes/car/ai_car.tscn" id="5_aicar"]
-[ext_resource type="PackedScene" uid="uid://bhpgx8l2yjg4c" path="res://scenes/track/checkpoint.tscn" id="6_checkpoint"]
-[ext_resource type="PackedScene" uid="uid://cq4xwf2ry6uy5" path="res://scenes/ui/race_hud.tscn" id="7_hud"]
-[ext_resource type="PackedScene" uid="uid://bm5vyak2p8r1a" path="res://scenes/track/rolling_obstacle.tscn" id="9_3mpdv"]
-[ext_resource type="Script" uid="uid://b8d4qty2jnvhx" path="res://scripts/impact/impact_receiver.gd" id="10_23cl5"]
-[ext_resource type="PackedScene" uid="uid://b2yuhgimwceb5" path="res://scenes/power_up/pickeable_power_up.tscn" id="11_ehm1h"]
+[ext_resource type="Script" uid="uid://clmfqv5xh2ybh" path="res://scripts/track/track.gd" id="1_yqk4q"]
+[ext_resource type="Texture2D" uid="uid://cgp83mg08qobe" path="res://assets/skies/citrus_orchard_road_puresky_2k.hdr" id="2_uy5w4"]
+[ext_resource type="Texture2D" uid="uid://0wof2ikeolop" path="res://assets/textures/texture_01.png" id="3_bgj02"]
+[ext_resource type="PackedScene" uid="uid://bhpgx8l2yjg4c" path="res://scenes/track/checkpoint.tscn" id="4_okofn"]
+[ext_resource type="PackedScene" uid="uid://bm5vyak2p8r1a" path="res://scenes/track/rolling_obstacle.tscn" id="5_jtlvr"]
+[ext_resource type="PackedScene" uid="uid://dyv6qnrj8n1h3" path="res://scenes/car/player_car.tscn" id="6_o0qnq"]
+[ext_resource type="PackedScene" uid="uid://cjx5kk0m6qhva" path="res://scenes/car/ai_car.tscn" id="7_d3ri1"]
+[ext_resource type="Script" uid="uid://cvuwsasmbq25i" path="res://scripts/camera/node_follow_camera.gd" id="8_byigx"]
+[ext_resource type="PackedScene" uid="uid://cq4xwf2ry6uy5" path="res://scenes/ui/race_hud.tscn" id="9_vt0kh"]
+[ext_resource type="Script" uid="uid://b8d4qty2jnvhx" path="res://scripts/impact/impact_receiver.gd" id="10_a2u03"]
+[ext_resource type="PackedScene" uid="uid://b2yuhgimwceb5" path="res://scenes/power_up/pickeable_power_up.tscn" id="11_ey18i"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3mpdv"]
-panorama = ExtResource("2_nkcmi")
+panorama = ExtResource("2_uy5w4")
 
 [sub_resource type="Sky" id="Sky_env"]
 sky_material = SubResource("PanoramaSkyMaterial_3mpdv")
@@ -31,7 +31,7 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Arr
 agent_radius = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtvcv"]
-albedo_texture = ExtResource("2_texture")
+albedo_texture = ExtResource("3_bgj02")
 uv1_triplanar = true
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nkcmi"]
@@ -44,7 +44,7 @@ uv1_triplanar = true
 size = Vector3(7.0352173, 1, 3.5663452)
 
 [node name="RaceTrack" type="Node3D"]
-script = ExtResource("1_track")
+script = ExtResource("1_yqk4q")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 15, 0)
@@ -119,65 +119,65 @@ material = SubResource("StandardMaterial3D_nkcmi")
 
 [node name="Checkpoints" type="Node3D" parent="."]
 
-[node name="Checkpoint0" parent="Checkpoints" instance=ExtResource("6_checkpoint")]
+[node name="Checkpoint0" parent="Checkpoints" instance=ExtResource("4_okofn")]
 transform = Transform3D(-4.3711385e-08, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -4.3711385e-08, 12, 0, -44)
 
-[node name="Checkpoint1" parent="Checkpoints" instance=ExtResource("6_checkpoint")]
+[node name="Checkpoint1" parent="Checkpoints" instance=ExtResource("4_okofn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, -40)
 checkpoint_index = 1
 
-[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("6_checkpoint")]
+[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("4_okofn")]
 transform = Transform3D(-0.015393227, 0, 0.9998816, 0, 1, 0, -0.9998816, 0, -0.015393227, 30, 0, 43)
 checkpoint_index = 2
 
-[node name="Checkpoint3" parent="Checkpoints" instance=ExtResource("6_checkpoint")]
+[node name="Checkpoint3" parent="Checkpoints" instance=ExtResource("4_okofn")]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -42.179695, 0, 35.27942)
 checkpoint_index = 3
 
-[node name="Checkpoint4" parent="Checkpoints" instance=ExtResource("6_checkpoint")]
+[node name="Checkpoint4" parent="Checkpoints" instance=ExtResource("4_okofn")]
 transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -34.893215, 0, -2.3787384)
 checkpoint_index = 4
 
-[node name="Checkpoint5" parent="Checkpoints" instance=ExtResource("6_checkpoint")]
+[node name="Checkpoint5" parent="Checkpoints" instance=ExtResource("4_okofn")]
 transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -6.4659424, 0, -2.3787384)
 checkpoint_index = 5
 
 [node name="ObstaclesDinamic" type="Node3D" parent="."]
 
-[node name="RollingObstacle" parent="ObstaclesDinamic" instance=ExtResource("9_3mpdv")]
+[node name="RollingObstacle" parent="ObstaclesDinamic" instance=ExtResource("5_jtlvr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.72512, -0.4999962, 41.60402)
 
-[node name="RollingObstacle2" parent="ObstaclesDinamic" instance=ExtResource("9_3mpdv")]
+[node name="RollingObstacle2" parent="ObstaclesDinamic" instance=ExtResource("5_jtlvr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.322273, -0.5, 40.70549)
 
-[node name="RollingObstacle3" parent="ObstaclesDinamic" instance=ExtResource("9_3mpdv")]
+[node name="RollingObstacle3" parent="ObstaclesDinamic" instance=ExtResource("5_jtlvr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61172867, -0.5001221, -36.818012)
 
-[node name="RollingObstacle4" parent="ObstaclesDinamic" instance=ExtResource("9_3mpdv")]
+[node name="RollingObstacle4" parent="ObstaclesDinamic" instance=ExtResource("5_jtlvr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.527004, -0.5001221, -1.3066875)
 
-[node name="RollingObstacle5" parent="ObstaclesDinamic" instance=ExtResource("9_3mpdv")]
+[node name="RollingObstacle5" parent="ObstaclesDinamic" instance=ExtResource("5_jtlvr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.185963, -0.5001221, -39.127697)
 
 [node name="Cars" type="Node3D" parent="."]
 
-[node name="PlayerCar" parent="Cars" instance=ExtResource("4_playercar")]
+[node name="PlayerCar" parent="Cars" instance=ExtResource("6_o0qnq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -12)
 mass = 1.5
 display_name = "Jugador"
 
-[node name="AICar1" parent="Cars" instance=ExtResource("5_aicar")]
+[node name="AICar1" parent="Cars" instance=ExtResource("7_d3ri1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -12)
 mass = 1.5
 display_name = "Fangio"
 
-[node name="AICar2" parent="Cars" instance=ExtResource("5_aicar")]
+[node name="AICar2" parent="Cars" instance=ExtResource("7_d3ri1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -8)
 mass = 1.5
 ai_target_speed = 1.05
 display_name = "Reuteman"
 
-[node name="AICar3" parent="Cars" instance=ExtResource("5_aicar")]
+[node name="AICar3" parent="Cars" instance=ExtResource("7_d3ri1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -8)
 mass = 1.5
 ai_target_speed = 0.95
@@ -185,11 +185,11 @@ display_name = "Colapinto"
 
 [node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -2, 5, -19)
-script = ExtResource("3_camera")
+script = ExtResource("8_byigx")
 offset = Vector3(0, 3, 6)
 target = NodePath("../Cars/PlayerCar/Pivot/CarModel")
 
-[node name="RaceHUD" parent="." instance=ExtResource("7_hud")]
+[node name="RaceHUD" parent="." instance=ExtResource("9_vt0kh")]
 total_laps = 5
 
 [node name="ActivePowerUpsContainer" type="Node3D" parent="." groups=["ActivePowerUpsContainer"]]
@@ -201,7 +201,7 @@ size = Vector3(10, 1.5, 1)
 [node name="TargetHitArea" type="Area3D" parent="MissileTargeteableWall"]
 collision_layer = 512
 collision_mask = 0
-script = ExtResource("10_23cl5")
+script = ExtResource("10_a2u03")
 
 [node name="TargetHitCollisionShape" type="CollisionShape3D" parent="MissileTargeteableWall/TargetHitArea"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.01260376, -0.052825928, 0)
@@ -211,44 +211,44 @@ shape = SubResource("BoxShape3D_ehm1h")
 
 [node name="Spawner1" type="Node3D" parent="Pickeables"]
 
-[node name="PickeablePowerUp1" parent="Pickeables/Spawner1" instance=ExtResource("11_ehm1h")]
+[node name="PickeablePowerUp1" parent="Pickeables/Spawner1" instance=ExtResource("11_ey18i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6218395, -30.15513)
 
-[node name="PickeablePowerUp2" parent="Pickeables/Spawner1" instance=ExtResource("11_ehm1h")]
+[node name="PickeablePowerUp2" parent="Pickeables/Spawner1" instance=ExtResource("11_ey18i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9767866, -0.6218395, -30.15513)
 
-[node name="PickeablePowerUp3" parent="Pickeables/Spawner1" instance=ExtResource("11_ehm1h")]
+[node name="PickeablePowerUp3" parent="Pickeables/Spawner1" instance=ExtResource("11_ey18i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3068342, -0.6218395, -30.15513)
 
-[node name="PickeablePowerUp4" parent="Pickeables/Spawner1" instance=ExtResource("11_ehm1h")]
+[node name="PickeablePowerUp4" parent="Pickeables/Spawner1" instance=ExtResource("11_ey18i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.210102, -0.6218395, -30.15513)
 
 [node name="Spawner2" type="Node3D" parent="Pickeables"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.172348, 0, 59.159275)
 
-[node name="PickeablePowerUp1" parent="Pickeables/Spawner2" instance=ExtResource("11_ehm1h")]
+[node name="PickeablePowerUp1" parent="Pickeables/Spawner2" instance=ExtResource("11_ey18i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6218395, -30.15513)
 
-[node name="PickeablePowerUp2" parent="Pickeables/Spawner2" instance=ExtResource("11_ehm1h")]
+[node name="PickeablePowerUp2" parent="Pickeables/Spawner2" instance=ExtResource("11_ey18i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9767866, -0.6218395, -30.15513)
 
-[node name="PickeablePowerUp3" parent="Pickeables/Spawner2" instance=ExtResource("11_ehm1h")]
+[node name="PickeablePowerUp3" parent="Pickeables/Spawner2" instance=ExtResource("11_ey18i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3068342, -0.6218395, -30.15513)
 
-[node name="PickeablePowerUp4" parent="Pickeables/Spawner2" instance=ExtResource("11_ehm1h")]
+[node name="PickeablePowerUp4" parent="Pickeables/Spawner2" instance=ExtResource("11_ey18i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.210102, -0.6218395, -30.15513)
 
 [node name="Spawner3" type="Node3D" parent="Pickeables"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.1689, 0, 40.97178)
 
-[node name="PickeablePowerUp1" parent="Pickeables/Spawner3" instance=ExtResource("11_ehm1h")]
+[node name="PickeablePowerUp1" parent="Pickeables/Spawner3" instance=ExtResource("11_ey18i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6218395, -30.15513)
 
-[node name="PickeablePowerUp2" parent="Pickeables/Spawner3" instance=ExtResource("11_ehm1h")]
+[node name="PickeablePowerUp2" parent="Pickeables/Spawner3" instance=ExtResource("11_ey18i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9767866, -0.6218395, -30.15513)
 
-[node name="PickeablePowerUp3" parent="Pickeables/Spawner3" instance=ExtResource("11_ehm1h")]
+[node name="PickeablePowerUp3" parent="Pickeables/Spawner3" instance=ExtResource("11_ey18i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3068342, -0.6218395, -30.15513)
 
-[node name="PickeablePowerUp4" parent="Pickeables/Spawner3" instance=ExtResource("11_ehm1h")]
+[node name="PickeablePowerUp4" parent="Pickeables/Spawner3" instance=ExtResource("11_ey18i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.210102, -0.6218395, -30.15513)

@@ -1,10 +1,10 @@
 [gd_scene load_steps=17 format=3 uid="uid://deae86ctge4qn"]
 
-[ext_resource type="Script" uid="uid://udpjc6nk636" path="res://scenes/tracks/menu.gd" id="1_l2ynk"]
+[ext_resource type="Script" uid="uid://udpjc6nk636" path="res://scripts/ui/menu.gd" id="1_l2ynk"]
 [ext_resource type="Texture2D" uid="uid://cgp83mg08qobe" path="res://assets/skies/citrus_orchard_road_puresky_2k.hdr" id="1_o34kx"]
 [ext_resource type="PackedScene" uid="uid://bwdejlgfb8oue" path="res://assets/models/houses/office_minima.glb" id="2_cny3n"]
-[ext_resource type="Script" uid="uid://rsrntne4uxy0" path="res://scenes/tracks/camera_rig.gd" id="4_cny3n"]
-[ext_resource type="Script" uid="uid://btu5vdrqa72or" path="res://scenes/tracks/camera_3d.gd" id="5_axr7g"]
+[ext_resource type="Script" uid="uid://rsrntne4uxy0" path="res://scripts/ui/camera_rig.gd" id="4_cny3n"]
+[ext_resource type="Script" uid="uid://btu5vdrqa72or" path="res://scripts/ui/camera_3d.gd" id="5_axr7g"]
 [ext_resource type="PackedScene" uid="uid://0igowf3lfkmf" path="res://assets/models/elementos/palmera/palmera.glb" id="6_icnnx"]
 [ext_resource type="PackedScene" uid="uid://ckuqdng34riso" path="res://assets/models/cars/low_poly_suv_red/suv_red.glb" id="7_vhkxp"]
 [ext_resource type="Texture2D" uid="uid://d1njkifjlhw4y" path="res://assets/logo.png" id="8_nra7r"]

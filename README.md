@@ -2,7 +2,7 @@
 
 Adaptación de varios juegos de carreras arcade, desarrollado en Godot Engine 4.5.
 
-**Desarrollador**:
+**Desarrolladores**:
 * Gabriel Campo.
 * Tomás Duggan.
 
@@ -14,13 +14,11 @@ Adaptación de varios juegos de carreras arcade, desarrollado en Godot Engine 4.
 
 **Estética:** Low poly épico.
 
-## 📖 Documentación
+## Estado Actual del Proyecto
 
-- En redacción.
+En desarrollo.
 
-## 🎮 Estado Actual del Proyecto
-
-### Sistema de Carreras Implementado ✅
+### Sistema de Carreras Implementado
 
 El proyecto ahora cuenta con un sistema completo de carreras arcade que incluye:
 
