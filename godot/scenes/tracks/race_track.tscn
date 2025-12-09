@@ -35,7 +35,6 @@ albedo_texture = ExtResource("2_texture")
 uv1_triplanar = true
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nkcmi"]
-load_path = "res://.godot/imported/texture_09.png-08f51693f50c39f0d83de9a970412add.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nkcmi"]
 albedo_texture = SubResource("CompressedTexture2D_nkcmi")
@@ -214,15 +213,12 @@ shape = SubResource("BoxShape3D_ehm1h")
 
 [node name="PickeablePowerUp1" parent="Pickeables/Spawner1" instance=ExtResource("11_ehm1h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6218395, -30.15513)
-power_up_type = 1
 
 [node name="PickeablePowerUp2" parent="Pickeables/Spawner1" instance=ExtResource("11_ehm1h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9767866, -0.6218395, -30.15513)
-power_up_type = 2
 
 [node name="PickeablePowerUp3" parent="Pickeables/Spawner1" instance=ExtResource("11_ehm1h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3068342, -0.6218395, -30.15513)
-power_up_type = 2
 
 [node name="PickeablePowerUp4" parent="Pickeables/Spawner1" instance=ExtResource("11_ehm1h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.210102, -0.6218395, -30.15513)
@@ -232,15 +228,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.172348, 0, 59.159275)
 
 [node name="PickeablePowerUp1" parent="Pickeables/Spawner2" instance=ExtResource("11_ehm1h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6218395, -30.15513)
-power_up_type = 1
 
 [node name="PickeablePowerUp2" parent="Pickeables/Spawner2" instance=ExtResource("11_ehm1h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9767866, -0.6218395, -30.15513)
-power_up_type = 2
 
 [node name="PickeablePowerUp3" parent="Pickeables/Spawner2" instance=ExtResource("11_ehm1h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3068342, -0.6218395, -30.15513)
-power_up_type = 2
 
 [node name="PickeablePowerUp4" parent="Pickeables/Spawner2" instance=ExtResource("11_ehm1h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.210102, -0.6218395, -30.15513)
@@ -250,15 +243,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.1689, 0, 40.97178)
 
 [node name="PickeablePowerUp1" parent="Pickeables/Spawner3" instance=ExtResource("11_ehm1h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6218395, -30.15513)
-power_up_type = 1
 
 [node name="PickeablePowerUp2" parent="Pickeables/Spawner3" instance=ExtResource("11_ehm1h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9767866, -0.6218395, -30.15513)
-power_up_type = 2
 
 [node name="PickeablePowerUp3" parent="Pickeables/Spawner3" instance=ExtResource("11_ehm1h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3068342, -0.6218395, -30.15513)
-power_up_type = 2
 
 [node name="PickeablePowerUp4" parent="Pickeables/Spawner3" instance=ExtResource("11_ehm1h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.210102, -0.6218395, -30.15513)

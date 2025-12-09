@@ -107,15 +107,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1797256, 1.2326641, -19.32
 
 [node name="PickeablePowerUp1" parent="Pickeables/Spawner1" instance=ExtResource("24_xibum")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6218395, -3.2892857)
-power_up_type = 1
 
 [node name="PickeablePowerUp2" parent="Pickeables/Spawner1" instance=ExtResource("24_xibum")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9767866, -0.6218395, -3.2892857)
-power_up_type = 2
 
 [node name="PickeablePowerUp3" parent="Pickeables/Spawner1" instance=ExtResource("24_xibum")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3068342, -0.6218395, -3.2892857)
-power_up_type = 2
 
 [node name="PickeablePowerUp4" parent="Pickeables/Spawner1" instance=ExtResource("24_xibum")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.210102, -0.6218395, -3.2892857)
@@ -125,15 +122,12 @@ transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 
 
 [node name="PickeablePowerUp1" parent="Pickeables/Spawner2" instance=ExtResource("24_xibum")]
 transform = Transform3D(0.99999976, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 0.99999976, 2.8838987, -0.6218395, 41.81659)
-power_up_type = 1
 
 [node name="PickeablePowerUp2" parent="Pickeables/Spawner2" instance=ExtResource("24_xibum")]
 transform = Transform3D(0.99999976, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 0.99999976, 7.8606834, -0.6218395, 41.81659)
-power_up_type = 2
 
 [node name="PickeablePowerUp3" parent="Pickeables/Spawner2" instance=ExtResource("24_xibum")]
 transform = Transform3D(0.99999976, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 0.99999976, 5.190733, -0.6218395, 41.81659)
-power_up_type = 2
 
 [node name="PickeablePowerUp4" parent="Pickeables/Spawner2" instance=ExtResource("24_xibum")]
 transform = Transform3D(0.99999976, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 0.99999976, 0.67379665, -0.6218395, 41.81659)
@@ -143,15 +137,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.134506, 1.9029274, 186.954
 
 [node name="PickeablePowerUp1" parent="Pickeables/Spawner3" instance=ExtResource("24_xibum")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.413769, -0.6218395, -84.76195)
-power_up_type = 1
 
 [node name="PickeablePowerUp2" parent="Pickeables/Spawner3" instance=ExtResource("24_xibum")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.390556, -0.6218395, -84.76195)
-power_up_type = 2
 
 [node name="PickeablePowerUp3" parent="Pickeables/Spawner3" instance=ExtResource("24_xibum")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.720604, -0.6218395, -84.76195)
-power_up_type = 2
 
 [node name="PickeablePowerUp4" parent="Pickeables/Spawner3" instance=ExtResource("24_xibum")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2036667, -0.6218395, -84.76195)
@@ -161,15 +152,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.33425, 1.9029274, 108.724
 
 [node name="PickeablePowerUp1" parent="Pickeables/Spawner4" instance=ExtResource("24_xibum")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6218395, -6.820648)
-power_up_type = 1
 
 [node name="PickeablePowerUp2" parent="Pickeables/Spawner4" instance=ExtResource("24_xibum")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9767838, -0.6218395, -6.820648)
-power_up_type = 2
 
 [node name="PickeablePowerUp3" parent="Pickeables/Spawner4" instance=ExtResource("24_xibum")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3068314, -0.6218395, -6.820648)
-power_up_type = 2
 
 [node name="PickeablePowerUp4" parent="Pickeables/Spawner4" instance=ExtResource("24_xibum")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.210106, -0.6218395, -6.820648)

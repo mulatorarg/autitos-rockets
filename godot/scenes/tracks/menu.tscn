@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://deae86ctge4qn"]
+[gd_scene load_steps=17 format=3 uid="uid://deae86ctge4qn"]
 
 [ext_resource type="Script" uid="uid://udpjc6nk636" path="res://scenes/tracks/menu.gd" id="1_l2ynk"]
 [ext_resource type="Texture2D" uid="uid://cgp83mg08qobe" path="res://assets/skies/citrus_orchard_road_puresky_2k.hdr" id="1_o34kx"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d1njkifjlhw4y" path="res://assets/logo.png" id="8_nra7r"]
 [ext_resource type="PackedScene" uid="uid://b7to78d8cuybh" path="res://assets/models/cars/low_poly_suv_green/suv_green.glb" id="8_vhkxp"]
 [ext_resource type="PackedScene" uid="uid://c3wl2ous3fp0s" path="res://scenes/ui/options_menu.tscn" id="9_m0z4g"]
+[ext_resource type="PackedScene" uid="uid://dj3qmue0yqeo3" path="res://scenes/ui/level_select_menu.tscn" id="10_lvsel"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3mpdv"]
 panorama = ExtResource("1_o34kx")
@@ -172,6 +173,8 @@ text = "Tomas Duggan"
 label_settings = SubResource("LabelSettings_nra7r")
 
 [node name="OptionsMenu" parent="CanvasLayer" instance=ExtResource("9_m0z4g")]
+
+[node name="LevelSelectMenu" parent="CanvasLayer" instance=ExtResource("10_lvsel")]
 
 [connection signal="pressed" from="CanvasLayer/Control/Panel/VBoxContainer/BtnJugar" to="." method="_on_btn_jugar_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Panel/VBoxContainer/BtnOpciones" to="." method="_on_btn_opciones_pressed"]
