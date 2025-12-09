@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ckuqdng34riso" path="res://assets/models/cars/low_poly_suv_red/suv_red.glb" id="7_vhkxp"]
 [ext_resource type="Texture2D" uid="uid://d1njkifjlhw4y" path="res://assets/logo.png" id="8_nra7r"]
 [ext_resource type="PackedScene" uid="uid://b7to78d8cuybh" path="res://assets/models/cars/low_poly_suv_green/suv_green.glb" id="8_vhkxp"]
-[ext_resource type="PackedScene" path="res://scenes/ui/options_menu.tscn" id="9_m0z4g"]
+[ext_resource type="PackedScene" uid="uid://c3wl2ous3fp0s" path="res://scenes/ui/options_menu.tscn" id="9_m0z4g"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3mpdv"]
 panorama = ExtResource("1_o34kx")

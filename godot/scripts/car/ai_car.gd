@@ -2,11 +2,11 @@ class_name AICar
 extends Car
 ## Auto controlado por IA usando Navigation3D y siguiendo checkpoints
 
-@export var ai_reaction_time: float = 0.01  ## Tiempo de reacción de la IA (más bajo = más rápido)
-@export var ai_steering_smoothness: float = 8.0  ## Suavidad en el giro (más alto = más rápido hacia el objetivo)
+@export var ai_reaction_time: float = 0.005  ## Tiempo de reacción de la IA (más bajo = más rápido)
+@export var ai_steering_smoothness: float = 10.0  ## Suavidad en el giro (más alto = más rápido hacia el objetivo)
 @export_range(0.5, 1.5, 0.01) var ai_target_speed: float = 1.1  ## Velocidad objetivo normalizada
 @export_range(0.5, 1.0, 0.01) var ai_corner_speed_floor: float = 0.8  ## Porcentaje mínimo de velocidad en curvas
-@export var ai_brake_distance: float = 8.0  ## Distancia para empezar a frenar en curvas
+@export var ai_brake_distance: float = 7.0  ## Distancia para empezar a frenar en curvas
 @export var ai_obstacle_avoidance_strength: float = 2.0  ## Fuerza de evasión de obstáculos
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D

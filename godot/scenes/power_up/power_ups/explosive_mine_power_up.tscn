@@ -47,7 +47,7 @@ _data = {
 collision_layer = 0
 collision_mask = 512
 script = ExtResource("1_346fx")
-_explosion_impulse = 35.0
+_explosion_impulse = 40.0
 
 [node name="Model" parent="." instance=ExtResource("2_l3jq4")]
 

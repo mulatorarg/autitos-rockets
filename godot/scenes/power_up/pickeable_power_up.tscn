@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cjfj84qdnx2ee" path="res://assets/models/power_ups/hallow_cube.glb" id="2_qt8aw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1wxo3"]
+size = Vector3(1.1, 1.1, 1.1)
 
 [sub_resource type="Animation" id="Animation_acdep"]
 length = 0.001
@@ -73,6 +74,7 @@ collision_mask = 0
 script = ExtResource("1_aguvr")
 
 [node name="PickupAreaCollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.023529053, 0.0047302246)
 shape = SubResource("BoxShape3D_1wxo3")
 
 [node name="CubeModel" parent="." instance=ExtResource("2_qt8aw")]

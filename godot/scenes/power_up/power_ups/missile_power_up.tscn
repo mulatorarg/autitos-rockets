@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ci56v81hrlnsv" path="res://assets/models/power_ups/missile.glb" id="2_eecec"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_warha"]
-radius = 3.7122736
+radius = 6.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_warha"]
 radius = 0.3
@@ -27,8 +27,8 @@ colors = PackedColorArray(0, 0, 0, 1, 0.23031491, 0.23031494, 0.23031494, 1, 0.8
 
 [node name="MissilePowerUp" type="Node3D"]
 script = ExtResource("1_warha")
-_speed = 15.0
-_explosion_impulse = 50.0
+_speed = 35.0
+_explosion_impulse = 60.0
 
 [node name="Model" parent="." instance=ExtResource("2_eecec")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
@@ -39,6 +39,7 @@ collision_layer = 0
 collision_mask = 512
 
 [node name="DetectionAreaCollisionShape" type="CollisionShape3D" parent="TargetDetectionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
 shape = SubResource("SphereShape3D_warha")
 
 [node name="TargetHitArea" type="Area3D" parent="."]

@@ -19,8 +19,8 @@ func _ready():
 	add_child(_music_player)
 	add_child(_sfx_pool)
 	
-	change_music_volume(START_MUSIC_VOLUME)
-	change_sfx_volume(START_SFX_VOLUME)
+	#change_music_volume(START_MUSIC_VOLUME)
+	#change_sfx_volume(START_SFX_VOLUME)
 
 func play_music(stream: AudioStream) -> void:
 	if stream == _music_player.stream:

@@ -10,6 +10,7 @@ const FALLBACK_RESOLUTIONS := [
 	Vector2i(1920, 1080),
 	Vector2i(2560, 1440)
 ]
+const TEST_SFX: AudioStream = preload("uid://cyp456in2y5o2")
 
 @onready var music_slider: HSlider = $Panel/VBoxContainer/MusicRow/HSlider
 @onready var music_value_label: Label = $Panel/VBoxContainer/MusicRow/ValueLabel
@@ -82,11 +83,13 @@ func _get_selected_resolution() -> Vector2i:
 
 func _on_music_value_changed(value: float) -> void:
 	music_value_label.text = "%d%%" % roundi(value)
+	AudioManager.change_music_volume(value / 100.0)
 
 
 func _on_sfx_value_changed(value: float) -> void:
 	sfx_value_label.text = "%d%%" % roundi(value)
-
+	AudioManager.change_sfx_volume(value / 100.0)
+	AudioManager.play_sfx(TEST_SFX, Vector3.ZERO)
 
 func _on_save_button_pressed() -> void:
 	var payload := {
