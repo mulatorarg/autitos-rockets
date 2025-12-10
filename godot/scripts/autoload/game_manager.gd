@@ -11,7 +11,7 @@ enum GameState {
 
 var current_state: GameState = GameState.MENU
 
-const MENU_SCENE_PATH := "res://scenes/tracks/menu.tscn"
+const MENU_SCENE_PATH := "res://scenes/ui/menu.tscn"
 const SETTINGS_PATH_PRIORITY := [
 	"res://config/settings.cfg",
 	"user://settings.cfg"

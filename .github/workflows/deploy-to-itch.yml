@@ -5,12 +5,12 @@ on: [workflow_dispatch]
 
 
 env:
-  GODOT_VERSION: "4.5"
+  GODOT_VERSION: "4.5.1"
   GODOT_STATUS: "stable"
 jobs:
   import-assets:
     runs-on: ubuntu-latest
-    container: barichello/godot-ci:4.5
+    container: barichello/godot-ci:4.5.1-stable
     steps:
       - uses: actions/checkout@v4
       - name: Cache import assets

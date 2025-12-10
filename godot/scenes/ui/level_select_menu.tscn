@@ -252,6 +252,7 @@ layout_mode = 2
 autowrap_mode = 2
 
 [node name="OfficeInterior2Card" type="Button" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid"]
+visible = false
 custom_minimum_size = Vector2(0, 220)
 layout_mode = 2
 size_flags_horizontal = 3

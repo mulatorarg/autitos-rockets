@@ -13,9 +13,9 @@ class_name RaceHUD
 @onready var finish_time_label: Label = $FinishPanel/VBoxContainer/FinishTimeLabel
 @onready var finish_position_label: Label = $FinishPanel/VBoxContainer/HBoxContainer/FinishPositionLabel
 @onready var pause_overlay: Control = $PauseOverlay
-@onready var resume_button: Button = $PauseOverlay/PausePanel/VBoxContainer/ResumeButton
-@onready var restart_button: Button = $PauseOverlay/PausePanel/VBoxContainer/RestartButton
-@onready var menu_button: Button = $PauseOverlay/PausePanel/VBoxContainer/MenuButton
+@onready var resume_button: Button = $PauseOverlay/PausePanel/MarginContainer/VBoxContainer/ResumeButton
+@onready var restart_button: Button = $PauseOverlay/PausePanel/MarginContainer/VBoxContainer/RestartButton
+@onready var menu_button: Button = $PauseOverlay/PausePanel/MarginContainer/VBoxContainer/MenuButton
 
 var _previous_mouse_mode: Input.MouseMode = Input.MOUSE_MODE_VISIBLE
 

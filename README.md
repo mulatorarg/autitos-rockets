@@ -12,7 +12,7 @@ Adaptación de varios juegos de carreras arcade, desarrollado en Godot Engine 4.
 
 **Resolución objetivo:** HD 1366×768 (UI y HUD diseñados para esta resolución).
 
-**Estética:** Low poly épico.
+**Estética:** Low poly en los Autos y Realismo en los niveles.
 
 ## Estado Actual del Proyecto
 
@@ -20,7 +20,7 @@ En desarrollo.
 
 ### Sistema de Carreras Implementado
 
-El proyecto ahora cuenta con un sistema completo de carreras arcade que incluye:
+El proyecto cuenta con un sistema completo de carreras arcade que incluye:
 
 - **Clase Car Base**: Sistema modular con clases PlayerCar y AICar
 - **IA de Enemigos**: Navigation3D con seguimiento de checkpoints y evasión de obstáculos
@@ -38,6 +38,7 @@ El proyecto ahora cuenta con un sistema completo de carreras arcade que incluye:
 ### 1. Concepto
 
 Juego de carreras arcade en 3D donde el jugador compite contra oponentes controlados por IA en circuitos con checkpoints y obstáculos. El objetivo es completar un número determinado de vueltas en el menor tiempo posible y lograr el primer puesto.
+Pura diversión como si fueras un juguete en tu casa.
 
 ### 2. Referencias principales
 
