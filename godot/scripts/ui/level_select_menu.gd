@@ -7,23 +7,23 @@ signal level_chosen(scene_path: String)
 const LEVEL_BLUEPRINTS := [
 	{
 		"card_name": "OfficeExteriorCard",
-		"title": "Exterior Corporativo",
+		"title": "En el Patio de la Oficina",
 		"subtitle": "Amplias rectas en el rooftop",
-		"description": "Trazado urbano abierto con espacio para derrapes largos y tomas panorámicas.",
+		"description": "Trazado abierto y divertido con espacio para derrapes largos y tomas panorámicas.",
 		"scene_path": "res://scenes/tracks/office_exterior.tscn"
 	},
 	{
 		"card_name": "OfficeInterior1Card",
-		"title": "Interior Nivel 1",
+		"title": "En la Oficina. Planta Baja",
 		"subtitle": "Pasillos y giros marcados",
 		"description": "Circuito técnico entre escritorios y salas de reunión, ideal para precisión.",
 		"scene_path": "res://scenes/tracks/office_interior_1.tscn"
 	},
 	{
 		"card_name": "OfficeInterior2Card",
-		"title": "Interior Nivel 2",
+		"title": "En la Oficina. Primer Piso",
 		"subtitle": "Atajos y doble altura",
-		"description": "Combina rampas y curvas ciegas dentro del corazón del edificio.",
+		"description": "Tomás: Chamuyá acá: Combina rampas y curvas ciegas dentro del corazón del edificio.",
 		"scene_path": "res://scenes/tracks/office_interior_2.tscn"
 	}
 ]
@@ -67,7 +67,7 @@ func _build_cards() -> void:
 		var card := _cards_grid.get_node(card_name) as Button
 		if card == null:
 			continue
-		var content := card.get_node("Content") as VBoxContainer
+		var content := card.get_node("MarginContainer/Content") as VBoxContainer
 		if content != null:
 			var title_label := content.get_node("Title") as Label
 			var subtitle_label := content.get_node("Subtitle") as Label

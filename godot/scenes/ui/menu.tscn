@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://deae86ctge4qn"]
+[gd_scene load_steps=20 format=3 uid="uid://deae86ctge4qn"]
 
 [ext_resource type="Script" uid="uid://udpjc6nk636" path="res://scripts/ui/menu.gd" id="1_l2ynk"]
 [ext_resource type="Texture2D" uid="uid://cgp83mg08qobe" path="res://assets/skies/citrus_orchard_road_puresky_2k.hdr" id="1_o34kx"]
@@ -24,6 +24,42 @@ background_energy_multiplier = 0.4
 sky = SubResource("Sky_env")
 ambient_light_source = 3
 reflected_light_source = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tub5d"]
+bg_color = Color(0.08, 0.08, 0.12, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.19, 0.75, 0.58, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dnmb1"]
+bg_color = Color(0.08, 0.08, 0.12, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.19, 0.75, 0.58, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5j7hh"]
+bg_color = Color(0.08, 0.08, 0.12, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.1882353, 0.7490196, 0.105882354, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_vhkxp"]
 font_size = 24
@@ -107,6 +143,7 @@ offset_top = -196.0
 offset_right = 231.0
 offset_bottom = -17.0
 grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tub5d")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/Panel"]
 layout_mode = 1
@@ -126,14 +163,20 @@ alignment = 1
 [node name="BtnJugar" type="Button" parent="CanvasLayer/Control/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_dnmb1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5j7hh")
 text = "Jugar"
 
 [node name="BtnOpciones" type="Button" parent="CanvasLayer/Control/Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_dnmb1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5j7hh")
 text = "Opciones"
 
 [node name="BtnSalir" type="Button" parent="CanvasLayer/Control/Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_dnmb1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5j7hh")
 text = "Salir"
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]

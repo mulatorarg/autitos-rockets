@@ -1,83 +1,79 @@
-[gd_scene load_steps=8 format=3 uid="uid://dj3qmue0yqeo3"]
+[gd_scene load_steps=9 format=3 uid="uid://dj3qmue0yqeo3"]
 
 [ext_resource type="Script" uid="uid://cik4i20i7skq6" path="res://scripts/ui/level_select_menu.gd" id="1_hjipy"]
 [ext_resource type="Texture2D" uid="uid://d1njkifjlhw4y" path="res://assets/logo.png" id="2_mf26o"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Panel"]
-bg_color = Color(0.0470588, 0.0588235, 0.0901961, 0.94)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1521o"]
+bg_color = Color(0.08, 0.08, 0.12, 0.9)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.227451, 0.803922, 0.890196, 0.8)
-corner_radius_top_left = 28
-corner_radius_top_right = 28
-corner_radius_bottom_right = 28
-corner_radius_bottom_left = 28
+border_color = Color(0.19, 0.75, 0.58, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_CardNormal"]
-content_margin_left = 18.0
-content_margin_top = 18.0
-content_margin_right = 18.0
-content_margin_bottom = 18.0
-bg_color = Color(0.0901961, 0.105882, 0.14902, 0.94)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qfmgl"]
+bg_color = Color(0.08, 0.08, 0.12, 0.9)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.286275, 0.760784, 0.858824, 0.55)
-corner_radius_top_left = 18
-corner_radius_top_right = 18
-corner_radius_bottom_right = 18
-corner_radius_bottom_left = 18
+border_color = Color(0.19, 0.75, 0.58, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_CardPressed"]
-content_margin_left = 18.0
-content_margin_top = 18.0
-content_margin_right = 18.0
-content_margin_bottom = 18.0
-bg_color = Color(0.0705882, 0.0901961, 0.141176, 0.94)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.243137, 0.580392, 0.886275, 0.9)
-corner_radius_top_left = 18
-corner_radius_top_right = 18
-corner_radius_bottom_right = 18
-corner_radius_bottom_left = 18
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uxbjq"]
+bg_color = Color(0.08, 0.08, 0.12, 0.9)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.1882353, 0.7490196, 0, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_CardHover"]
-content_margin_left = 18.0
-content_margin_top = 18.0
-content_margin_right = 18.0
-content_margin_bottom = 18.0
-bg_color = Color(0.141176, 0.164706, 0.231373, 0.96)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jr33h"]
+bg_color = Color(0.08, 0.08, 0.12, 0.9)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.352941, 0.854902, 0.913725, 0.85)
-corner_radius_top_left = 18
-corner_radius_top_right = 18
-corner_radius_bottom_right = 18
-corner_radius_bottom_left = 18
+border_color = Color(0.8039216, 0.7490196, 0, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_CardFocus"]
-content_margin_left = 18.0
-content_margin_top = 18.0
-content_margin_right = 18.0
-content_margin_bottom = 18.0
-bg_color = Color(0.101961, 0.137255, 0.2, 0.96)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1hnvy"]
+bg_color = Color(0.08, 0.08, 0.12, 0.9)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.780392, 0.529412, 0.988235, 0.95)
-corner_radius_top_left = 18
-corner_radius_top_right = 18
-corner_radius_bottom_right = 18
-corner_radius_bottom_left = 18
+border_color = Color(0.19, 0.75, 0.58, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6wy0"]
+bg_color = Color(0.08, 0.08, 0.12, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.1882353, 0.7490196, 0.24705882, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="LevelSelectMenu" type="Control"]
 layout_mode = 3
@@ -113,7 +109,7 @@ offset_bottom = 280.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_Panel")
+theme_override_styles/panel = SubResource("StyleBoxFlat_1521o")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -175,32 +171,39 @@ custom_minimum_size = Vector2(0, 220)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_CardNormal")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_CardPressed")
-theme_override_styles/hover = SubResource("StyleBoxFlat_CardHover")
-theme_override_styles/focus = SubResource("StyleBoxFlat_CardFocus")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qfmgl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uxbjq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uxbjq")
+theme_override_styles/focus = SubResource("StyleBoxFlat_jr33h")
 
-[node name="Content" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeExteriorCard"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeExteriorCard"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="Content" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeExteriorCard/MarginContainer"]
+layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeExteriorCard/Content"]
+[node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeExteriorCard/MarginContainer/Content"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 
-[node name="Subtitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeExteriorCard/Content"]
+[node name="Subtitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeExteriorCard/MarginContainer/Content"]
 self_modulate = Color(0.713726, 0.87451, 0.945098, 1)
 layout_mode = 2
 
-[node name="Separator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeExteriorCard/Content"]
+[node name="Separator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeExteriorCard/MarginContainer/Content"]
 layout_mode = 2
 
-[node name="Description" type="Label" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeExteriorCard/Content"]
+[node name="Description" type="Label" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeExteriorCard/MarginContainer/Content"]
 modulate = Color(1, 1, 1, 0.94)
 self_modulate = Color(0.792157, 0.834, 0.905882, 1)
 layout_mode = 2
@@ -211,32 +214,39 @@ custom_minimum_size = Vector2(0, 220)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_CardNormal")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_CardPressed")
-theme_override_styles/hover = SubResource("StyleBoxFlat_CardHover")
-theme_override_styles/focus = SubResource("StyleBoxFlat_CardFocus")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qfmgl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uxbjq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uxbjq")
+theme_override_styles/focus = SubResource("StyleBoxFlat_jr33h")
 
-[node name="Content" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeInterior1Card"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeInterior1Card"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="Content" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeInterior1Card/MarginContainer"]
+layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeInterior1Card/Content"]
+[node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeInterior1Card/MarginContainer/Content"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 
-[node name="Subtitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeInterior1Card/Content"]
+[node name="Subtitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeInterior1Card/MarginContainer/Content"]
 self_modulate = Color(0.713726, 0.87451, 0.945098, 1)
 layout_mode = 2
 
-[node name="Separator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeInterior1Card/Content"]
+[node name="Separator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeInterior1Card/MarginContainer/Content"]
 layout_mode = 2
 
-[node name="Description" type="Label" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeInterior1Card/Content"]
+[node name="Description" type="Label" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeInterior1Card/MarginContainer/Content"]
 self_modulate = Color(0.792157, 0.834, 0.905882, 1)
 layout_mode = 2
 autowrap_mode = 2
@@ -246,32 +256,39 @@ custom_minimum_size = Vector2(0, 220)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_CardNormal")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_CardPressed")
-theme_override_styles/hover = SubResource("StyleBoxFlat_CardHover")
-theme_override_styles/focus = SubResource("StyleBoxFlat_CardFocus")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qfmgl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uxbjq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uxbjq")
+theme_override_styles/focus = SubResource("StyleBoxFlat_jr33h")
 
-[node name="Content" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeInterior2Card"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeInterior2Card"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="Content" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeInterior2Card/MarginContainer"]
+layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeInterior2Card/Content"]
+[node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeInterior2Card/MarginContainer/Content"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 
-[node name="Subtitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeInterior2Card/Content"]
+[node name="Subtitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeInterior2Card/MarginContainer/Content"]
 self_modulate = Color(0.713726, 0.87451, 0.945098, 1)
 layout_mode = 2
 
-[node name="Separator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeInterior2Card/Content"]
+[node name="Separator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeInterior2Card/MarginContainer/Content"]
 layout_mode = 2
 
-[node name="Description" type="Label" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeInterior2Card/Content"]
+[node name="Description" type="Label" parent="Panel/MarginContainer/VBoxContainer/LevelsGrid/OfficeInterior2Card/MarginContainer/Content"]
 self_modulate = Color(0.792157, 0.834, 0.905882, 1)
 layout_mode = 2
 autowrap_mode = 2
@@ -289,4 +306,6 @@ size_flags_horizontal = 3
 [node name="BackButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/ActionsRow"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_1hnvy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r6wy0")
 text = "Volver"

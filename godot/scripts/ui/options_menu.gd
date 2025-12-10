@@ -12,12 +12,12 @@ const FALLBACK_RESOLUTIONS := [
 ]
 const TEST_SFX: AudioStream = preload("uid://cyp456in2y5o2")
 
-@onready var music_slider: HSlider = $Panel/VBoxContainer/MusicRow/HSlider
-@onready var music_value_label: Label = $Panel/VBoxContainer/MusicRow/ValueLabel
-@onready var sfx_slider: HSlider = $Panel/VBoxContainer/SfxRow/HSlider
-@onready var sfx_value_label: Label = $Panel/VBoxContainer/SfxRow/ValueLabel
-@onready var resolution_option: OptionButton = $Panel/VBoxContainer/ResolutionRow/OptionButton
-@onready var vsync_checkbox: CheckBox = $Panel/VBoxContainer/VsyncRow/CheckBox
+@onready var music_slider: HSlider = $Panel/MarginContainer/VBoxContainer/MusicRow/HSlider
+@onready var music_value_label: Label = $Panel/MarginContainer/VBoxContainer/MusicRow/ValueLabel
+@onready var sfx_slider: HSlider = $Panel/MarginContainer/VBoxContainer/SfxRow/HSlider
+@onready var sfx_value_label: Label = $Panel/MarginContainer/VBoxContainer/SfxRow/ValueLabel
+@onready var resolution_option: OptionButton = $Panel/MarginContainer/VBoxContainer/ResolutionRow/OptionButton
+@onready var vsync_checkbox: CheckBox = $Panel/MarginContainer/VBoxContainer/VsyncRow/CheckBox
 
 var _resolutions: Array[Vector2i] = []
 
