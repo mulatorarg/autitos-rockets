@@ -14,7 +14,12 @@ config/name="Autitos Rockets"
 config/description="Una mezcla de Micro Machines, Mario Karts y GTA, ponele."
 run/main_scene="uid://deae86ctge4qn"
 config/features=PackedStringArray("4.5", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+boot_splash/image="uid://lg8cv8xok44w"
 config/icon="uid://lg8cv8xok44w"
+boot_splash/minimum_display_time=1000
 
 [autoload]
 
