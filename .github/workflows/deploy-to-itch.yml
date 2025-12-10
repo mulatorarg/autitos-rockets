@@ -3,14 +3,13 @@ name: Godot Export and Upload to Itch
 #on: [push, pull_request, workflow_dispatch]
 on: [workflow_dispatch]
 
-
 env:
   GODOT_VERSION: "4.5.1"
   GODOT_STATUS: "stable"
 jobs:
   import-assets:
     runs-on: ubuntu-latest
-    container: barichello/godot-ci:4.5.1-stable
+    container: barichello/godot-ci:4.5.1
     steps:
       - uses: actions/checkout@v4
       - name: Cache import assets
