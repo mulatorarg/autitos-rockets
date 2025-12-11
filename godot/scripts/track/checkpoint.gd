@@ -29,15 +29,11 @@ func _ready() -> void:
 		var color = Color.from_hsv(checkpoint_index / 10.0, 0.8, 1.0, 0.6)
 		debug_mesh.material_override.albedo_color = color
 	
-	print("Checkpoint %d inicializado en posición %v" % [checkpoint_index, global_position])
 
 
 func _on_body_entered(body: Node3D) -> void:
-	"""Detecta cuando un auto pasa por el checkpoint"""
 	# Ignorar eventos cuando la carrera no está en cuenta regresiva o en curso
 	if GameManager.current_state != GameManager.GameState.COUNTDOWN and GameManager.current_state != GameManager.GameState.RACING:
 		return
-	print("Checkpoint %d: Detectó body %s (es Car: %s)" % [checkpoint_index, body.name, body is Car])
-	print("DEBUG CP: %s entra al checkpoint_index=%d (nodo=%s)" % [body.name, checkpoint_index, name])
 	if body is Car:
 		RaceManager.on_checkpoint_passed(body, checkpoint_index)

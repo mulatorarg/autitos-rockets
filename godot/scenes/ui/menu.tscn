@@ -24,6 +24,7 @@ background_energy_multiplier = 0.4
 sky = SubResource("Sky_env")
 ambient_light_source = 3
 reflected_light_source = 2
+tonemap_mode = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tub5d"]
 bg_color = Color(0.08, 0.08, 0.12, 0.9)

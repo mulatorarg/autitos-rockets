@@ -34,7 +34,6 @@ func _setup_checkpoints() -> void:
 	# Ordenar por índice
 	checkpoints.sort_custom(func(a, b): return a.checkpoint_index < b.checkpoint_index)
 	
-	print("Track configurado con %d checkpoints" % checkpoints.size())
 
 
 ## Configura el RaceManager con los datos de esta pista

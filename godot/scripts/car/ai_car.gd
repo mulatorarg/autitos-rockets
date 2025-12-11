@@ -38,7 +38,6 @@ func _ready() -> void:
 func _setup_navigation() -> void:
 	await get_tree().physics_frame
 	await get_tree().physics_frame  # Esperar un frame adicional
-	print("%s: NavigationAgent listo" % name)
 	_update_target_checkpoint()
 
 
@@ -57,7 +56,6 @@ func _update_target_checkpoint() -> void:
 	var checkpoint_index = RaceManager.get_car_checkpoint(self)
 	
 	if RaceManager.checkpoints.size() == 0:
-		print("%s: No hay checkpoints disponibles" % name)
 		return
 	
 	var target_checkpoint_index = checkpoint_index % RaceManager.checkpoints.size()
@@ -65,7 +63,6 @@ func _update_target_checkpoint() -> void:
 		var target_checkpoint = RaceManager.checkpoints[target_checkpoint_index]
 		current_target_position = target_checkpoint.global_position
 		navigation_agent.target_position = current_target_position
-		# print("%s: Objetivo checkpoint %d en posición %v" % [name, target_checkpoint_index, current_target_position])
 
 
 ## Actualiza el input de la IA basado en la navegación
