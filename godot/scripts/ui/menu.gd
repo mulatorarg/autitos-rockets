@@ -4,7 +4,7 @@ extends Node3D
 @onready var _options_menu: ScreenMenu = $CanvasLayer/OptionsMenu
 @onready var _level_select_menu: LevelSelectMenu = $CanvasLayer/LevelSelectMenu
 
-const GAMEPLAY_MUSIC_1: AudioStream = preload("uid://dd7ifdfr2xsyp")
+const GAMEPLAY_MUSIC_1: AudioStream = preload("uid://qjw4nscjv8uh")
 
 
 func _ready() -> void:
